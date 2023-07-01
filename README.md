@@ -19,7 +19,7 @@
 - 学習の記録を数値化し、実績として振り返る時
 
 ## 設計書
-後ほど作成予定
+ER図:https://drive.google.com/file/d/1MdacprQIhd4EgqDtz3AEYN55PfOWUJ7J/view?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
