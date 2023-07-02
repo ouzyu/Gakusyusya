@@ -21,6 +21,10 @@
 ## 設計書
 - ER図          : https://drive.google.com/file/d/1MdacprQIhd4EgqDtz3AEYN55PfOWUJ7J/view?usp=sharing
 - テーブル定義書: https://docs.google.com/spreadsheets/d/1j0O0XZ-fZttLLpBUQvT6pn8Jo8ZmGXgYNXGtYQ37TJI/edit?usp=sharing
+- 管理者側UIフロー
+![Gakusyusya_Admin_UIフロー drawio](https://user-images.githubusercontent.com/129580397/250356351-cfe640ba-284f-4a4b-bc5d-05e0b965bc05.png)
+- ユーザー側UIフロー
+![Gakusyusya_User_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/0e3ad436-a716-4acd-bb86-e1fc3094621f)
 
 ## 開発環境
 - OS：Linux(CentOS)
