@@ -1,5 +1,5 @@
 # がくしゅうしゃ
-
+![Gakusyusya_wireframe](https://github.com/ouzyu/Gakusyusya/assets/129580397/0540d7c8-4c7b-4888-aedb-57ea9a4e04fe)
 ## サイト概要
 ### サイトテーマ
 キャラクターのアニメーションを用いて、子供たちが楽しく学習出来る事を目的とした記録と管理を行うサイトです。
