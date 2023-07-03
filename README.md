@@ -19,12 +19,18 @@
 - 学習の記録を数値化し、実績として振り返る時
 
 ## 設計書
-- ER図          : https://drive.google.com/file/d/1MdacprQIhd4EgqDtz3AEYN55PfOWUJ7J/view?usp=sharing
-- テーブル定義書: https://docs.google.com/spreadsheets/d/1j0O0XZ-fZttLLpBUQvT6pn8Jo8ZmGXgYNXGtYQ37TJI/edit?usp=sharing
+- ER図
+![Gakusyusya drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/8d0c7ff8-9b76-4b4c-a885-99ac00079d0b)
 - 管理者側UIフロー
-![Gakusyusya_Admin_UIフロー drawio](https://user-images.githubusercontent.com/129580397/250356351-cfe640ba-284f-4a4b-bc5d-05e0b965bc05.png)
+![Gakusyusya_Admin_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/a2083bb3-7029-4e2f-9884-4f467e79c8c1)
 - ユーザー側UIフロー
-![Gakusyusya_User_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/0e3ad436-a716-4acd-bb86-e1fc3094621f)
+![Gakusyusya_User_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/d1b55b75-b522-4a75-9789-caffa06caea7)
+- ワイヤーフレーム(閲覧にはFigmaアカウントが必要です)
+https://www.figma.com/file/wmUrhU66a6K21xuso6iyvb/Gakusyusya_wireframe?type=design&node-id=19%3A7&mode=design&t=dcEuRNoMayndmceK-1
+- テーブル定義書
+https://docs.google.com/spreadsheets/d/1j0O0XZ-fZttLLpBUQvT6pn8Jo8ZmGXgYNXGtYQ37TJI/edit?usp=sharing
+- アプリケーション詳細設計
+https://docs.google.com/spreadsheets/d/14rNsCNkWDJqcEqb43ymJtHAwY94dvT5eDOl0NgDopIg/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
