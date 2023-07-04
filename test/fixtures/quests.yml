@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  ability: one
+  actor: one
+  map: one
+  content: MyText
+  seconds: 1
+  is_finished: false
+
+two:
+  user: two
+  ability: two
+  actor: two
+  map: two
+  content: MyText
+  seconds: 1
+  is_finished: false

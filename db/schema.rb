@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_04_014738) do
+ActiveRecord::Schema.define(version: 2023_07_04_045422) do
+
+  create_table "abilities", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.integer "level", default: 1, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_abilities_on_user_id"
+  end
+
+  create_table "actors", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +37,43 @@ ActiveRecord::Schema.define(version: 2023_07_04_014738) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "animations", force: :cascade do |t|
+    t.integer "situation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["situation_id"], name: "index_animations_on_situation_id"
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "ability_id", null: false
+    t.integer "actor_id", null: false
+    t.integer "map_id", null: false
+    t.text "content", null: false
+    t.integer "seconds", null: false
+    t.boolean "is_finished", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ability_id"], name: "index_quests_on_ability_id"
+    t.index ["actor_id"], name: "index_quests_on_actor_id"
+    t.index ["map_id"], name: "index_quests_on_map_id"
+    t.index ["user_id"], name: "index_quests_on_user_id"
+  end
+
+  create_table "situations", force: :cascade do |t|
+    t.integer "actor_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["actor_id"], name: "index_situations_on_actor_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +92,11 @@ ActiveRecord::Schema.define(version: 2023_07_04_014738) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "abilities", "users"
+  add_foreign_key "animations", "situations"
+  add_foreign_key "quests", "abilities"
+  add_foreign_key "quests", "actors"
+  add_foreign_key "quests", "maps"
+  add_foreign_key "quests", "users"
+  add_foreign_key "situations", "actors"
 end
