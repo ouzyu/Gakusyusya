@@ -1,0 +1,42 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <% unless admin_signed_in? %>
+        <%= link_to "LOGO", root_path %>
+      <% else %>
+        <div></div>
+      <% end %>
+      <div>
+        <ul class="ml-auto mb-0">
+          <div class="navbar-nav ml-auto">
+            <div class="navbar-nav">
+              <% if admin_signed_in? %>
+                <li><%= link_to "Users", admin_users_path, class: 'btn navbar-btn btn-outline-light' %></li>
+                <li><%= link_to "Actors", admin_actors_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
+                <li><%= link_to "Maps", admin_maps_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
+                <li>
+                  <%= link_to destroy_admin_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
+                    Log out
+                  <% end %>
+                </li>
+              <% elsif user_signed_in? %>
+                <li><%= link_to "ステータスをみる", mypage_path, class: 'btn navbar-btn btn-outline-light ml-5' %></li>
+                <li><%= link_to "アビリティをみる", abilities_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                <li><%= link_to "クエストをうける", quests_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
+                    ぼうけんをやめる
+                  <% end %>
+                </li>
+              <% else %>
+                <li><%= link_to "せつめいしょをよむ", about_path, class: 'btn navbar-btn btn-outline-light' %></li>
+                <li><%= link_to "セーブデータをロードする", new_user_session_path , class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                <li><%= link_to "あたらしいがくしゅうしゃになる",new_user_registration_path , class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+              <% end %>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
