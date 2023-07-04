@@ -1,0 +1,2 @@
+module Public::AdventuresHelper
+end
