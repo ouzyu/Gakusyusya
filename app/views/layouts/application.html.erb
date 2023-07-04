@@ -11,10 +11,22 @@
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
     <main>
-      <%= notice %>
-      <%= alert %>
+      <div class="alert-success">
+        <div class="container">
+          <%= notice %>
+        </div>
+      </div>
+      <div class="alert-danger">
+        <div class="container">
+          <%= alert %>
+        </div>
+      </div>
       <%= yield %>
     </main>
+    <% unless admin_signed_in? %>
+      <%= render 'layouts/footer' %>
+    <% end %>
   </body>
 </html>
