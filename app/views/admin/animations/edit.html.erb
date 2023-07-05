@@ -12,13 +12,13 @@
       <div class="border d-flex justify-content-around" style="height: 490px; width: 1080px;">
         <div>
           <div class="border" style="max-height: 400px; max-width: 400px;">
-            <%= image_tag @animation.image, size: "400x400", class: "width: 100%; object-fit: cover;" %>
+            <%= image_tag @animation.image, size: "400x400", style: "width: 100%; object-fit: cover;" %>
           </div>
           <p class="h4 text-center">Old Animation</p>
         </div>
         <div>
           <div class="border" style="min-height: 400px; min-width: 400px;">
-            <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; max-height: 400px; max-width: 400px; object-fit: cover;">
+            <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; max-height: min-height: 400px; 400px; max-width: 400px; object-fit: cover;">
           </div>
           <p class="h4 text-center">New Animation</p>
         </div>

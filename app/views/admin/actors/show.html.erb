@@ -25,17 +25,17 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Graphic</th>
+            <th class="text-center align-middle">Name</th>
+            <th class="text-center align-middle">Graphic</th>
           </tr>
         </thead>
         <tbody>
           <% @situations.each do |situation| %>
             <tr>
-              <td class="col-md-3">
+              <td class="col-md-3 text-center align-middle">
                 <%= link_to situation.name, admin_situation_path(situation) %>
               </td>
-              <td>
+              <td class="text-center align-middle">
                 <% situation.have_animations(3).each do |animation| %>
                   <%= link_to edit_admin_animation_path(animation) do %>
                     <%= image_tag animation.image, size: "80x80" %>
