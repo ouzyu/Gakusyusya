@@ -20,7 +20,7 @@
 
 ## 設計書
 - ER図
-![Gakusyusya drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/8d0c7ff8-9b76-4b4c-a885-99ac00079d0b)
+![Gakusyusya drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/e4f0b299-f3b4-466f-97da-1a134597784d)
 - 管理者側UIフロー
 ![Gakusyusya_Admin_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/a2083bb3-7029-4e2f-9884-4f467e79c8c1)
 - ユーザー側UIフロー

@@ -50,9 +50,12 @@ ActiveRecord::Schema.define(version: 2023_07_04_050903) do
   end
 
   create_table "actors", force: :cascade do |t|
+    t.integer "map_id"
     t.string "name", null: false
+    t.integer "role", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["map_id"], name: "index_actors_on_map_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -125,6 +128,7 @@ ActiveRecord::Schema.define(version: 2023_07_04_050903) do
   add_foreign_key "abilities", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "actors", "maps"
   add_foreign_key "animations", "situations"
   add_foreign_key "quests", "abilities"
   add_foreign_key "quests", "actors"
