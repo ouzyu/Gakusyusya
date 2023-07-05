@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :abilities
   has_many :quests
+  belongs_to :actor
 
   def hours_minutes_seconds
     st = self.study_time
