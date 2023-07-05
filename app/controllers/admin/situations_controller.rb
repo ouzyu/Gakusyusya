@@ -5,7 +5,7 @@ class Admin::SituationsController < ApplicationController
     @situation = Situation.find(params[:id])
     @actor = Actor.find(@situation.actor_id)
     @animations = Animation.where(situation_id: @situation.id).page(params[:page]).per(6)
-    @animation = Animation.new
+    @animation = Animation.new(situation_id: @situation.id)
   end
 
   def create

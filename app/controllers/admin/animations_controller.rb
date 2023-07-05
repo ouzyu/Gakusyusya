@@ -3,14 +3,16 @@ class Admin::AnimationsController < ApplicationController
 
   def create
     animation = Animation.new(animation_params)
+    situation = animation.situation_id
     if animation.save
-      redirect_to admin_situation_path(animation.situation_id)
+      redirect_to admin_situation_path(situation)
     else
       render "admin/situations/show"
       @situation = Situation.find(animation.situation_id)
       @actor = Actor.find(@situation.actor_id)
       @animations = Animation.where(situation_id: @situation.id).page(params[:page]).per(6)
       @animation = Animation.new
+    end
   end
 
   def edit
@@ -36,7 +38,7 @@ class Admin::AnimationsController < ApplicationController
 
   private
 
-  def animations_params
-    params.require(:animation).permit(:image)
+  def animation_params
+    params.require(:animation).permit(:image, :situation_id)
   end
 end
