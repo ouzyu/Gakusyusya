@@ -1,6 +1,42 @@
 class Admin::AnimationsController < ApplicationController
   before_action :authenticate_admin!
 
+  def create
+    animation = Animation.new(animation_params)
+    if animation.save
+      redirect_to admin_situation_path(animation.situation_id)
+    else
+      render "admin/situations/show"
+      @situation = Situation.find(animation.situation_id)
+      @actor = Actor.find(@situation.actor_id)
+      @animations = Animation.where(situation_id: @situation.id).page(params[:page]).per(6)
+      @animation = Animation.new
+  end
+
   def edit
+    @animation = Animation.find(params[:id])
+  end
+
+  def update
+    animation = Animation.find(params[:id])
+    situation = animation.situation_id
+    if animation.update(animation_params)
+      redirect_to admin_situation_path(situation), notice: "アニメーションの更新に成功しました。"
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    animation = Animation.find(params[:id])
+    situation = animation.situation_id
+    animation.destroy
+    redirect_to admin_situation_path(situation), notice: "アニメーションを削除しました。"
+  end
+
+  private
+
+  def animations_params
+    params.require(:animation).permit(:image)
   end
 end
