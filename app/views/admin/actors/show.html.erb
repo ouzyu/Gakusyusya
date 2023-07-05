@@ -1,19 +1,22 @@
 <div class="container">
   <div class="row d-flex align-items-center">
-    <h2 class="mt-3 mr-auto"><%= @actor.name %> Situations</h2>
-    <div>
+    <h2 class="mt-3 offset-md-3 col-md-7"><%= @actor.name %> Situations</h2>
+    <div class="ml-auto">
       <%= link_to "Return Actors", admin_actors_path, class: "btn btn-secondary mb-0 mt-3" %>
     </div>
   </div>
   <div class='row'>
-    <div class="col-md-2 my-3">
-      <%= form_with model: @situation, url: admin_situations_path do |f| %>
-        <ul class="list-unstyled text-center">
+    <div class="col-md-2 my-3 border pb-2">
+      <ul class="list-unstyled text-center">
+        <%= form_with model: @situation, url: admin_situations_path do |f| %>
           <li class="h4">New Situation</li>
-          <li><%= f.text_field :name, class: "form-control" %></li>
+          <li>
+            <%= f.text_field :name, class: "form-control" %>
+            <%= f.hidden_field :actor_id %>
+          </li>
           <li><%= f.submit class: "btn btn-success mt-2" %></li>
-        </ul>
-      <% end %>
+        <% end %>
+      </ul>
       <div class="d-flex align-items-end" style="height: 300px;">
         <%= link_to "Edit Actor", edit_admin_actor_path(@actor), class: "btn btn-success mx-auto" %>
       </div>

@@ -9,7 +9,7 @@ class Admin::ActorsController < ApplicationController
   def show
     @actor = Actor.find(params[:id])
     @situations = Situation.where(actor_id: @actor.id).page(params[:page]).per(6)
-    @situation = Situation.new
+    @situation = Situation.new(actor_id: @actor.id)
   end
 
   def create
@@ -38,7 +38,7 @@ class Admin::ActorsController < ApplicationController
   def destroy
     actor = Actor.find(params[:id])
     actor.destroy
-    redirect_to admin_actors_path
+    redirect_to admin_actors_path, notice: "アクターを削除しました。"
   end
 
   private
