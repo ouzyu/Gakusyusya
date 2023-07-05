@@ -8,6 +8,7 @@
   <div class='row'>
     <div class="col-md-2 my-3 border pb-2">
       <%= form_with model: @animation, url: admin_animations_path do |f| %>
+        <%= f.hidden_field :situation_id %>
         <ul class="list-unstyled text-center">
           <li class="h4">New Animation</li>
           <li>
@@ -27,20 +28,18 @@
       </div>
     </div>
     <div class='col-md-9 offset-md-1 my-3'>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Graphic</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div style="min-height: 550px; max-width: 880px;">
+        <div class="mx-auto">
+          <h4>Graphic</h4>
+        </div>
+        <div class="d-flex flex-wrap">
           <% @animations.each do |animation| %>
-            <tr>
-              <td>graphic</td>
-            </tr>
+            <%= link_to edit_admin_animation_path(animation) do %>
+              <%= image_tag animation.image, size: "200x200" %>
+            <% end %>
           <% end %>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">

@@ -23,7 +23,7 @@
   		  	<% @actors.each do |actor| %>
   		  	  <tr>
   		  	    <td class="col-md-1"><%= actor.id %></td>
-  		  	    <td>graphic</td>
+  		  	    <td><%= image_tag actor.have_first_animation.image, size: "80x80" %></td>
   		  	    <td><%= link_to actor.name, admin_actor_path(actor) %></td>
   		  	  </tr>
           <% end %>

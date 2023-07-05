@@ -35,7 +35,13 @@
               <td class="col-md-3">
                 <%= link_to situation.name, admin_situation_path(situation) %>
               </td>
-              <td>graphic</td>
+              <td>
+                <% situation.have_animations(3).each do |animation| %>
+                  <%= link_to edit_admin_animation_path(animation) do %>
+                    <%= image_tag animation.image, size: "80x80" %>
+                  <% end %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
