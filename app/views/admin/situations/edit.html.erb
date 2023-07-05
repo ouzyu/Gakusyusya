@@ -1,2 +1,22 @@
-<h1>Admin::Situations#edit</h1>
-<p>Find me in app/views/admin/situations/edit.html.erb</p>
+<div class="container">
+  <div class="row d-flex align-items-center">
+    <h2 class="mt-3 mr-auto"><%= @situation.name %>を編集</h2>
+    <div>
+      <%= link_to "Delete situation", admin_situation_path(@situation), method: :delete,data: { confirm: "[確認]シチュエーションを削除します。よろしいですか？"}, class: "btn btn-danger mb-0 mt-3" %>
+    </div>
+  </div>
+  <%= form_with model: @situation, url: admin_situation_path do |f| %>
+    <div class="row">
+      <table class="table mt-3">
+        <tr>
+          <td class="col-md-2">situation Name</td>
+          <td><%= f.text_field :name, class: "form-control col-md-4" %></td>
+        </tr>
+      </table>
+      <div class="row mx-auto">
+        <%= link_to "Return situation page", admin_situation_path(@situation), class: "btn btn-secondary btn-md" %>
+        <%= f.submit "Save changes", class: "btn btn-success btn-md ml-3" %>
+      </div>
+    </div>
+  <% end %>
+</div>
