@@ -110,12 +110,14 @@ ActiveRecord::Schema.define(version: 2023_07_04_050903) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "actor_id", null: false
     t.string "name", null: false
     t.integer "level", default: 1, null: false
     t.integer "study_time", default: 0, null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["actor_id"], name: "index_users_on_actor_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -129,4 +131,5 @@ ActiveRecord::Schema.define(version: 2023_07_04_050903) do
   add_foreign_key "quests", "maps"
   add_foreign_key "quests", "users"
   add_foreign_key "situations", "actors"
+  add_foreign_key "users", "actors"
 end
