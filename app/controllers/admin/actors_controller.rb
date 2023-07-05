@@ -13,12 +13,19 @@ class Admin::ActorsController < ApplicationController
   end
 
   def create
+    @actors = Actor.page(params[:page]).per(6)
+    @actor = Actor.new
     actor = Actor.new(actor_params)
-    if actor.save
-      redirect_to admin_actor_path(actor), notice: "新規アクターを作成しました。"
+    unless actor.role == "enemy" && actor.map_id == nil
+      if actor.save
+        redirect_to admin_actor_path(actor), notice: "新規アクターを作成しました。"
+      else
+        flash.now[:alert] = "作成に失敗しました。"
+        render "index"
+      end
     else
+      flash.now[:alert] = "エネミーとマップを関連付けてください。"
       render "index"
-      @actors = Actor.page(params[:page]).per(6)
     end
   end
 
@@ -31,6 +38,7 @@ class Admin::ActorsController < ApplicationController
     if actor.update(actor_params)
       redirect_to admin_actor_path(actor), notice: "情報の更新に成功しました。"
     else
+      flash.now[:alert] = "情報の更新に失敗しました。"
       render "edit"
     end
   end
@@ -44,7 +52,7 @@ class Admin::ActorsController < ApplicationController
   private
 
   def actor_params
-    params.require(:actor).permit(:name)
+    params.require(:actor).permit(:map_id, :name, :role)
   end
 
 end

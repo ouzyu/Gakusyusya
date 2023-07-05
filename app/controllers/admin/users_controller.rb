@@ -18,6 +18,7 @@ class Admin::UsersController < ApplicationController
     if user.update(user_params)
       redirect_to admin_user_path(user), notice: "情報の更新に成功しました。"
     else
+      flash.now[:alert] = "情報の更新に失敗しました。"
       render "edit"
     end
   end

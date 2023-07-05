@@ -5,13 +5,14 @@ class Admin::AnimationsController < ApplicationController
     animation = Animation.new(animation_params)
     situation = animation.situation_id
     if animation.save
-      redirect_to admin_situation_path(situation)
+      redirect_to admin_situation_path(situation), notice: "新規アニメーションを作成しました。"
     else
-      render "admin/situations/show"
       @situation = Situation.find(animation.situation_id)
       @actor = Actor.find(@situation.actor_id)
       @animations = Animation.where(situation_id: @situation.id).page(params[:page]).per(6)
       @animation = Animation.new
+      flash.now[:alert] = "アニメーションの作成に失敗しました。"
+      render "admin/situations/show"
     end
   end
 
@@ -25,6 +26,7 @@ class Admin::AnimationsController < ApplicationController
     if animation.update(animation_params)
       redirect_to admin_situation_path(situation), notice: "アニメーションの更新に成功しました。"
     else
+      flash.now[:alert] = "情報の更新に失敗しました。"
       render "edit"
     end
   end
