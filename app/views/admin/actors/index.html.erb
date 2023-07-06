@@ -10,7 +10,7 @@
           <li class="mt-2"><%= f.label :role %></li>
           <li><%= f.select :role, Actor.roles.keys.map, {}, class: "form-control" %></li>
           <li class="mt-2"><%= f.label :map_id, "Map" %><br>(only enemy need)</li>
-          <li><%= f.select :map_id, options_from_collection_for_select(Map.all, :id, :name), { include_blank: true }, class: "form-control" %></li>
+          <li><%= f.select :map_id, options_from_collection_for_select(Map.all, :id, :name), { include_blank: "選択無し" }, class: "form-control" %></li>
           <li><%= f.submit class: "btn btn-success mt-2" %></li>
         </ul>
       <% end %>

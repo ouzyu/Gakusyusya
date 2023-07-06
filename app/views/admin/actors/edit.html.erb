@@ -18,7 +18,7 @@
         </tr>
         <tr>
           <td>Spawn Maps</td>
-          <td><%= f.select :map_id, options_from_collection_for_select(Map.all, :id, :name), { include_blank: true }, class: "form-control col-md-4" %></td>
+          <td><%= f.select :map_id, options_from_collection_for_select(Map.all, :id, :name, selected: @actor.map_id ), { include_blank: "選択無し" }, class: "form-control col-md-4" %></td>
         </tr>
       </table>
       <div class="row mx-auto">
