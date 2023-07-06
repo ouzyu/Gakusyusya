@@ -12,6 +12,14 @@
           <td class="col-md-2">Actor Name</td>
           <td><%= f.text_field :name, class: "form-control col-md-4" %></td>
         </tr>
+        <tr>
+          <td>Role</td>
+          <td><%= f.select :role, Actor.roles.keys.map, {}, class: "form-control col-md-4" %></td>
+        </tr>
+        <tr>
+          <td>Spawn Maps</td>
+          <td><%= f.select :map_id, options_from_collection_for_select(Map.all, :id, :name), { include_blank: true }, class: "form-control col-md-4" %></td>
+        </tr>
       </table>
       <div class="row mx-auto">
         <%= link_to "Return actor page", admin_actor_path(@actor), class: "btn btn-secondary btn-md" %>
