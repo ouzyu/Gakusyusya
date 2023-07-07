@@ -2,23 +2,25 @@
   <%= render "public/shared/error_messages", resource: resource %>
   <%= render "layouts/sound_menu" %>
   <div class="action-view-frame system-window system-window-border system-font text-center">
-    <h2 class="mt-3">セーブデータをロードします</h2>
-    <%= form_with model: @user, url: new_user_session_path do |f| %>
-      <div class="p-1">
-        <div class="field mt-4">
-          <%= f.label :email, "メールアドレスをにゅうりょくしてください。" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-md-10 mx-auto" %>
-        </div>
+    <div class="system-window-border system-window-inner m-1">
+      <h2 class="mt-3">セーブデータをロードします</h2>
+      <%= form_with model: @user, url: new_user_session_path do |f| %>
+        <div class="p-1">
+          <div class="field mt-4">
+            <%= f.label :email, "メールアドレスをにゅうりょくしてください。" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-md-10 mx-auto" %>
+          </div>
 
-        <div class="field mt-4">
-          <%= f.label :password, "パスワードをにゅうりょくしてください。" %><br />
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control col-md-10 mx-auto" %>
-        </div>
+          <div class="field mt-4">
+            <%= f.label :password, "パスワードをにゅうりょくしてください。" %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control col-md-10 mx-auto" %>
+          </div>
 
-        <div class="actions mt-5">
-          <%= f.submit "がくしゅうをはじめる！", class: "btn btn-success" %>
+          <div class="actions mt-5">
+            <%= f.submit "がくしゅうをはじめる！", class: "btn btn-success" %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

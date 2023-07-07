@@ -24,6 +24,10 @@
   background-color: #1a3a8e;
 }
 
+.system-window-inner {
+  height: 586px;
+}
+
 .system-window-border {
   border: solid;
   border-color: white;
@@ -82,7 +86,7 @@
   text-align:right
 }
 
-/*新規登録画面*/
+/*フォームデザイン*/
 
 .form-container {
   height: 594px;
@@ -107,4 +111,8 @@
 
 .user_info-edit-form {
   width: 510px;
+}
+
+.withdraw-btn-box {
+  height: 278px;
 }
