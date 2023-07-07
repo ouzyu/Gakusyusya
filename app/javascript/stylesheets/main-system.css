@@ -1,0 +1,118 @@
+.action-view-frame {
+  min-width: 1000px;
+  max-width: 1000px;
+  min-height: 600px;
+  max-height: 600px;
+  box-shadow: 0 0 0 1px black;
+}
+
+.sound-menu {
+  width: 1000px
+}
+
+.title {
+  width: 80%;
+  height: 130px;
+  background-image: url(../../assets/images/gakusyusya_kana.png);
+  background-position: center;
+  background-size: cover;
+}
+
+/*システム*/
+
+.system-window {
+  background-color: #1a3a8e;
+}
+
+.system-window-inner {
+  height: 586px;
+}
+
+.system-window-border {
+  border: solid;
+  border-color: white;
+}
+
+.system-font {
+  color: white;
+}
+
+/*マイページ*/
+
+.status-container {
+  height: 522px;
+  display: flex;
+}
+
+.status-left-sidebar {
+  width: 678px;
+}
+
+.status-right-sidebar {
+  height: 517px;
+}
+
+.user-status-box {
+  height: 135px;
+}
+
+.user-status-box td {
+  height: 62px;
+  font-size: 30px;
+}
+
+.user-status-box td:nth-child(odd) {
+  width: 200px;
+}
+
+.user-status-box td:nth-child(even) {
+  width: 460px;
+}
+
+.abilities-box {
+  height: 322px;
+}
+
+.btn-box {
+  height: 200px;
+}
+
+.study_time-container table {
+  height: 58px;
+}
+
+.study_time-container td:last-child {
+  width: 80%;
+  text-align:right
+}
+
+/*フォームデザイン*/
+
+.form-container {
+  height: 594px;
+  display: flex;
+}
+
+.sign_up-left-sidebar {
+  width: 678px;
+}
+
+.sign_up-right-sidebar {
+  height: 586px;
+}
+
+.sign_up-start-box {
+ height: 240px;
+}
+
+.sign_up-start-btn {
+  font-size: 22px;
+}
+
+.user_info-edit-form {
+  width: 510px;
+}
+
+.withdraw-btn-box {
+  height: 278px;
+}
