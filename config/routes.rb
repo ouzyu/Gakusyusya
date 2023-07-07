@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'users/unsubscribe'       => 'users#unsubscribe', as: 'confirm_unsubscribe'
     put 'users/information'       => 'users#update'
     patch 'users/withdraw'        => 'users#withdraw',    as: 'withdraw_user'
+    get 'users/attention'         => 'users#attention',   as: 'attention'
 
     resources :abilities, only: [:index, :create, :edit, :update, :destroy]
     resources :quests,    only: [:new, :index, :create, :edit, :update, :destroy]
