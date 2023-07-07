@@ -4,7 +4,7 @@
   <div class="action-view-frame system-window system-window-border system-font">
     <%= form_with model: @user, url: user_registration_path do |f| %>
       <div class="form-container p-1">
-        <div class="sign_up-left-sidebar system-window-border p-1">
+        <div class="sign_up-left-sidebar system-window-border p-4">
           <div class="field">
             <%= f.label :name, "がくしゅうしゃのなまえをにゅうりょくしてください。" %><br />
             <%= f.text_field :name, autofocus: true, class: "form-control col-md-10" %>
