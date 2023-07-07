@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @abilities = Ability.where(:user_id, @user.id)
+    @abilities = Ability.where(user_id: @user.id)
   end
 
   def edit
@@ -17,6 +17,7 @@ class Public::UsersController < ApplicationController
     else
       flash.now[:alert] = "へんこうのほぞんにしっぱいしました。"
       render :edit
+    end
   end
 
   def attention
