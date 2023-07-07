@@ -1,2 +1,62 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <%= render "layouts/sound_menu" %>
+  <div class="action-view-frame system-window system-window-border system-font">
+    <div class="status-container p-1 ">
+      <div class="status-left-sidebar">
+        <div class="status-title system-window-border">
+          <h2 class="text-center">ステータス画面</h2>
+        </div>
+        <div class="user-status-box system-window-border mt-1">
+          <table>
+            <tr>
+              <td>なまえ</td>
+              <td><%= @user.name %></td>
+            </tr>
+            <tr>
+              <td>レベル</td>
+              <td>Lv.<%= @user.level %></td>
+            </tr>
+          </table>
+        </div>
+        <div class="abilities-box system-window-border mt-1">
+          <h4>アビリティ</h4>
+          <% if @user.abilities.present? %>
+            <table>
+              <% @user.abilities.each do |ability| %>
+                <tr>
+                  <td><%= ability.name %></td>
+                  <td>Lv.<%= ability.level %></td>
+                </tr>
+              <% end %>
+            </table>
+          <% else %>
+            <p>アビリティがとうろくされていません。</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="status-right-sidebar system-window-border ml-1">
+        <div class="user-profile-image">
+          <%= image_tag @user.actor.have_first_animation.image, size: "300x300" %>
+        </div>
+        <div class="btn-box d-flex align-items-start flex-column">
+          <div class="mt-3 mb-auto mx-auto">
+            <%= link_to "じょうほうをへんこう", edit_information_path, class: "btn btn-light" %>
+          </div>
+          <div class="mt-2 mx-auto">
+            <%= link_to "アビリティしょうさい", abilities_path, class: "btn btn-light" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="study_time-container p-1">
+      <div class="system-window-border">
+        <table>
+          <tr>
+            <td class="h4">がくしゅうじかん</td>
+            <td class="h4"><%= @user.hours_minutes_seconds %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

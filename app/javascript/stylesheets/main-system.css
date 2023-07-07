@@ -3,6 +3,7 @@
   max-width: 1000px;
   min-height: 600px;
   max-height: 600px;
+  box-shadow: 0 0 0 1px black;
 }
 
 .sound-menu {
@@ -15,4 +16,66 @@
   background-image: url(../../assets/images/gakusyusya_kana.png);
   background-position: center;
   background-size: cover;
+}
+
+.system-window {
+  background-color: #1a3a8e;
+}
+
+.system-window-border {
+  border: solid;
+  border-color: white;
+}
+
+.system-font {
+  color: white;
+}
+
+/*マイページレイアウト*/
+
+.status-container {
+  height: 522px;
+  display: flex;
+}
+
+.status-left-sidebar {
+  width: 678px;
+}
+
+.status-right-sidebar {
+  height: 517px;
+}
+
+.user-status-box {
+  height: 135px;
+}
+
+.user-status-box td {
+  height: 62px;
+  font-size: 30px;
+}
+
+.user-status-box td:nth-child(odd) {
+  width: 200px;
+}
+
+.user-status-box td:nth-child(even) {
+  width: 460px;
+}
+
+.abilities-box {
+  height: 322px;
+}
+
+.btn-box {
+  height: 200px;
+}
+
+.study_time-container table {
+  height: 58px;
+}
+
+.study_time-container td:last-child {
+  width: 80%;
+  text-align:right
 }
