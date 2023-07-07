@@ -1,3 +1,5 @@
+/*システム*/
+
 .action-view-frame {
   min-width: 1000px;
   max-width: 1000px;
@@ -18,7 +20,6 @@
   background-size: cover;
 }
 
-/*システム*/
 
 .system-window {
   background-color: #1a3a8e;
@@ -69,7 +70,7 @@
   width: 460px;
 }
 
-.abilities-box {
+.user-abilities-box {
   height: 322px;
 }
 
@@ -115,4 +116,32 @@
 
 .withdraw-btn-box {
   height: 278px;
+}
+
+/*アビリティ*/
+
+.abilities-container {
+  height: 476px;
+  display: flex;
+}
+
+.abilities-left-sidebar {
+  width: 678px;
+}
+
+.abilities-right-sidebar {
+  height: 472px;
+  width: 304px
+}
+
+.abilities-box {
+  height: 384px;
+}
+
+.add-abilities-container {
+  height: 110px;
+}
+
+.add-abilities-form {
+  width: 660px;
 }
