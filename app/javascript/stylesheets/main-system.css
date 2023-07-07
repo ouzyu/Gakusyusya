@@ -18,6 +18,8 @@
   background-size: cover;
 }
 
+/*システム*/
+
 .system-window {
   background-color: #1a3a8e;
 }
@@ -31,7 +33,7 @@
   color: white;
 }
 
-/*マイページレイアウト*/
+/*マイページ*/
 
 .status-container {
   height: 522px;
@@ -78,4 +80,27 @@
 .study_time-container td:last-child {
   width: 80%;
   text-align:right
+}
+
+/*新規登録画面*/
+
+.form-container {
+  height: 594px;
+  display: flex;
+}
+
+.sign_up-left-sidebar {
+  width: 678px;
+}
+
+.sign_up-right-sidebar {
+  height: 586px;
+}
+
+.sign_up-start-box {
+ height: 240px;
+}
+
+.sign_up-start-btn {
+  font-size: 22px;
 }
