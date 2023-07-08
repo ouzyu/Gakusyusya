@@ -5,6 +5,14 @@ class Public::AbilitiesController < ApplicationController
     @user = current_user
     @abilities = Ability.where(user_id: @user.id)
     @ability = Ability.new
+    # グラフ表示用
+    @chart_abilities_name = Array.new
+    @chart_abilities_level = Array.new
+    @abilities.each do |ability|
+      @chart_abilities_name << ability.name
+      @chart_abilities_level << ability.level
+    end
+    @chart_max_level = @chart_abilities_level.sum
   end
 
   def create
@@ -12,7 +20,7 @@ class Public::AbilitiesController < ApplicationController
     @abilities = Ability.where(user_id: @user.id)
     ability = Ability.new(ability_params)
     ability.user_id = @user.id
-    unless @abilities.count >= 7
+    unless @abilities.count >= 6
       if ability.save
         redirect_to abilities_path, notice: "あたらしいアビリティをついかしました。"
       else

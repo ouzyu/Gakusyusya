@@ -1,3 +1,6 @@
+<!--chart.js-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="container">
   <%= render "layouts/sound_menu" %>
   <div class="action-view-frame system-window system-window-border system-font">
@@ -28,8 +31,8 @@
         </div>
       </div>
       <div class="abilities-right-sidebar system-window-border ml-1">
-        <div>
-          <p>レーダーチャートを表示</p>
+        <div class="radar-chart">
+          <canvas id="myChart"></canvas>
         </div>
       </div>
     </div>
@@ -50,3 +53,57 @@
     </div>
   </div>
 </div>
+<!--レーダーチャート-->
+<script>
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: <%= raw(@chart_abilities_name) %>,
+      datasets: [
+        {
+          label: "",
+          data: <%= @chart_abilities_level %>,
+          backgroundColor: "rgba(255, 75, 75, 0.8)",
+          borderColor: "rgba(255, 75, 75, 0.8)",
+        },
+        {
+          label: "",
+          data: [<%= @chart_max_level %>, <%= @chart_max_level %>, <%= @chart_max_level %>, <%= @chart_max_level %>, <%= @chart_max_level %>, <%= @chart_max_level %>],
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          borderColor: "rgba(255, 255, 255, 0.2)",
+        }
+      ],
+    },
+    options: {
+      elements: {
+        point:{
+          radius: 0
+        }
+      },
+      scales: {
+        r: {
+          max: <%= @chart_max_level %>,
+          min: 0,
+          ticks: {
+            display: false
+          },
+          angleLines: {
+            display: false
+          },
+          grid: {
+            display: false
+          },
+          pointLabels: {
+            color: "rgb(255,255,255)"
+          }
+        }
+      },
+      plugins: {
+        legend: {
+            display: false
+        }
+      }
+    }
+  });
+</script>
