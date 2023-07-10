@@ -4,6 +4,7 @@ class Public::QuestsController < ApplicationController
   def new
     @user = current_user
     @quest = Quest.new
+    @quests = Quest.where(user_id: @user)
   end
 
   def index
@@ -22,6 +23,7 @@ class Public::QuestsController < ApplicationController
     if quest.save
       redirect_to adventures_start_path
     else
+      @quest = Quest.new
       flash.now[:alert] = "クエストのさくせいにしっぱいしました。"
       render "new"
     end
@@ -49,6 +51,6 @@ class Public::QuestsController < ApplicationController
   private
 
   def quest_params
-    params.require(:quest).permit(:user_id, :abilities_id, :actor_id, :map_id, :content, :seconds, :is_finished)
+    params.require(:quest).permit(:user_id, :ability_id, :actor_id, :map_id, :content, :seconds, :is_finished)
   end
 end

@@ -1,0 +1,30 @@
+<div id="quest-index-box" class="quest-index-box slide-window">
+  <div class="d-flex">
+    <div class="quest-index-table-box">
+      <% if quests.present? %>
+        <table>
+          <tbody>
+            <% quests.each do |quest| %>
+              <tr>
+                <td class="quest-index-td"><%= image_tag quest.map.image, size: "150x50" %></td>
+                <td class="quest-index-td"><%= image_tag quest.actor.have_first_animation.image, size: "50x50" %></td>
+                <td class="quest-index-td"><%= quest.content %></td>
+                <td class="quest-index-td">
+                  <button id="quest-<%= quest.id %>" class="btn-quest-show btn btn-success" type="button">
+                    しょうさい
+                  </button>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h2 class="p-3">クエストがありません。</h2>
+      <% end %>
+    </div>
+
+    <div class="quit-box">
+      <button id="btn-quit-quest-index" class="text-initialize" type="button">X</button>
+    </div>
+  </div>
+</div>

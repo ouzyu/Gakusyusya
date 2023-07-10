@@ -1,5 +1,72 @@
 <div class="container">
   <%= render "layouts/sound_menu" %>
-  <div class="action-view-frame system-font">
+  <div class="action-view-frame system-font quest-counter">
+    <div class="d-flex">
+      <div class="d-flex align-items-start flex-column slide-window quest-left-sidebar">
+        <div class="quest-command mb-auto mx-auto mt-3">
+          <button id="btn-new-quest" class="text-initialize">クエストをうける</button>
+        </div>
+        <div class="quest-command mx-auto mb-3">
+          <button id="btn-quest-index" class="text-initialize">いままでのクエスト</button>
+        </div>
+        <div class="quest-command mx-auto pb-3">
+          <%= link_to "ステータスにもどる", mypage_path, class: "text-initialize" %>
+        </div>
+      </div>
+
+      <div class="quest-right-sidebar">
+        <%= render 'new_quest_box', quest: @quest, user: @user %>
+        <%= render 'quest_index_box', quests: @quests %>
+        <%= render 'quest_show_box'%>
+      </div>
+    </div>
+
+    <div class="quest-message-window system-window system-window-border d-flex align-items-center">
+      <div>
+        <p class="mb-0">がくしゅうしゃさま！ギルドにようこそ！</p>
+      </div>
+    </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    //new_quest_boxを表示
+  　$('#btn-new-quest').click(function(){
+  　　$('#new-quest-box').slideToggle("slow");
+  　　$('.quest-show-box').slideUp();
+  　　$('#quest-index-box').slideUp();
+  　});
+    //new_quest_boxを非表示
+  　$('#btn-quit-new-quest').click(function(){
+　　  $('#new-quest-box').slideUp();
+　  });
+
+　  //quest_index_boxを表示
+　  $('#btn-quest-index').click(function(){
+  　　$('#quest-index-box').slideToggle("slow");
+  　　$('#new-quest-box').slideUp();
+  　　$('.quest-show-box').slideUp();
+  　});
+    //quest_index_boxを非表示
+  　$('#btn-quit-quest-index').click(function(){
+　　  $('#quest-index-box').slideUp();
+　  });
+
+　 // quest_show_boxを表示
+　  $('.btn-quest-show').click(function(){
+　    var show_button_id = $(this).attr("id");
+　    var quest_id = show_button_id.substr(show_button_id.indexOf('-') + 1);
+　    $('#quest-index-box').slideUp();
+  　　$(`#quest-show-box-${quest_id}`).slideDown("slow");
+
+  　});
+    //quest_show_boxを非表示
+  　$('.btn-quit-quest-show').click(function(){
+      var quit_button_id = $(this).attr("id");
+      var quest_id = quit_button_id.substr(quit_button_id.indexOf('#') + 1);
+　　  $(`#quest-show-box-${quest_id}`).slideUp();
+　　  $('#quest-index-box').slideDown("slow");
+　  });
+  });
+</script>
