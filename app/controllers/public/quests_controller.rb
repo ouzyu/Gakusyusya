@@ -21,9 +21,10 @@ class Public::QuestsController < ApplicationController
     quest = Quest.new(quest_params)
     quest.user_id = @user.id
     if quest.save
-      redirect_to adventures_start_path
+      redirect_to adventures_start_path(quest_id: quest.id)
     else
       @quest = Quest.new
+      @quests = Quest.where(user_id: @user)
       flash.now[:alert] = "クエストのさくせいにしっぱいしました。"
       render "new"
     end

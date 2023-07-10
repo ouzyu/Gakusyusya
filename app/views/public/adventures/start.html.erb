@@ -1,2 +1,23 @@
-<h1>Public::Adventures#start</h1>
-<p>Find me in app/views/public/adventures/start.html.erb</p>
+<div class="container">
+  <%= render "layouts/sound_menu" %>
+  <div class="action-view-frame system-font">
+    <div>
+      <%= @quest.map.name %>
+      <%= @quest.content %>
+    </div>
+
+    <div class="quest-message-window system-window system-window-border d-flex align-items-center">
+      <div>
+        <button id="adventures-retire" class="text-initialize">リタイアする</button>
+      </div>
+
+      <div>
+        <button id="adventures-pose" class="text-initialize">ポーズ</button>
+      </div>
+
+      <div>
+        <button id="adventures-to-boss" class="text-initialize">ボスにすすむ</button>
+      </div>
+    </div>
+  </div>
+</div>
