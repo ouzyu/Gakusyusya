@@ -17,7 +17,7 @@
               <% @abilities.each do |ability| %>
                 <tr>
                   <td>
-                    <%= link_to edit_ability_path(ability) do %>
+                    <%= link_to edit_ability_path(ability), class: "text-initialize" do %>
                       <%= ability.name %>
                     <% end %>
                   </td>

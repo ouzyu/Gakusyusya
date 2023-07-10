@@ -4,7 +4,7 @@ class Actor < ApplicationRecord
 
   belongs_to :map, optional: true
 
-  enum role: { avatar: 0, npc: 1, enemy: 2, effect: 3, gui: 4 }
+  enum role: { avatar: 0, npc: 1, enemy: 2, boss: 3, effect: 4, gui: 5 }
 
   def have_first_animation
     situation = Situation.find_by(actor_id: self.id)

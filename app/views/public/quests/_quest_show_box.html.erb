@@ -1,0 +1,48 @@
+<% @quests.each do |quest| %>
+  <div id="quest-show-box-<%= quest.id %>" class="quest-show-box slide-window">
+    <div class="d-flex">
+      <div class="new-quest-left-sidebar">
+        <div class="mt-2">
+          <p>むかったマップ</p>
+          <p><%= quest.map.name %></p>
+        </div>
+
+        <div class="mt-2">
+          <p>たおしたボス。</p>
+          <p><%= quest.actor.name %></p>
+        </div>
+
+        <div class="mt-2">
+          <p>つよくなったアビリティ。</p>
+          <p><%= quest.ability.name %></p>
+        </div>
+
+        <div class="mt-2">
+          <p>クエストのじかん</p>
+          <p><%= quest.seconds %></p>
+        </div>
+
+        <div class="mt-2">
+          <p>メモ</p>
+          <p><%= quest.content %></p>
+        </div>
+      </div>
+
+      <div class="new-quest-right-sidebar d-flex align-items-end flex-column">
+        <div class="mt-3 mx-auto">
+          <%= image_tag quest.map.image, size: "200x100" %>
+        </div>
+        <div class="mt-2 mx-auto">
+          <%= image_tag quest.actor.have_first_animation.image, size: "200x200" %>
+        </div>
+        <div class="mt-auto mx-auto">
+          <p><%= quest.created_at %></p>
+        </div>
+      </div>
+
+      <div class="quit-box">
+        <button id="btn-quit-quest-#<%= quest.id %>" class="btn-quit-quest-show text-initialize" type="button">X</button>
+      </div>
+    </div>
+  </div>
+<% end %>

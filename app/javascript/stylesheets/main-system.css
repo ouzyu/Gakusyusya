@@ -38,6 +38,28 @@
   color: white;
 }
 
+.slide-window {
+  background-color: rgba(29, 29, 29, 0.5);
+}
+
+.text-initialize {
+  text-decoration: none;
+  color: white;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.text-initialize:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.quit-box {
+  font-size: 30px;
+  width: 50px;
+}
+
 /*マイページ*/
 
 .status-container {
@@ -103,7 +125,7 @@
 }
 
 .sign_up-start-box {
- height: 240px;
+  height: 240px;
 }
 
 .sign_up-start-btn {
@@ -134,8 +156,8 @@
 }
 
 .abilities-right-sidebar {
+  width: 304px;
   height: 472px;
-  width: 304px
 }
 
 .abilities-box {
@@ -152,4 +174,114 @@
 
 .radar-chart {
   margin-top: 80px;
+}
+
+/*クエスト*/
+
+.quest-counter {
+  background-image: url(../../assets/images/quest_counter.png);
+  background-position: center;
+  background-size: cover;
+  position:  relative;
+}
+
+.quest-command {
+  font-size: 25px;
+}
+
+.quest-left-sidebar {
+  width: 300px;
+  height: 600px;
+}
+
+.quest-right-sidebar {
+  width: 700px;
+  height: 600px;
+}
+
+.quest-message-window {
+  width: 1000px;
+  height: 100px;
+  font-size: 35px;
+}
+
+.quest-command button {
+  text-decoration: none;
+}
+
+.quest-command:last-child {
+  margin-bottom: 100px;
+  text-decoration: none;
+}
+
+.quest-message-window {
+  position: absolute;
+  top: 500px;
+}
+
+/*new-quest*/
+
+.new-quest-box {
+  height: 600px;
+}
+
+.new-quest-left-sidebar {
+  width: 350px;
+}
+
+.new-quest-right-sidebar {
+  width: 300px;
+}
+
+.preview-map-box {
+  width: 200px;
+  height: 100px;
+  border: solid;
+  border-color: white;
+}
+
+.preview-boss-box {
+  width: 200px;
+  height: 200px;
+  border: solid;
+  border-color: white;
+}
+
+/*quest-index*/
+
+.quest-index-box {
+  height: 600px;
+}
+
+.quest-index-table-box {
+  width: 650px;
+}
+
+.quest-index-td {
+  height: 80px;
+  padding: 10px;
+}
+
+.quest-index-td:nth-child(3) {
+  width: 280px;
+}
+
+/*quest-show*/
+
+.quest-show-box {
+  height: 600px;
+}
+
+/*クエスト画面アニメーション*/
+
+.new-quest-box {
+  display: none;
+}
+
+.quest-index-box {
+  display: none;
+}
+
+.quest-show-box {
+  display: none;
 }

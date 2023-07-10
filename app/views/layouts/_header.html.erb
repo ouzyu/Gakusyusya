@@ -22,7 +22,7 @@
               <% elsif user_signed_in? %>
                 <li><%= link_to "ステータスをみる", mypage_path, class: 'btn navbar-btn btn-outline-light ml-5' %></li>
                 <li><%= link_to "アビリティをみる", abilities_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
-                <li><%= link_to "クエストをうける", quests_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                <li><%= link_to "クエストをうける", new_quest_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
                 <li>
                   <%= link_to destroy_user_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
                     ぼうけんをやめる
