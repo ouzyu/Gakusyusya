@@ -1,23 +1,34 @@
 <div class="container">
   <%= render "layouts/sound_menu" %>
-  <div class="action-view-frame system-font">
-    <div>
-      <%= @quest.map.name %>
-      <%= @quest.content %>
+  <div class="action-view-frame system-font adventures-box">
+    <div class="animation-field">
+
+    </div>
+    <div id="timer-box" class="timer-box">
+      <div class="text-center timer-box-label">
+        <p>のこりクエストタイム</p>
+      </div>
+      <div class="text-center timer-box-count">
+        <%= @quest.seconds %>
+      </div>
     </div>
 
-    <div class="quest-message-window system-window system-window-border d-flex align-items-center">
+    <div class="adventures-command-window system-window system-window-border d-flex justify-content-between align-items-center">
       <div>
-        <button id="adventures-retire" class="text-initialize">リタイアする</button>
+        <button id="adventures-retire" class="text-initialize adventures-command ml-4">リタイアする</button>
       </div>
 
       <div>
-        <button id="adventures-pose" class="text-initialize">ポーズ</button>
+        <button id="adventures-pose" class="text-initialize adventures-command">ポーズ</button>
       </div>
 
       <div>
-        <button id="adventures-to-boss" class="text-initialize">ボスにすすむ</button>
+        <button id="adventures-to-boss" class="text-initialize adventures-command mr-4">ボスにすすむ</button>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+
+</script>

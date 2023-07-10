@@ -182,7 +182,7 @@
   background-image: url(../../assets/images/quest_counter.png);
   background-position: center;
   background-size: cover;
-  position:  relative;
+  position: relative;
 }
 
 .quest-command {
@@ -203,6 +203,8 @@
   width: 1000px;
   height: 100px;
   font-size: 35px;
+  position: absolute;
+  top: 500px;
 }
 
 .quest-command button {
@@ -212,11 +214,6 @@
 .quest-command:last-child {
   margin-bottom: 100px;
   text-decoration: none;
-}
-
-.quest-message-window {
-  position: absolute;
-  top: 500px;
 }
 
 /*new-quest*/
@@ -284,4 +281,56 @@
 
 .quest-show-box {
   display: none;
+}
+
+/*アドベンチャー*/
+
+.adventures-box {
+  height: 600px;
+  width: 1000px;
+  position: relative;
+}
+
+.animation-field {
+  height: 500px;
+  width: 1000px;
+  background-color: rgb(120, 180, 35);
+}
+
+.adventures-command {
+  color: black;
+  font-size: 25px;
+  width: 250px;
+  height: 50px;
+  background-color: white;
+  border-radius: 25px;
+}
+
+.adventures-command:hover {
+ color: black;
+}
+.adventures-command-window {
+  width: 1000px;
+  height: 100px;
+  position: absolute;
+  top: 500px;
+}
+
+.timer-box {
+  width: 800px;
+  height: 150px;
+  position: absolute;
+  top: 30px;
+  left: 100px;
+  background-color: rgba(29, 29, 29, 0.5);
+  border-radius: 75px;
+}
+
+.timer-box-label p {
+  margin-bottom: 0px;
+  font-size: 25px;
+}
+
+.timer-box-count {
+  font-size: 80px;
 }
