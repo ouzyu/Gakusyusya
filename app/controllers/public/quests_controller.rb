@@ -12,10 +12,6 @@ class Public::QuestsController < ApplicationController
     @quests = Quest.where(user_id: @user)
   end
 
-  def show
-    @quest = Quset.find(params[:id])
-  end
-
   def create
     @user = current_user
     quest = Quest.new(quest_params)
@@ -28,25 +24,6 @@ class Public::QuestsController < ApplicationController
       flash.now[:alert] = "クエストのさくせいにしっぱいしました。"
       render "new"
     end
-  end
-
-  def edit
-    @quest = Quest.find(params[:id])
-  end
-
-  def update
-    quest = Quest.find(params[:id])
-    if quest.update(quest_params)
-      redirect_to quest_path(quest)
-    else
-      flash.now[:alert] = "クエストのへんこうにしっぱいしました。"
-    end
-  end
-
-  def destroy
-    quest = Quest.find(params[:id])
-    quest.destroy
-    redirect_to new_quest_path, "クエストをさくじょしました。"
   end
 
   private

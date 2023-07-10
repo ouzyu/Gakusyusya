@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get 'users/attention'         => 'users#attention',   as: 'attention'
 
     resources :abilities, only: [:index, :create, :edit, :update, :destroy]
-    resources :quests
+    resources :quests,    only: [:new, :index, :create]
 
     get 'adventures/start'  => 'adventures#start'
     get 'adventures/boss'   => 'adventures#boss'
