@@ -8,6 +8,8 @@ class CreateQuests < ActiveRecord::Migration[6.1]
       t.text :content,        null: false
       t.integer :seconds,     null: false
       t.boolean :is_finished, default: false
+      t.datetime :start_time, null: false
+      t.datetime :pose_time,  null: true
 
       t.timestamps
     end

@@ -7,6 +7,14 @@ class Public::AdventuresController < ApplicationController
     incorrect_quest_path
   end
 
+  def pause
+
+  end
+
+  def unpause
+
+  end
+
   def boss
     @quest = Quest.find(params[:quest_id])
     incorrect_quest_path

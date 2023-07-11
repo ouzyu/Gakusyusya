@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(version: 2023_07_04_050903) do
     t.text "content", null: false
     t.integer "seconds", null: false
     t.boolean "is_finished", default: false
+    t.datetime "start_time", null: false
+    t.datetime "pose_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["ability_id"], name: "index_quests_on_ability_id"

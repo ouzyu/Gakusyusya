@@ -25,8 +25,11 @@ Rails.application.routes.draw do
     resources :abilities, only: [:index, :create, :edit, :update, :destroy]
     resources :quests,    only: [:new, :index, :create]
 
-    get 'adventures/start'  => 'adventures#start'
-    get 'adventures/boss'   => 'adventures#boss'
+    get 'adventures/start'      => 'adventures#start'
+    get 'adventures/boss'       => 'adventures#boss'
+    patch 'adventures/pause'    => 'adventures#pause'
+    patch 'adventures/unpause'  => 'adventures#unpause'
+    patch 'adventures/finish'   => 'adventures#finish'
 
   end
 
