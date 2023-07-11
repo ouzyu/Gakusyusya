@@ -3,6 +3,7 @@ class Public::AdventuresController < ApplicationController
 
   def start
     @quest = Quest.find(params[:quest_id])
+    @quest_time_minutes = @quest.quest_time_minutes
     incorrect_quest_path
   end
 

@@ -8,8 +8,8 @@
       <div class="text-center timer-box-label">
         <p>のこりクエストタイム</p>
       </div>
-      <div class="text-center timer-box-count">
-        <%= @quest.seconds %>
+      <div class="time-container text-center timer-box-count">
+        <p class="timer-text"><span class="min"></span> ふん <span class="sec"></span> びょう</p>
       </div>
     </div>
 
@@ -30,15 +30,38 @@
 </div>
 
 <script>
-  $(document).ready(function(){
-  // 　$('#btn-new-quest').click(function(){
-  　　// $('#new-quest-box').slideToggle("slow");
-  　　// $('.quest-show-box').slideUp();
-  　　// $('#quest-index-box').slideUp();
-  // 　});
-    //new_quest_boxを非表示
-  // 　$('#btn-quit-new-quest').click(function(){
-　　  // $('#new-quest-box').slideUp();
-　 // });
-  });
+  const elmMin = document.querySelector(".min");
+  const elmSec = document.querySelector(".sec");
+  var quest_finished = false
+
+  function countdown() {
+    const nowTime = new Date(); // 現在時刻を取得
+    const startTime = new Date('<%= @quest.created_at.iso8601 %>'); //クエストを始めた時間
+    const finish = <%= @quest.seconds %> // クエスト時間
+    const finishTime = new Date(startTime.getTime() + finish * 1000); //クエスト終了時刻をセット
+    const diff = finishTime.getTime() - nowTime.getTime(); // 時間の差を取得（ミリ秒）
+
+    // ミリ秒から単位を修正
+    const calcMin = Math.floor(diff / 1000 / 60) % 60;
+    const calcSec = Math.floor(diff / 1000) % 60;
+
+    // 取得した時間を表示（2桁表示）
+    elmMin.textContent = String(calcMin).padStart(2, "0");
+    elmSec.textContent = String(calcSec).padStart(2, "0");
+
+    // 終了時刻との差が1秒より小さい場合
+    if (diff < 1 ) {
+      clearInterval(countdown)
+      document.querySelector(".timer-text").textContent = String("おつかれさまでした！");
+      quest_finished = true
+    }
+  };
+
+  if (quest_finished == false) {
+    countdown();
+    setInterval(countdown, 1000);
+  } else {
+    clearInterval(countdown);
+  }
+
 </script>
