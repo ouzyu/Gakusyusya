@@ -22,8 +22,9 @@
     </div>
 
     <div class="quest-message-window system-window system-window-border d-flex align-items-center">
-      <div>
-        <p class="mb-0">がくしゅうしゃさま！ギルドにようこそ！</p>
+      <div class="d-flex p-1 align-items-center">
+        <%= image_tag @shalica.have_first_animation.image, size: "80x80" %>
+        <p id="quest-message-text" class="mb-0 ml-1"><%= @user.name %>さま！！こちらはギルドとなります！</p>
       </div>
     </div>
   </div>
@@ -36,10 +37,12 @@
   　　$('#new-quest-box').slideToggle("slow");
   　　$('.quest-show-box').slideUp();
   　　$('#quest-index-box').slideUp();
+  　　$('#quest-message-text').text("クエストじょうほうをにゅうりょくしてください。")
   　});
     //new_quest_boxを非表示
   　$('#btn-quit-new-quest').click(function(){
 　　  $('#new-quest-box').slideUp();
+　　  $('#quest-message-text').text("")
 　  });
 
 　  //quest_index_boxを表示
@@ -47,10 +50,12 @@
   　　$('#quest-index-box').slideToggle("slow");
   　　$('#new-quest-box').slideUp();
   　　$('.quest-show-box').slideUp();
+  　　$('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。")
   　});
     //quest_index_boxを非表示
   　$('#btn-quit-quest-index').click(function(){
 　　  $('#quest-index-box').slideUp();
+　　  $('#quest-message-text').text("")
 　  });
 
 　 // quest_show_boxを表示
@@ -59,6 +64,7 @@
 　    var quest_id = show_button_id.substr(show_button_id.indexOf('-') + 1);
 　    $('#quest-index-box').slideUp();
   　　$(`#quest-show-box-${quest_id}`).slideDown("slow");
+  　　$('#quest-message-text').text("クエストのしょうさいになります。")
 
   　});
     //quest_show_boxを非表示
@@ -67,6 +73,7 @@
       var quest_id = quit_button_id.substr(quit_button_id.indexOf('#') + 1);
 　　  $(`#quest-show-box-${quest_id}`).slideUp();
 　　  $('#quest-index-box').slideDown("slow");
+　　  $('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。")
 　  });
   });
 </script>

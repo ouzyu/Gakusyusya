@@ -4,7 +4,8 @@ class Public::QuestsController < ApplicationController
   def new
     @user = current_user
     @quest = Quest.new
-    @quests = Quest.where(user_id: @user)
+    @quests = Quest.where(user_id: @user).order(created_at: :desc).limit(6)
+    @shalica = Actor.find_by(name: "シャリカ")
   end
 
   def index
@@ -16,6 +17,7 @@ class Public::QuestsController < ApplicationController
     @user = current_user
     quest = Quest.new(quest_params)
     quest.user_id = @user.id
+    quest.start_time = Time.now
     if quest.save
       redirect_to adventures_start_path(quest_id: quest.id)
     else
