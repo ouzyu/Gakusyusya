@@ -1,4 +1,4 @@
-/*システム*/
+/*system*/
 
 .logo {
   width: 64px;
@@ -65,7 +65,7 @@
   width: 50px;
 }
 
-/*ページネーション*/
+/*pagination*/
 
 .paginate-div {
   width: 100%;
@@ -126,7 +126,7 @@
   margin-top: 0px;
 }
 
-/*マイページ*/
+/*mypage*/
 
 .status-container {
   height: 522px;
@@ -175,7 +175,7 @@
   text-align:right
 }
 
-/*フォームデザイン*/
+/*form-design*/
 
 .form-container {
   height: 594px;
@@ -210,7 +210,7 @@
   height: 440px;
 }
 
-/*アビリティ*/
+/*ability*/
 
 .abilities-container {
   height: 476px;
@@ -242,10 +242,10 @@
   margin-top: 80px;
 }
 
-/*クエスト*/
+/*quest*/
 
 .quest-counter {
-  background-image: url(../../assets/images/quest_counter.png);
+  background-image: url(../../assets/images/quest_counter.gif);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -335,7 +335,7 @@
   height: 600px;
 }
 
-/*クエスト画面アニメーション*/
+/*quest-new-jQuery-animation*/
 
 .new-quest-box {
   display: none;
@@ -349,7 +349,7 @@
   display: none;
 }
 
-/*アドベンチャー*/
+/*adventure*/
 
 .adventures-box {
   height: 600px;
