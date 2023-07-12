@@ -17,6 +17,7 @@ class Public::AbilitiesController < ApplicationController
 
   def create
     @user = current_user
+    @ability = Ability.new
     @abilities = Ability.where(user_id: @user.id)
     ability = Ability.new(ability_params)
     ability.user_id = @user.id

@@ -4,6 +4,9 @@ class Actor < ApplicationRecord
 
   belongs_to :map, optional: true
 
+  validates :name,    presence: true
+  validates :map_id,  presence: true, if: :role == "enemy" || :role == "boss", on: :update
+
   enum role: { avatar: 0, npc: 1, enemy: 2, boss: 3, effect: 4, gui: 5 }
 
   def have_first_animation
