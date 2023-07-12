@@ -7,6 +7,10 @@ class Public::AdventuresController < ApplicationController
     incorrect_quest_path
   end
 
+  def retire
+
+  end
+
   def pause
 
   end

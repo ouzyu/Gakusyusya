@@ -6,7 +6,7 @@
         <%= image_tag @quest.map.image, size: "1000x500" %>
       </div>
 
-      <%= render 'start_btn'%>
+      <%= render 'start_btn' %>
       <div id="timer-box" class="timer-box">
         <div class="text-center timer-box-label">
           <p>のこりクエストタイム</p>
@@ -16,17 +16,21 @@
         </div>
       </div>
 
-      <div class="adventures-command-window system-window system-window-border d-flex justify-content-between align-items-center">
-        <div>
-          <button id="adventures-retire" class="text-initialize adventures-command ml-4">リタイアする</button>
-        </div>
+      <div class="adventures-command-window system-window system-window-border">
+        <div class="adventures-command-container">
+          <div class="adventures-command-box d-flex justify-content-between align-items-center">
+            <div class="adventures-command d-flex align-items-center justify-content-center ml-2">
+              <%= link_to "リタイアする", adventures_retire_path(@quest), method: :patch, remote: true %>
+            </div>
 
-        <div>
-          <button id="adventures-pose" class="text-initialize adventures-command">ポーズ</button>
-        </div>
+            <div class="adventures-command d-flex align-items-center justify-content-center">
+              <%= link_to "ポーズ", adventures_retire_path(@quest), method: :patch, remote: true %>
+            </div>
 
-        <div>
-          <button id="adventures-to-boss" class="text-initialize adventures-command mr-4">ボスにすすむ</button>
+            <div class="adventures-command d-flex align-items-center justify-content-center mr-2">
+              <%= link_to "ボスにすすむ", adventures_boss_path %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -35,11 +39,16 @@
 
 <script>
   $(document).ready(function() {
-    $('.fadein-content').fadeIn("slow");
+    $('.fadein-content').fadeIn("slow", function() {
+      $('.quest-start-btn-box').slideDown("slow");
+    });
 
     $('#btn-quest-start').click(function() {
-      $('#quest-srart-box').slideUp();
-      $('#timer-box').slideDown();
+      $('.quest-start-btn-box').slideUp(function() {
+        $('.adventures-command-container').fadeIn();
+        $('#timer-box').fadeIn();
+      });
+
       const elmMin = document.querySelector(".min");
       const elmSec = document.querySelector(".sec");
       var quest_finished = false
@@ -74,7 +83,5 @@
         clearInterval(countdown);
       }
   　});
-
-
   });
 </script>

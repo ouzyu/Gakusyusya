@@ -14,7 +14,10 @@
           <% end %>
         <% end %>
       <% else %>
-        <div></div>
+        <%= link_to admin_actors_path do %>
+          <%= image_tag 'gakusyusya_logo.gif', class: "logo" %>
+          <span class="text-initialize">がくしゅうしゃ</span>
+        <% end %>
       <% end %>
       <div>
         <ul class="ml-auto mb-0">
