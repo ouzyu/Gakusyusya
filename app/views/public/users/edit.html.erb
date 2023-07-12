@@ -1,32 +1,40 @@
 <div class="container">
   <%= render "layouts/sound_menu" %>
   <div class="action-view-frame system-window system-window-border system-font">
-    <%= form_with model: @user, url: update_information_path do |f| %>
-      <div class="form-container p-1">
-        <div class="sign_up-left-sidebar system-window-border d-flex align-items-start flex-column p-4">
-          <div class="field user_info-edit-form">
-            <%= f.label :name, "がくしゅうしゃのなまえをへんこう。" %><br />
-            <%= f.text_field :name, autofocus: true, class: "form-control" %>
-          </div>
+    <div class="fadein-content">
+      <%= form_with model: @user, url: update_information_path do |f| %>
+        <div class="form-container p-1">
+          <div class="sign_up-left-sidebar system-window-border d-flex align-items-start flex-column p-4">
+            <div class="field user_info-edit-form">
+              <%= f.label :name, "がくしゅうしゃのなまえをへんこう。" %><br />
+              <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            </div>
 
-          <div class="field mt-4 user_info-edit-form">
-            <%= f.label :actor_id, "がくしゅうしゃのみためをへんこう。" %><br />
-            <%= f.select :actor_id, options_from_collection_for_select(Actor.where(role: "avatar"), :id, :name, selected: @user.actor_id ), {}, class: "form-control" %>
-          </div>
+            <div class="field mt-4 user_info-edit-form">
+              <%= f.label :actor_id, "がくしゅうしゃのみためをへんこう。" %><br />
+              <%= f.select :actor_id, options_from_collection_for_select(Actor.where(role: "avatar"), :id, :name, selected: @user.actor_id ), {}, class: "form-control" %>
+            </div>
 
-          <div class="mt-auto mb-3">
-            <%= link_to "データをさくじょする", confirm_unsubscribe_path, class: "btn btn-danger" %>
+            <div class="mt-auto mb-3">
+              <%= link_to "データをさくじょする", confirm_unsubscribe_path, class: "btn btn-danger" %>
+            </div>
+          </div>
+          <div class="sign_up-right-sidebar system-window-border ml-1 p-1">
+            <div class="border" style="min-height: 300px; min-width: 300px;">
+            </div>
+
+            <div class="actions sign_up-start-box d-flex align-items-end">
+              <%= f.submit "へんこうをほぞんする！", class: "btn btn-success sign_up-start-btn mx-auto" %>
+            </div>
           </div>
         </div>
-        <div class="sign_up-right-sidebar system-window-border ml-1 p-1">
-          <div class="border" style="min-height: 300px; min-width: 300px;">
-          </div>
-
-          <div class="actions sign_up-start-box d-flex align-items-end">
-            <%= f.submit "へんこうをほぞんする！", class: "btn btn-success sign_up-start-btn mx-auto" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('.fadein-content').fadeIn("slow")
+  });
+</script>

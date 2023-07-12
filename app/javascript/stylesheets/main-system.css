@@ -65,6 +65,10 @@
   width: 50px;
 }
 
+.fadein-content {
+  display: none;
+}
+
 /*pagination*/
 
 .paginate-div {
@@ -245,10 +249,13 @@
 /*quest*/
 
 .quest-counter {
+  position: relative;
+}
+
+.quest-counter-bg {
   background-image: url(../../assets/images/quest_counter.gif);
   background-position: center;
   background-size: cover;
-  position: relative;
 }
 
 .quest-command {
@@ -374,11 +381,21 @@
 .adventures-command:hover {
  color: black;
 }
+
 .adventures-command-window {
   width: 1000px;
   height: 100px;
   position: absolute;
   top: 500px;
+}
+
+.quest-start-btn-box {
+  width: 1000px;
+  height: 500px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(29, 29, 29, 0.5);
 }
 
 .timer-box {
@@ -389,6 +406,7 @@
   left: 100px;
   background-color: rgba(29, 29, 29, 0.5);
   border-radius: 75px;
+  display: none;
 }
 
 .timer-box-label p {
