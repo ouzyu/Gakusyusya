@@ -23,6 +23,7 @@ class Public::QuestsController < ApplicationController
     else
       @quest = Quest.new
       @quests = Quest.where(user_id: @user)
+      @shalica = Actor.find_by(name: "シャリカ")
       flash.now[:alert] = "クエストのさくせいにしっぱいしました。"
       render "new"
     end
