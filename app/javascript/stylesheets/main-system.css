@@ -1,5 +1,10 @@
 /*システム*/
 
+.logo {
+  width: 64px;
+  height: 64px;
+}
+
 .action-view-frame {
   min-width: 1000px;
   max-width: 1000px;
