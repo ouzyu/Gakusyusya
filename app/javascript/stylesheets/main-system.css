@@ -65,6 +65,67 @@
   width: 50px;
 }
 
+/*ページネーション*/
+
+.paginate-div {
+  width: 100%;
+  margin: auto;
+}
+
+.pagination {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination span {
+  text-align: center;
+  width: 50px;
+  font-size: 20px;
+}
+
+.pagination a {
+  color: #818181;
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.current {
+  font-weight: bold;
+  color: #84b8eb;
+  padding: 10px;
+}
+
+/*edit-box*/
+
+.edit-actor-box {
+  height: 300px;
+}
+
+.edit-situation-box {
+  height: 200px;
+}
+
+/*situation-show*/
+
+.situation-show-animations-container {
+  width: 820px;
+  height: 513px;
+}
+
+.situation-show-animations-box {
+  margin-top: 40px;
+  margin-left: 60px;
+  margin-bottom: 40px;
+}
+
+.situation-show-animations-box:nth-child(n + 4) {
+  margin-top: 0px;
+}
+
 /*マイページ*/
 
 .status-container {
