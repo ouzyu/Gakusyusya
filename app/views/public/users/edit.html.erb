@@ -12,7 +12,7 @@
 
             <div class="field mt-4 user_info-edit-form">
               <%= f.label :actor_id, "がくしゅうしゃのみためをへんこう。" %><br />
-              <%= f.select :actor_id, options_from_collection_for_select(Actor.where(role: "avatar"), :id, :name, selected: @user.actor_id ), {}, class: "form-control" %>
+              <%= f.select :actor_id, options_from_collection_for_select(@actors, :id, :name, selected: @user.actor_id ), {}, class: "form-control" %>
             </div>
 
             <div class="mt-auto mb-3">
@@ -21,6 +21,9 @@
           </div>
           <div class="sign_up-right-sidebar system-window-border ml-1 p-1">
             <div class="border" style="min-height: 300px; min-width: 300px;">
+              <% @actors.each_with_index do |actor, i| %>
+                <%= image_tag actor.have_first_animation.image, size: "300x300", id: "avatar-image-#{actor.id}", class: "avatar-image d-none" %>
+              <% end %>
             </div>
 
             <div class="actions sign_up-start-box d-flex align-items-end">
@@ -34,7 +37,15 @@
 </div>
 
 <script>
-  $(document).ready(function() {
-    $('.fadein-content').fadeIn("slow")
+$(document).ready(function(){
+    $('.fadein-content').fadeIn("slow");
+    var selectActorId = "#avatar-image-" + $('select').val();
+    $(selectActorId).removeClass("d-none");
+
+    $('select').change(function() {
+      $(".avatar-image").addClass("d-none");
+      var imageId = "#avatar-image-" + $(this).val();
+      $(imageId).removeClass("d-none");
+    });
   });
 </script>

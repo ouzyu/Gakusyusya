@@ -9,9 +9,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @actors = Actor.avatar
+    super
+  end
 
   # POST /resource
   # def create

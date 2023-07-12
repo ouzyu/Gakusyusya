@@ -34,6 +34,21 @@
 
 <script>
   $(document).ready(function(){
+
+    $('.fadein-content').fadeIn("slow");
+
+    $('.map_id').change(function() {
+      $(".map-image").addClass("d-none");
+      var imageId = "#map-image-" + $(this).val();
+      $(imageId).removeClass("d-none");
+    });
+
+    $('.boss_id').change(function() {
+      $(".boss-image").addClass("d-none");
+      var imageId = "#boss-image-" + $(this).val();
+      $(imageId).removeClass("d-none");
+    });
+
     //new_quest_boxを表示
   　$('#btn-new-quest').click(function(){
   　　$('#new-quest-box').slideToggle("slow");
@@ -77,11 +92,5 @@
 　　  $('#quest-index-box').slideDown("slow");
 　　  $('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。")
 　  });
-  });
-</script>
-
-<script>
-  $(document).ready(function() {
-    $('.fadein-content').fadeIn("slow")
   });
 </script>

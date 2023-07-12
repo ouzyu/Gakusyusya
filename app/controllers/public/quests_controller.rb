@@ -6,6 +6,9 @@ class Public::QuestsController < ApplicationController
     @quest = Quest.new
     @quests = Quest.where(user_id: @user).order(created_at: :desc).limit(6)
     @shalica = Actor.find_by(name: "シャリカ")
+    @actors = Actor.boss
+    @maps = Map.all
+    @abilities = Ability.where(user_id: @user.id)
   end
 
   def index
@@ -24,6 +27,9 @@ class Public::QuestsController < ApplicationController
       @quest = Quest.new
       @quests = Quest.where(user_id: @user)
       @shalica = Actor.find_by(name: "シャリカ")
+      @actors = Actor.boss
+      @maps = Map.all
+      @abilities = Ability.where(user_id: @user.id)
       flash.now[:alert] = "クエストのさくせいにしっぱいしました。"
       render "new"
     end
