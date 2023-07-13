@@ -178,6 +178,18 @@
   height: 322px;
 }
 
+.user-abilities-box td {
+  font-size: 28px;
+}
+
+.user-abilities-box td:nth-child(odd) {
+  width: 520px;
+}
+
+.user-abilities-box td:nth-child(even) {
+  width: 120px;
+}
+
 .btn-box {
   height: 200px;
 }
