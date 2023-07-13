@@ -81,6 +81,10 @@
   display: none;
 }
 
+.nav-box {
+  width: 1000px;
+}
+
 /*pagination*/
 
 .paginate-div {
@@ -246,16 +250,34 @@
 }
 
 .abilities-left-sidebar {
-  width: 678px;
+  width: 520px;
+}
+
+.abilities-left-sidebar h5 {
+  font-size: 15px;
 }
 
 .abilities-right-sidebar {
-  width: 304px;
+  width: 461px;
   height: 472px;
+  position: relative;
 }
 
 .abilities-box {
-  height: 384px;
+  height: 389px;
+}
+
+.abilities-box td {
+  height: 56px;
+  font-size: 24px;
+}
+
+.abilities-box td:nth-child(odd) {
+  width: 400px;
+}
+
+.abilities-box td:nth-child(even) {
+  width: 100px;
 }
 
 .add-abilities-container {
@@ -266,8 +288,12 @@
   width: 660px;
 }
 
-.radar-chart {
-  margin-top: 80px;
+.rader-chart {
+  width: 450px;
+  height: 450px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /*quest*/
