@@ -6,10 +6,11 @@ class CreateQuests < ActiveRecord::Migration[6.1]
       t.references :actor,    null: false, foreign_key: true
       t.references :map,      null: false, foreign_key: true
       t.text :content,        null: false
-      t.integer :seconds,     null: false
+      t.integer :set_seconds, null: false
+      t.integer :study_time,  default: 0
       t.boolean :is_finished, default: false
       t.datetime :start_time, null: false
-      t.datetime :pose_time,  null: true
+      t.datetime :pause_time,  null: true
 
       t.timestamps
     end

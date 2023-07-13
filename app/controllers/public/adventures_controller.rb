@@ -3,24 +3,31 @@ class Public::AdventuresController < ApplicationController
 
   def start
     @quest = Quest.find(params[:quest_id])
-    @quest_time_minutes = @quest.quest_time_minutes
+    @quest_time_minutes = @quest.quest_time_to_minutes
     incorrect_quest_path
   end
 
   def start_btn
-
+    @quest = Quest.find(params[:quest_id])
+    @quest.update(start_time: Time.now)
   end
 
   def retire
-
+    @quest = Quest.find(params[:quest_id])
+    @quest.update(pause_time: Time.now)
+    study_time = @quest.pause_time - @quest.start_time
+    byebug
+    @quest.increment!(study_time: study_time)
   end
 
   def pause
-
+    @quest = Quest.find(params[:quest_id])
+    @quest.update(pause_time: Time.now)
   end
 
   def unpause
-
+    @quest = Quest.find(params[:quest_id])
+    stop_time = Time.now - @quest.pause_time
   end
 
   def boss
@@ -33,10 +40,10 @@ class Public::AdventuresController < ApplicationController
     user = User.find(quest.user_id)
     ability = Ability.find(quest.ability_id)
 
-    user.increment!(:level, 1)
-    user.increment!(:study_time, quest.seconds)
-    ability.increment!(:level, 1)
-    quest.update(:is_finished, true)
+    user.increment!(level: 1)
+    user.increment!(study_time: quest.seconds)
+    ability.increment!(level: 1)
+    quest.update(is_finished: true)
 
     redirect_to new_quest_path
   end
@@ -44,7 +51,7 @@ class Public::AdventuresController < ApplicationController
   private
 
   def quest_params
-    params.(:quest).permit(:user_id, :ability_id, :actor_id, :map_id, :content, :seconds, :is_finished)
+    params.(:quest).permit(:user_id, :ability_id, :actor_id, :map_id, :content, :set_seconds, :start_time, :pause_time, :is_finished)
   end
 
   def incorrect_quest_path

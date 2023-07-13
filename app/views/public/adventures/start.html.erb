@@ -6,25 +6,18 @@
         <%= image_tag @quest.map.image, size: "1000x500" %>
       </div>
 
-      <%= render 'start_btn' %>
-      <div id="timer-box" class="timer-box">
-        <div class="text-center timer-box-label">
-          <p>のこりクエストタイム</p>
-        </div>
-        <div class="time-container text-center timer-box-count">
-          <p class="timer-text"><span class="min"></span> ふん <span class="sec"></span> びょう</p>
-        </div>
-      </div>
+      <%= render 'start_btn_box' %>
+      <%= render 'timer' %>
 
       <div class="adventures-command-window system-window system-window-border">
         <div class="adventures-command-container">
           <div class="adventures-command-box d-flex justify-content-between align-items-center">
             <div class="adventures-command d-flex align-items-center justify-content-center ml-2">
-              <%= link_to "リタイアする", adventures_retire_path(@quest), method: :patch, remote: true %>
+              <%= link_to "リタイアする", adventures_retire_path(quest_id: @quest.id), method: :patch, remote: true %>
             </div>
 
             <div class="adventures-command d-flex align-items-center justify-content-center">
-              <%= link_to "ポーズ", adventures_retire_path(@quest), method: :patch, remote: true %>
+              <%= link_to "ポーズ", adventures_retire_path(quest_id: @quest.id), method: :patch, remote: true %>
             </div>
 
             <div class="adventures-command d-flex align-items-center justify-content-center mr-2">
@@ -44,44 +37,7 @@
     });
 
     $('#btn-quest-start').click(function() {
-      $('.quest-start-btn-box').slideUp(function() {
-        $('.adventures-command-container').fadeIn();
-        $('#timer-box').fadeIn();
-      });
-
-      const elmMin = document.querySelector(".min");
-      const elmSec = document.querySelector(".sec");
-      var quest_finished = false
-
-      function countdown() {
-        const nowTime = new Date(); // 現在時刻を取得
-        const startTime = new Date('<%= @quest.created_at.iso8601 %>'); //クエストを始めた時間
-        const finish = <%= @quest.seconds %> // クエスト時間
-        const finishTime = new Date(startTime.getTime() + finish * 1000); //クエスト終了時刻をセット
-        const diff = finishTime.getTime() - nowTime.getTime(); // 時間の差を取得（ミリ秒）
-
-        // ミリ秒から単位を修正
-        const calcMin = Math.floor(diff / 1000 / 60) % 60;
-        const calcSec = Math.floor(diff / 1000) % 60;
-
-        // 取得した時間を表示（2桁表示）
-        elmMin.textContent = String(calcMin).padStart(2, "0");
-        elmSec.textContent = String(calcSec).padStart(2, "0");
-
-        // 終了時刻との差が1秒より小さい場合
-        if (diff < 1 ) {
-          clearInterval(countdown)
-          document.querySelector(".timer-text").textContent = String("おつかれさまでした！");
-          quest_finished = true
-        }
-      };
-
-      if (quest_finished == false) {
-        countdown();
-        setInterval(countdown, 1000);
-      } else {
-        clearInterval(countdown);
-      }
-  　});
+      $('.quest-start-btn-box').slideUp();
+    });
   });
 </script>

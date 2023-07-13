@@ -6,8 +6,8 @@ class Quest < ApplicationRecord
 
   validates :content, presence: true, length: { minimum: 1 }
 
-  def quest_time_minutes
-    self.seconds / 60
+  def quest_time_to_minutes
+    self.set_seconds / 60
   end
 
 end

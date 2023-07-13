@@ -38,6 +38,6 @@ class Public::QuestsController < ApplicationController
   private
 
   def quest_params
-    params.require(:quest).permit(:user_id, :ability_id, :actor_id, :map_id, :content, :seconds, :is_finished)
+    params.require(:quest).permit(:user_id, :ability_id, :actor_id, :map_id, :content, :set_seconds, :is_finished)
   end
 end
