@@ -25,6 +25,10 @@
   background-size: cover;
 }
 
+.title-container {
+  width: 1000px;
+  height: 600px;
+}
 
 .system-window {
   background-color: #1a3a8e;
