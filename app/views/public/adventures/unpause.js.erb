@@ -1,1 +1,4 @@
-$('#pause_command').html("<%= j(render 'pause_command', is_stoped: @is_stoped, quest: @quest) %>");
+$('#pause-command').html("<%= j(render 'pause_command', is_stoped: @is_stoped, quest: @quest) %>");
+$('.screen-stop-box').slideUp(function() {
+  $('#timer-box').slideDown();
+});

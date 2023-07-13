@@ -7,6 +7,7 @@
       </div>
 
       <%= render 'start_btn_box', quest: @quest %>
+      <%= render 'screen_pause' %>
       <%= render 'timer' %>
 
       <div class="adventures-command-window system-window system-window-border">
@@ -21,7 +22,7 @@
             </div>
 
             <div class="adventures-command d-flex align-items-center justify-content-center mr-2">
-              <%= link_to "ボスにすすむ", adventures_boss_path %>
+              <%= link_to "ボスにすすむ", adventures_finish_path(quest_id: @quest.id), method: :patch %>
             </div>
           </div>
         </div>

@@ -12,6 +12,11 @@ function countdown() {
   const finishTime = new Date(startTime.getTime() + finish * 1000 ); //クエスト終了時刻をセット
   const diff = finishTime.getTime() - nowTime.getTime(); // 時間の差を取得（ミリ秒）
 
+  console.log("startTime" + startTime)
+  console.log("残り時間" + finish)
+  console.log("終了時刻" + finishTime)
+  console.log("差" + diff)
+
   // ミリ秒から単位を修正
   const calcMin = Math.floor(diff / 1000 / 60) % 60;
   const calcSec = Math.floor(diff / 1000) % 60;
@@ -22,15 +27,11 @@ function countdown() {
 
   // 終了時刻との差が1秒より小さい場合
   if (diff < 1 ) {
-    clearInterval(countdown)
+    clearInterval(timerId);
     document.querySelector(".timer-text").textContent = String("おつかれさまでした！");
     quest_finished = true
   }
 };
 
-if (quest_finished == false) {
-  countdown();
-  setInterval(countdown, 1000);
-} else {
-  clearInterval(countdown);
-}
+countdown();
+let timerId = setInterval(countdown, 1000);

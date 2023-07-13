@@ -1,2 +1,44 @@
-<h1>Public::Adventures#boss</h1>
-<p>Find me in app/views/public/adventures/boss.html.erb</p>
+<div class="container">
+  <%= render "layouts/sound_menu" %>
+  <div class="action-view-frame system-font adventures-box">
+    <div class="fadein-content">
+      <div class="animation-field">
+        <%= image_tag @quest.map.image, size: "1000x500" %>
+      </div>
+
+      <%= render 'clear' %>
+      <%= render 'level_up' %>
+
+
+      <div class="adventures-command-window system-window system-window-border">
+        <div class="adventures-command-container">
+          <div class="adventures-command-box d-flex justify-content-between align-items-center">
+            <div class="adventures-command d-flex align-items-center justify-content-center ml-2 mx-auto">
+              <button id="command-deathblow" type="button" class="command-font">ひっさつわざ！</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('.fadein-content').fadeIn("slow", function() {
+      $('.quest-start-btn-box').slideDown("slow");
+      $('.adventures-command-container').fadeIn();
+    });
+
+    $('#command-deathblow').click(function() {
+      $('.screen-clear-box').slideDown();
+    });
+
+    $('#command-clear-next').click(function() {
+      $('.screen-clear-box').slideUp(function() {
+        $('.screen-level-up-box').slideDown();
+      });
+    });
+
+  });
+</script>

@@ -47,6 +47,14 @@
   color: white;
 }
 
+.command-font {
+  color: black;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
 .slide-window {
   background-color: rgba(29, 29, 29, 0.5);
 }
@@ -404,6 +412,7 @@
   position: absolute;
   top: 220px;
   left: 350px;
+  padding: 7px 25px;
 }
 
 .adventures-command-window {
@@ -421,6 +430,44 @@
   left: 0px;
   background-color: rgba(29, 29, 29, 0.5);
   display: none;
+}
+
+.screen-stop-box {
+  width: 1000px;
+  height: 500px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(29, 29, 29, 0.5);
+  display: none;
+}
+
+.screen-clear-box {
+  width: 1000px;
+  height: 500px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(29, 29, 29, 0.5);
+  display: none;
+}
+
+.screen-level-up-box {
+  width: 1000px;
+  height: 500px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(29, 29, 29, 0.5);
+  display: none;
+}
+
+.pause-text {
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  top: 220px;
+  left: 450px;
 }
 
 .timer-box {
