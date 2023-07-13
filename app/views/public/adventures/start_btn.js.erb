@@ -8,8 +8,8 @@ var quest_finished = false
 function countdown() {
   const nowTime = new Date(); // 現在時刻を取得
   const startTime = new Date('<%= @quest.start_time.iso8601 %>'); //クエストを始めた時間
-  const finish = <%= @quest.set_seconds %> // クエスト時間
-  var finishTime = new Date(startTime.getTime() + finish * 1000　+ stop_time ); //クエスト終了時刻をセット
+  const finish = <%= @quest.set_seconds - @stop_time %> // クエスト時間
+  const finishTime = new Date(startTime.getTime() + finish * 1000 ); //クエスト終了時刻をセット
   const diff = finishTime.getTime() - nowTime.getTime(); // 時間の差を取得（ミリ秒）
 
   // ミリ秒から単位を修正

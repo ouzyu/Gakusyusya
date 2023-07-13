@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get 'adventures/start'       => 'adventures#start'
     get 'adventures/boss'        => 'adventures#boss'
     patch 'adventures/start_btn' => 'adventures#start_btn'
-    patch 'adventures/retire'    => 'adventures#retire'
+    get 'adventures/retire'    => 'adventures#retire'
     patch 'adventures/pause'     => 'adventures#pause'
     patch 'adventures/unpause'   => 'adventures#unpause'
     patch 'adventures/finish'    => 'adventures#finish'

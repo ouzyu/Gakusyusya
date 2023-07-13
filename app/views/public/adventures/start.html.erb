@@ -6,18 +6,18 @@
         <%= image_tag @quest.map.image, size: "1000x500" %>
       </div>
 
-      <%= render 'start_btn_box' %>
+      <%= render 'start_btn_box', quest: @quest %>
       <%= render 'timer' %>
 
       <div class="adventures-command-window system-window system-window-border">
         <div class="adventures-command-container">
           <div class="adventures-command-box d-flex justify-content-between align-items-center">
             <div class="adventures-command d-flex align-items-center justify-content-center ml-2">
-              <%= link_to "リタイアする", adventures_retire_path(quest_id: @quest.id), method: :patch, remote: true %>
+              <%= link_to "リタイアする", adventures_retire_path(quest_id: @quest.id) %>
             </div>
 
-            <div class="adventures-command d-flex align-items-center justify-content-center">
-              <%= link_to "ポーズ", adventures_retire_path(quest_id: @quest.id), method: :patch, remote: true %>
+            <div id="pause-command" class="adventures-command d-flex align-items-center justify-content-center">
+              <%= render 'pause_command', is_stoped: @is_stoped, quest: @quest %>
             </div>
 
             <div class="adventures-command d-flex align-items-center justify-content-center mr-2">
