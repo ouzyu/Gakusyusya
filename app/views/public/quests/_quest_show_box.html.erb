@@ -1,42 +1,43 @@
 <% @quests.each do |quest| %>
   <div id="quest-show-box-<%= quest.id %>" class="quest-show-box slide-window">
     <div class="d-flex">
-      <div class="new-quest-left-sidebar">
-        <div class="mt-2">
-          <p>むかったマップ</p>
-          <p><%= quest.map.name %></p>
+      <div class="new-quest-left-sidebar show-left-sidebar">
+        <div class="mt-2 border-bottom">
+          <p class="show-label mb-0">むかったマップ</p>
+          <p class="show-content"><%= quest.map.name %></p>
+        </div>
+
+        <div class="mt-2 border-bottom">
+          <p class="show-label mb-0">たおしたボス。</p>
+          <p class="show-content"><%= quest.actor.name %></p>
+        </div>
+
+        <div class="mt-2 border-bottom">
+          <p class="show-label mb-0">つよくなったアビリティ。</p>
+          <p class="show-content"><%= quest.ability.name %></p>
+        </div>
+
+        <div class="mt-2 border-bottom">
+          <p class="show-label mb-0">がくしゅうのじかん</p>
+          <p class="show-content"><%= quest.minutes_seconds %></p>
         </div>
 
         <div class="mt-2">
-          <p>たおしたボス。</p>
-          <p><%= quest.actor.name %></p>
-        </div>
-
-        <div class="mt-2">
-          <p>つよくなったアビリティ。</p>
-          <p><%= quest.ability.name %></p>
-        </div>
-
-        <div class="mt-2">
-          <p>クエストのじかん</p>
-          <p><%= quest.set_seconds %></p>
-        </div>
-
-        <div class="mt-2">
-          <p>メモ</p>
-          <p><%= quest.content %></p>
+          <p class="show-label mb-0">メモ</p>
+          <p class="show-content"><%= quest.content %></p>
         </div>
       </div>
 
       <div class="new-quest-right-sidebar d-flex align-items-end flex-column">
-        <div class="mt-3 mx-auto">
+        <div class="mt-3 mx-auto border-bottom">
           <%= image_tag quest.map.image, size: "200x100" %>
         </div>
-        <div class="mt-2 mx-auto">
+        <div class="mt-2 mx-auto border-bottom">
           <%= image_tag quest.actor.have_first_animation.image, size: "200x200" %>
         </div>
-        <div class="mt-auto mx-auto">
-          <p><%= quest.created_at %></p>
+        <div class="mt-auto mx-auto text-center">
+          <p class="show-label border-bottom">クエストにむかったひづけ</p>
+          <p class="show-content border-bottom"><%= l quest.created_at, format: :short %></p>
         </div>
       </div>
 

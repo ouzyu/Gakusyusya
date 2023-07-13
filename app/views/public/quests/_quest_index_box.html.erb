@@ -5,7 +5,7 @@
         <table>
           <tbody>
             <% quests.each do |quest| %>
-              <tr>
+              <tr class="border-bottom">
                 <td class="quest-index-td"><%= image_tag quest.map.image, size: "150x50" %></td>
                 <td class="quest-index-td"><%= image_tag quest.actor.have_first_animation.image, size: "50x50" %></td>
                 <td class="quest-index-td"><%= quest.content %></td>

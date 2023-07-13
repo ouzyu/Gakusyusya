@@ -51,46 +51,52 @@
 
     //new_quest_boxを表示
   　$('#btn-new-quest').click(function(){
-  　　$('#new-quest-box').slideToggle("slow");
-  　　$('.quest-show-box').slideUp();
-  　　$('#quest-index-box').slideUp();
-  　　$('#quest-message-text').text("クエストじょうほうをにゅうりょくしてください。")
+      $('.quest-show-box').slideUp(function(){
+  　　    $('#quest-index-box').slideUp(function(){
+  　　      $('#new-quest-box').slideToggle("slow");
+  　　    });
+      });
+      $('#quest-message-text').text("クエストじょうほうをにゅうりょくしてください。")
   　});
     //new_quest_boxを非表示
   　$('#btn-quit-new-quest').click(function(){
-　　  $('#new-quest-box').slideUp();
-　　  $('#quest-message-text').text("")
-　  });
+      $('#new-quest-box').slideUp();
+      $('#quest-message-text').text("")
+    });
 
-　  //quest_index_boxを表示
-　  $('#btn-quest-index').click(function(){
-  　　$('#quest-index-box').slideToggle("slow");
-  　　$('#new-quest-box').slideUp();
-  　　$('.quest-show-box').slideUp();
-  　　$('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。")
-  　});
+    //quest_index_boxを表示
+    $('#btn-quest-index').click(function(){
+      $('.quest-show-box').slideUp(function(){
+        $('#new-quest-box').slideUp(function(){
+          $('#quest-index-box').slideToggle("slow");
+        });
+      });
+      $('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。")
+    });
     //quest_index_boxを非表示
   　$('#btn-quit-quest-index').click(function(){
-　　  $('#quest-index-box').slideUp();
-　　  $('#quest-message-text').text("")
-　  });
+      $('#quest-index-box').slideUp();
+      $('#quest-message-text').text("")
+    });
 
-　 // quest_show_boxを表示
-　  $('.btn-quest-show').click(function(){
-　    var show_button_id = $(this).attr("id");
-　    var quest_id = show_button_id.substr(show_button_id.indexOf('-') + 1);
-　    $('#quest-index-box').slideUp();
-  　　$(`#quest-show-box-${quest_id}`).slideDown("slow");
-  　　$('#quest-message-text').text("クエストのしょうさいになります。")
+  // quest_show_boxを表示
+    $('.btn-quest-show').click(function(){
+      var show_button_id = $(this).attr("id");
+      var quest_id = show_button_id.substr(show_button_id.indexOf('-') + 1);
+      $('#quest-index-box').slideUp(function(){
+        $(`#quest-show-box-${quest_id}`).slideDown("slow");
+      });
+      $('#quest-message-text').text("クエストのしょうさいになります。")
 
-  　});
+    });
     //quest_show_boxを非表示
   　$('.btn-quit-quest-show').click(function(){
       var quit_button_id = $(this).attr("id");
       var quest_id = quit_button_id.substr(quit_button_id.indexOf('#') + 1);
-　　  $(`#quest-show-box-${quest_id}`).slideUp();
-　　  $('#quest-index-box').slideDown("slow");
-　　  $('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。")
-　  });
+      $(`#quest-show-box-${quest_id}`).slideUp(function(){
+        $('#quest-index-box').slideDown("slow");
+      });
+      $('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。")
+    });
   });
 </script>

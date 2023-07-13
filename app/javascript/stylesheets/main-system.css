@@ -325,6 +325,18 @@
   height: 200px;
 }
 
+.show-left-sidebar {
+  height: 500px;
+}
+
+.show-label {
+  font-size: 15px;
+}
+
+.show-content {
+  font-size: 25px;
+}
+
 /*quest-index*/
 
 .quest-index-box {
