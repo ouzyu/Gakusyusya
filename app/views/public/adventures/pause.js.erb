@@ -2,3 +2,5 @@ $('#pause-command').html("<%= j(render 'pause_command', is_stoped: @is_stoped, q
 $('#timer-box').slideUp(function() {
   $('.screen-stop-box').slideDown();
 });
+
+clearInterval(timerId);

@@ -5,6 +5,8 @@ class Public::AdventuresController < ApplicationController
     @quest = Quest.find(params[:quest_id])
     @is_stoped = false
     @stop_time = 0
+    @avatar_standing_animation = Animation.find_by(situation_id: Situation.find_by(name: "standing", actor_id: Actor.find(@quest.user.actor.id)).id)
+    @enemy = @quest.map.actors.enemy.first
     incorrect_quest_path
   end
 

@@ -1,0 +1,20 @@
+.avatar-frame {
+  position: absolute;
+  z-index: 99;
+  left: 100px;
+  bottom: 40px;
+}
+
+.enemy-frame {
+  position: absolute;
+  z-index: 98;
+  bottom: 40px;
+  right: 300px;
+}
+
+.boss-frame {
+  position: absolute;
+  z-index: 97;
+  bottom: 40px;
+  right: 0px;
+}

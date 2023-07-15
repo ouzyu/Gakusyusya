@@ -4,6 +4,17 @@
     <div class="fadein-content">
       <div class="animation-field">
         <%= image_tag @quest.map.image, size: "1000x500" %>
+        <div class="avatar-frame">
+          <%= image_tag @avatar_standing_animation.image, size: "160x160" %>
+        </div>
+
+        <div class="enemy-frame">
+          <%= image_tag @enemy.have_first_animation.image, size: "160x160" %>
+        </div>
+
+        <div class="boss-frame">
+          <%= image_tag @quest.actor.have_first_animation.image, size: "320x320" %>
+        </div>
       </div>
 
       <%= render 'start_btn_box', quest: @quest %>
@@ -39,6 +50,8 @@
 
     $('#btn-quest-start').click(function() {
       $('.quest-start-btn-box').slideUp();
+      
+      
     });
   });
 </script>
