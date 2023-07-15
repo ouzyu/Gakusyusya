@@ -25,7 +25,7 @@
         <div class="adventures-command-container">
           <div class="adventures-command-box d-flex justify-content-between align-items-center">
             <div class="adventures-command d-flex align-items-center justify-content-center ml-2">
-              <%= link_to "リタイアする", adventures_retire_path(quest_id: @quest.id) %>
+              <%= link_to "リタイアする", adventures_retire_path(quest_id: @quest.id), data: { confirm: 'ほんとうにクエストをリタイアしますか？'} %>
             </div>
 
             <div id="pause-command" class="adventures-command d-flex align-items-center justify-content-center">
@@ -33,7 +33,7 @@
             </div>
 
             <div class="adventures-command d-flex align-items-center justify-content-center mr-2">
-              <%= link_to "ボスにすすむ", adventures_finish_path(quest_id: @quest.id), method: :patch %>
+              <%= link_to "ボスにすすむ", adventures_finish_path(quest_id: @quest.id), method: :patch, data: { confirm: 'がくしゅうをしゅうりょうしてボスにむかいますか？'} %>
             </div>
           </div>
         </div>
@@ -50,8 +50,6 @@
 
     $('#btn-quest-start').click(function() {
       $('.quest-start-btn-box').slideUp();
-      
-      
     });
   });
 </script>

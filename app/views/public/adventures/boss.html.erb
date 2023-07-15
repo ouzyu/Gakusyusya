@@ -7,14 +7,15 @@
       </div>
 
       <%= render 'clear' %>
-      <%= render 'level_up' %>
+      <%= render 'level_up', quest: @quest %>
 
 
       <div class="adventures-command-window system-window system-window-border">
         <div class="adventures-command-container">
           <div class="adventures-command-box d-flex justify-content-between align-items-center">
-            <div class="adventures-command d-flex align-items-center justify-content-center ml-2 mx-auto">
+            <div id="boss-command" class="adventures-command d-flex align-items-center justify-content-center ml-2 mx-auto">
               <button id="command-deathblow" type="button" class="command-font">ひっさつわざ！</button>
+              <button id="command-clear-next" type="button" class="command-font d-none">つぎへ</button>
             </div>
           </div>
         </div>
@@ -32,11 +33,14 @@
 
     $('#command-deathblow').click(function() {
       $('.screen-clear-box').slideDown();
+      $('#command-clear-next').removeClass("d-none");
+      $('#command-deathblow').addClass("d-none");
     });
 
     $('#command-clear-next').click(function() {
       $('.screen-clear-box').slideUp(function() {
         $('.screen-level-up-box').slideDown();
+        $('#boss-command').html('<%= link_to "ステータスにもどる", mypage_path %>');
       });
     });
 

@@ -8,12 +8,12 @@
         </div>
 
         <div class="mt-2 border-bottom">
-          <p class="show-label mb-0">たおしたボス。</p>
+          <p class="show-label mb-0">たおしたボス</p>
           <p class="show-content"><%= quest.actor.name %></p>
         </div>
 
         <div class="mt-2 border-bottom">
-          <p class="show-label mb-0">つよくなったアビリティ。</p>
+          <p class="show-label mb-0">つよくなったアビリティ</p>
           <p class="show-content"><%= quest.ability.name %></p>
         </div>
 
@@ -35,8 +35,16 @@
         <div class="mt-2 mx-auto border-bottom">
           <%= image_tag quest.actor.have_first_animation.image, size: "200x200" %>
         </div>
+        <div class="mt-2 mx-auto border-bottom">
+          <p class="show-label mb-0">クエストじょうきょう</p>
+          <% if quest.is_finished %>
+            <p class="show-content text-success text-center">クリア</p>
+          <% else %>
+            <p class="show-content text-danger text-center">リタイア</p>
+          <% end %>
+        </div>
         <div class="mt-auto mx-auto text-center">
-          <p class="show-label border-bottom">クエストにむかったひづけ</p>
+          <p class="show-label mb-0">クエストにむかったひづけ</p>
           <p class="show-content border-bottom"><%= l quest.created_at, format: :short %></p>
         </div>
       </div>

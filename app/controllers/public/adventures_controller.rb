@@ -43,11 +43,14 @@ class Public::AdventuresController < ApplicationController
     quest = Quest.find(params[:quest_id])
     user = quest.user
     ability = quest.ability
-
-    user.increment!(level: 1)
-    quest.update(study_time: (Time.now - quest.start_time).to_i + quest.study_time)
-    user.update(study_time: user.study_time + quest.study_time)
-    ability.increment!(level: 1)
+    study_time = (Time.now - quest.start_time).to_i + quest.study_time
+    if study_time < quest.set_seconds
+      quest.update(study_time: study_time)
+    else
+      quest.update(study_time: quest.set_seconds)
+    end
+    user.update(study_time: user.study_time + study_time, level: user.level + 1)
+    ability.update(level: ability.level + 1)
     quest.update(is_finished: true)
 
     redirect_to adventures_boss_path(quest_id: quest.id)
@@ -55,7 +58,6 @@ class Public::AdventuresController < ApplicationController
 
   def boss
     @quest = Quest.find(params[:quest_id])
-    incorrect_quest_path
   end
 
   private

@@ -35,6 +35,8 @@
 <script>
   $(document).ready(function(){
 
+    let click_slide_name = ""
+
     $('.fadein-content').fadeIn("slow");
 
     $('.map_id').change(function() {
@@ -49,13 +51,22 @@
       $(imageId).removeClass("d-none");
     });
 
-    //new_quest_boxを表示
+    // new_quest_boxを表示
     $('#btn-new-quest').click(function() {
-      $('#quest-message-text').text("クエストじょうほうをにゅうりょくしてください。");
-      $('.quest-show-box').slideUp();
-      $('#quest-index-box').slideUp();
-      $('#new-quest-box').slideToggle("slow");
+      if (click_slide_name == "new-quest") {
+        $('#new-quest-box').slideUp();
+        click_slide_name = ""
+      } else {
+        $('#quest-message-text').text("クエストじょうほうをにゅうりょくしてください。");
+        $('.quest-show-box').slideUp(function() {
+          $('#quest-index-box').slideUp(function() {
+            $('#new-quest-box').slideDown("slow");
+            click_slide_name = "new-quest"
+          });
+        });
+      }
     });
+
 
     // new_quest_boxを非表示
     $('#btn-quit-new-quest').click(function(){
@@ -64,11 +75,19 @@
     });
 
     //quest_index_boxを表示
-    $('#btn-quest-index').click(function(){
-      $('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。")
-      $('.quest-show-box').slideUp();
-      $('#new-quest-box').slideUp();
-      $('#quest-index-box').slideToggle("slow");
+    $('#btn-quest-index').click(function() {
+      if (click_slide_name == "quest-index") {
+        $('#quest-index-box').slideUp("slow");
+        click_slide_name = ""
+      } else {
+        $('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。")
+        $('.quest-show-box').slideUp(function() {
+          $('#new-quest-box').slideUp(function() {
+            $('#quest-index-box').slideDown("slow");
+            click_slide_name = "quest-index"
+          });
+        });
+      }
     });
 
     //quest_index_boxを非表示
