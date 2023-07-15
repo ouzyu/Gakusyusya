@@ -4,7 +4,7 @@ class Public::AdventuresController < ApplicationController
   def start
     @quest = Quest.find(params[:quest_id])
     @is_stoped = false
-    @stop_time = 0
+    @study_time = 0
     @avatar_standing_animation = Animation.find_by(situation_id: Situation.find_by(name: "standing", actor_id: Actor.find(@quest.user.actor.id)).id)
     @enemy = @quest.map.actors.enemy.first
     incorrect_quest_path
@@ -12,46 +12,43 @@ class Public::AdventuresController < ApplicationController
 
   def start_btn
     @quest = Quest.find(params[:quest_id])
-    @quest.update(start_time: Time.now)
-    @stop_time = 0
+    @quest.update(start_time: Time.now, study_time: 0)
+    @study_time = @quest.study_time
   end
 
   def retire
     quest = Quest.find(params[:quest_id])
     user = quest.user
 
-    quest.update(pause_time: Time.now)
-    study_time = (quest.pause_time - quest.start_time).to_i
-    sum_quest_study_time = quest.study_time + study_time
-    sum_user_study_time = user.study_time + sum_quest_study_time
-    quest.update(study_time: sum_quest_study_time)
-    user.update(study_time: sum_user_study_time)
+    quest.update(study_time: (Time.now - quest.start_time).to_i + quest.study_time)
+    user.update(study_time: user.study_time + quest.study_time)
 
     redirect_to new_quest_path
   end
 
   def pause
     @quest = Quest.find(params[:quest_id])
-    @quest.update(pause_time: Time.now)
+    @quest.update(study_time: (Time.now - @quest.start_time).to_i + @quest.study_time)
     @is_stoped = true
   end
 
   def unpause
     @quest = Quest.find(params[:quest_id])
-    @stop_time = (Time.now - @quest.pause_time).to_i
     @quest.update(start_time: Time.now)
+    @study_time = @quest.study_time
     @is_stoped = false
   end
 
   def finish
     quest = Quest.find(params[:quest_id])
-    # user = User.find(quest.user_id)
-    # ability = Ability.find(quest.ability_id)
+    user = quest.user
+    ability = quest.ability
 
-    # user.increment!(level: 1)
-    # user.increment!(study_time: study_time)
-    # ability.increment!(level: 1)
-    # quest.update(is_finished: true)
+    user.increment!(level: 1)
+    quest.update(study_time: (Time.now - quest.start_time).to_i + quest.study_time)
+    user.update(study_time: user.study_time + quest.study_time)
+    ability.increment!(level: 1)
+    quest.update(is_finished: true)
 
     redirect_to adventures_boss_path(quest_id: quest.id)
   end
@@ -64,7 +61,7 @@ class Public::AdventuresController < ApplicationController
   private
 
   def quest_params
-    params.(:quest).permit(:user_id, :ability_id, :actor_id, :map_id, :content, :set_seconds, :start_time, :pause_time, :is_finished)
+    params.(:quest).permit(:user_id, :ability_id, :actor_id, :map_id, :content, :set_seconds, :start_time, :is_finished)
   end
 
   def incorrect_quest_path

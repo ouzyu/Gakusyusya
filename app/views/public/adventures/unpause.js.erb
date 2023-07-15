@@ -2,5 +2,6 @@ $('#pause-command').html("<%= j(render 'pause_command', is_stoped: @is_stoped, q
 $('.screen-stop-box').slideUp(function() {
   $('#timer-box').slideDown();
 });
-
-setInterval(countdown, 1000);
+startTime = new Date('<%= @quest.start_time.iso8601 %>'); //クエストを始めた時間
+finish = <%= @quest.set_seconds - @study_time %>; // クエスト時間
+timerId = setInterval(countdown, 1000);

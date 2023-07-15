@@ -3,12 +3,12 @@ $('#timer-box').fadeIn();
 
 const elmMin = document.querySelector(".min");
 const elmSec = document.querySelector(".sec");
-var quest_finished = false
+var quest_finished = false;
+let startTime = new Date('<%= @quest.start_time.iso8601 %>'); //クエストを始めた時間
+let finish = <%= @quest.set_seconds - @study_time %>; // クエスト時間
 
 function countdown() {
   const nowTime = new Date(); // 現在時刻を取得
-  let startTime = new Date('<%= @quest.start_time.iso8601 %>'); //クエストを始めた時間
-  let finish = <%= @quest.set_seconds - @stop_time %> // クエスト時間
   let finishTime = new Date(startTime.getTime() + finish * 1000 ); //クエスト終了時刻をセット
   let diff = finishTime.getTime() - nowTime.getTime(); // 時間の差を取得（ミリ秒）
 
@@ -26,8 +26,6 @@ function countdown() {
     document.querySelector(".timer-text").textContent = String("おつかれさまでした！");
     quest_finished = true
   }
-
-  <!--console.log(@quest)-->
 };
 
 countdown();
