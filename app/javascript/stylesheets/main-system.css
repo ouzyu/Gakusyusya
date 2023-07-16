@@ -17,19 +17,6 @@
   width: 1000px
 }
 
-.title {
-  width: 80%;
-  height: 130px;
-  background-image: url(../../assets/images/gakusyusya_kana.png);
-  background-position: center;
-  background-size: cover;
-}
-
-.title-container {
-  width: 1000px;
-  height: 600px;
-}
-
 .system-window {
   background-color: #1a3a8e;
 }
@@ -83,6 +70,21 @@
 
 .nav-box {
   width: 1000px;
+}
+
+/*title*/
+
+.title {
+  width: 1000px;
+  height: 600px;
+  background-image: url(../../assets/images/title_image.gif);
+  background-position: center;
+  background-size: cover;
+}
+
+.title-container {
+  width: 1000px;
+  height: 600px;
 }
 
 /*pagination*/
