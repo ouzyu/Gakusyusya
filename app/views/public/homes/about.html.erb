@@ -1,11 +1,42 @@
 <div class="container">
-  <div class="fadein-content">
+  <div class="action-view-frame border">
+    <div class="fadein-content">
+      <div class="about-container">
+        <div class="about-content-box">
+          <div class="shalica-frame">
+            <%= image_tag @shalica_standing.image, size: "240x160" %>
+          </div>
+        </div>
 
+        <div class="about-message-window system-window system-window-border d-flex align-items-center">
+          <div class="about-message-window-box d-flex p-1 align-items-center">
+            <%= image_tag @shalica.have_first_animation.image, size: "80x80" %>
+            <p id="quest-message-text" class="system-font mb-0 ml-1">がくしゅうしゃさま！！はじめまして！</p>
+            <button id="command-next-message" type="button" class="text-initialize command-next-message ml-auto">つぎへ...</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
   $(document).ready(function() {
     $('.fadein-content').fadeIn("slow")
+
+    let message_id = 0
+
+    $('#command-next-message').click(function(){
+      if (message_id == 0) {
+        $('#quest-message-text').text("わたしのなまえは「シャリカ」です！");
+        message_id++;
+      } else if (message_id == 1 ) {
+        $('#quest-message-text').text("いまから「がくしゅうしゃ」のせつめいをします！");
+        message_id++;
+      } else if (message_id == 2 ) {
+        $('#quest-message-text').text("はじめに、「あたらしいがくしゅうしゃになる」をクリックしてデータのとうろくをします。");
+        message_id++;
+      }
+    });
   });
 </script>

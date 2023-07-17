@@ -58,12 +58,19 @@
         $('#quest-message-text').text("");
       } else {
         $('#quest-message-text').text("クエストじょうほうをにゅうりょくしてください。");
-        $('.quest-show-box').slideUp(function() {
+        if (<%= @show_box_exist %> == false ) {
           $('#quest-index-box').slideUp(function() {
             $('#new-quest-box').slideDown("slow");
             click_slide_name = "new-quest"
           });
-        });
+        } else {
+          $('.quest-show-box').slideUp(function() {
+            $('#quest-index-box').slideUp(function() {
+              $('#new-quest-box').slideDown("slow");
+              click_slide_name = "new-quest"
+            });
+          });
+        }
       }
     });
 
@@ -82,12 +89,19 @@
         $('#quest-message-text').text("");
       } else {
         $('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。")
-        $('.quest-show-box').slideUp(function() {
+        if (<%= @show_box_exist %> == false ) {
           $('#new-quest-box').slideUp(function() {
             $('#quest-index-box').slideDown("slow");
             click_slide_name = "quest-index"
           });
-        });
+        } else {
+          $('.quest-show-box').slideUp(function() {
+            $('#new-quest-box').slideUp(function() {
+              $('#quest-index-box').slideDown("slow");
+              click_slide_name = "quest-index"
+            });
+          });
+        }
       }
     });
 

@@ -87,6 +87,36 @@
   height: 600px;
 }
 
+/*about*/
+
+.about-container {
+  width: 1000px;
+  height: 600px;
+  position: relative;
+}
+
+.about-message-window {
+  width: 1000px;
+  height: 125px;
+  font-size: 35px;
+  position: absolute;
+  top: 474px;
+  left: -1px;
+}
+
+.about-content-box {
+  width: 1000px;
+  height: 500px;
+}
+
+.command-next-message {
+  font-size: 16px;
+}
+
+.about-message-window-box {
+  width: 1000px;
+}
+
 /*pagination*/
 
 .paginate-div {

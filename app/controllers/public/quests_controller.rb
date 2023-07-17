@@ -5,10 +5,16 @@ class Public::QuestsController < ApplicationController
     @user = current_user
     @quest = Quest.new
     @quests = Quest.where(user_id: @user).order(created_at: :desc).limit(6)
+    if @quests.blank?
+      @show_box_exist = false
+    end
     @shalica = Actor.find_by(role: "npc")
     @actors = Actor.boss
     @maps = Map.all
     @abilities = Ability.where(user_id: @user.id)
+    if @abilities.blank?
+      redirect_to abilities_path, flash: { alert: "アビリティのとうろくをしなければ、クエストをうけることはできません。" }
+    end
   end
 
   def index

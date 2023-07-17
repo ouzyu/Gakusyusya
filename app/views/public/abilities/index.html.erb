@@ -55,8 +55,13 @@
   </div>
 </div>
 
-<!--レーダーチャート-->
+
 <script>
+  $(document).ready(function() {
+    $('.fadein-content').fadeIn("slow");
+  });
+
+  //レーダーチャート
   var ctx = document.getElementById("myChart");
   var myChart = new Chart(ctx, {
     type: 'radar',
@@ -109,7 +114,4 @@
     }
   });
 
-  $(document).ready(function() {
-    $('.fadein-content').fadeIn("slow");
-  });
 </script>

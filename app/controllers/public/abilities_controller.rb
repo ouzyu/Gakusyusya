@@ -12,7 +12,11 @@ class Public::AbilitiesController < ApplicationController
       @chart_abilities_name << ability.name
       @chart_abilities_level << ability.level
     end
-    @chart_max_level = @chart_abilities_level.max
+    if @chart_abilities_level.blank?
+      @chart_max_level = 1
+    else
+      @chart_max_level = @chart_abilities_level.max
+    end
   end
 
   def create
