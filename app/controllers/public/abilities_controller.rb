@@ -12,7 +12,7 @@ class Public::AbilitiesController < ApplicationController
       @chart_abilities_name << ability.name
       @chart_abilities_level << ability.level
     end
-    @chart_max_level = @chart_abilities_level.sum
+    @chart_max_level = @chart_abilities_level.max
   end
 
   def create
