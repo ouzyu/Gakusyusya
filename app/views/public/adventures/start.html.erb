@@ -2,19 +2,17 @@
   <div class="action-view-frame system-font adventures-box">
     <div class="fadein-content">
       <div class="animation-field">
-        <%= image_tag @quest.map.image, size: "1000x500" %>
+        <%= image_tag @quest.map.get_map_image(1000, 500), id: "map-img" %>
+        <%= image_tag @quest.map.image, size: "1000x500", id: "map-gif", class: "d-none" %>
         <div class="avatar-frame">
-          <%= image_tag @avatar_standing_animation.image, size: "480x480" %>
+          <%= image_tag @avatar_standing.image, size: "480x480", id: "avatar-standing" %>
+          <%= image_tag @avatar_running.image, size: "480x480", id: "avatar-running", class: "d-none" %>
+          <%= image_tag @avatar_attack.image, size: "480x480", id: "avatar-attack", class: "d-none" %>
         </div>
 
         <div class="enemy-frame">
-          <!--standing-->
-          <%= image_tag @enemy.have_first_animation.image, size: "160x160" %>
-          <!--damaged-->
-        </div>
-
-        <div class="boss-frame">
-          <%= image_tag @quest.actor.have_first_animation.image, size: "320x320" %>
+          <%= image_tag @enemy_standing.image, size: "160x160", class: "d-none" %>
+          <%= image_tag @enemy_damaged.image, size: "160x160", class: "d-none" %>
         </div>
       </div>
 
@@ -44,13 +42,18 @@
 </div>
 
 <script>
-  $(document).ready(function() {
+  window.addEventListener("load", function () {
     $('.fadein-content').fadeIn("slow", function() {
       $('.quest-start-btn-box').slideDown("slow");
     });
 
     $('#btn-quest-start').click(function() {
       $('.quest-start-btn-box').slideUp();
+      $('#map-img').addClass("d-none");
+      $('#avatar-standing').addClass("d-none")
+      $('#map-gif').removeClass("d-none");
+      $('#avatar-running').removeClass("d-none");
     });
+
   });
 </script>

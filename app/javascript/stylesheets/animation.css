@@ -1,8 +1,8 @@
 .avatar-frame {
   position: absolute;
   z-index: 99;
-  left: 100px;
-  bottom: 40px;
+  left: 150px;
+  bottom: 50px;
 }
 
 .enemy-frame {
