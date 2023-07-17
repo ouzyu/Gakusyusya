@@ -80,6 +80,13 @@
   background-image: url(../../assets/images/title_image.gif);
   background-position: center;
   background-size: cover;
+  position: relative;
+}
+
+.title-command-box {
+  position: absolute;
+  bottom: -30px;
+  left: 400px;
 }
 
 .title-container {
@@ -107,6 +114,7 @@
 .about-content-box {
   width: 1000px;
   height: 500px;
+  background-color: rgb(0,200,255);
 }
 
 .command-next-message {

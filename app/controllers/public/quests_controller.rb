@@ -7,6 +7,8 @@ class Public::QuestsController < ApplicationController
     @quests = Quest.where(user_id: @user).order(created_at: :desc).limit(6)
     if @quests.blank?
       @show_box_exist = false
+    else
+      @show_box_exist = true
     end
     @shalica = Actor.find_by(role: "npc")
     @actors = Actor.boss
