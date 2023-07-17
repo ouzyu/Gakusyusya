@@ -14,18 +14,15 @@
 .enemy-frame {
   position: absolute;
   z-index: 98;
-  bottom: 40px;
+  bottom: 50px;
   right: 300px;
 }
 
-#enemy-damaged {
+.enemy-damaged {
   display: none;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
 }
 
-#enemy-standing {
+.enemy-layer {
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -35,6 +32,16 @@
   position: absolute;
   z-index: 97;
   bottom: 40px;
+  right: 150px;
+}
+
+.boss-standing {
+  display: none;
+}
+
+.boss-layer {
+  position: absolute;
+  bottom: 0px;
   right: 0px;
 }
 

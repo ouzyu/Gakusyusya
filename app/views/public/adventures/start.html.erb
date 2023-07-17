@@ -14,8 +14,10 @@
         </div>
 
         <div class="enemy-frame">
-          <%= image_tag @enemy_standing.image, size: "160x160", id: "enemy-standing", class: "d-none" %>
-          <%= image_tag @enemy_damaged.image, size: "160x160", id: "enemy-damaged" %>
+          <% @enemies.each_with_index do |enemy, i| %>
+            <%= image_tag find_by_situation(enemy.id, "standing").image, size: "160x160", id: "enemy-standing-#{i + 1}", class: "d-none enemy-layer" %>
+            <%= image_tag find_by_situation(enemy.id, "damaged").image, size: "160x160", id: "enemy-damaged-#{i + 1}", class: "enemy-layer enemy-damaged" %>
+          <% end %>
         </div>
       </div>
 

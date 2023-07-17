@@ -32,8 +32,15 @@ function countdown() {
 countdown();
 let timerId = setInterval(countdown, 1000);
 
+let enemyId = 0;
+const enemyCount = <%= @enemies.count %>;
+const enemySources = <%= raw @enemy_animation_sources %>;
+
 // エンカウント機能
 function encount() {
+
+  enemyId = Math.floor( Math.random() * enemyCount ) + 1;
+  enemyDamagedImage = enemySources.splice(enemyId);
 
   $('.animation-field').fadeOut(function() {
     //map停止
@@ -42,7 +49,7 @@ function encount() {
     $('#map-gif').addClass("d-none");
     $('#avatar-running').addClass("d-none");
     $('.animation-field').fadeIn();
-    $('#enemy-standing').removeClass("d-none");
+    $(`#enemy-standing-${enemyId}`).removeClass("d-none");
 
     // 3000ms後に処理
     setTimeout(function() {
@@ -56,20 +63,20 @@ function encount() {
 
       //900ms後に処理
       setTimeout(function() {
-        $('#enemy-damaged').fadeIn(0, function() {
-          $('#enemy-damaged').removeClass("d-none");
+        $(`#enemy-damaged-${enemyId}`).fadeIn(0, function() {
+          $(`#enemy-damaged-${enemyId}`).removeClass("d-none");
 
           //10ms後に処理
           setTimeout(function() {
-            $('#enemy-standing').addClass("d-none");
-            $('#enemy-damaged').attr("src",'<%= url_for(@enemy_damaged.image) %>');
+            $(`#enemy-standing-${enemyId}`).addClass("d-none");
+            // $(`#enemy-damaged-${enemyId}`).attr("src",'enemyDamagedImage');
           },10);
         });;
 
         //2000ms後に処理
         setTimeout(function() {
-          $('#enemy-damaged').fadeOut(function() {
-            $('#enemy-damaged').addClass("d-none");
+          $(`#enemy-damaged-${enemyId}`).fadeOut(function() {
+            $(`#enemy-damaged-${enemyId}`).addClass("d-none");
 
             //1000ms後に処理
             setTimeout(function() {

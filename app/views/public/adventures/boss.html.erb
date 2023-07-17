@@ -2,15 +2,16 @@
   <div class="action-view-frame system-font adventures-box">
     <div class="fadein-content">
       <div class="animation-field">
-        <%= image_tag @quest.map.image, size: "1000x500" %>
+        <%= image_tag @quest.map.get_map_image(1000, 500), id: "map-img" %>
 
         <div class="avatar-frame">
           <%= image_tag @avatar_standing.image, size: "480x480", id: "avatar-standing", class: "avatar-layer" %>
-          <%= image_tag @avatar_attack.image, size: "480x480", id: "avatar-attack", class: "d-none avatar-layer" %>
+          <%= image_tag @avatar_deathblow.image, size: "480x480", id: "avatar-deathblow", class: "d-none avatar-layer" %>
         </div>
 
         <div class="boss-frame">
-
+          <%= image_tag @boss_standing.image, size: "320x320", id: "boss-standing", class: "boss-layer boss-standing" %>
+          <%= image_tag @boss_damaged.image, size: "320x320", id: "boss-damaged", class: "boss-layer d-none" %>
         </div>
       </div>
 
@@ -33,16 +34,35 @@
 </div>
 
 <script>
+  function deathblow() {
+    $('#avatar-deathblow').removeClass("d-none");
+    $('#avatar-standing').addClass("d-none");
+
+    // 500ms後に処理
+    setTimeout(function() {
+      $('#boss-standing').addClass("d-none");
+      $('#boss-damaged').removeClass("d-none");
+
+      setTimeout(function() {
+        $('#boss-damaged').fadeOut(1200);
+      }, 1000);
+    }, 500);
+  };
+
   window.addEventListener("load", function () {
     $('.fadein-content').fadeIn("slow", function() {
       $('.quest-start-btn-box').slideDown("slow");
       $('.adventures-command-container').fadeIn();
+      $('#boss-standing').fadeIn();
     });
 
     $('#command-deathblow').click(function() {
-      $('.screen-clear-box').slideDown();
-      $('#command-clear-next').removeClass("d-none");
-      $('#command-deathblow').addClass("d-none");
+      deathblow();
+      setTimeout(function(){
+        $('.screen-clear-box').slideDown();
+        $('#command-clear-next').removeClass("d-none");
+        $('#command-deathblow').addClass("d-none");
+      }, 3000);
     });
 
     $('#command-clear-next').click(function() {

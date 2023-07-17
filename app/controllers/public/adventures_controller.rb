@@ -7,6 +7,7 @@ class Public::AdventuresController < ApplicationController
     @study_time = 0
 
     set_start_animations
+    enemy_animation_sources
 
     incorrect_quest_path
   end
@@ -17,7 +18,7 @@ class Public::AdventuresController < ApplicationController
     @study_time = @quest.study_time
 
     set_start_animations
-
+    enemy_animation_sources
   end
 
   def retire
@@ -43,7 +44,7 @@ class Public::AdventuresController < ApplicationController
     @is_stoped = false
 
     set_start_animations
-
+    enemy_animation_sources
   end
 
   def finish
@@ -65,6 +66,7 @@ class Public::AdventuresController < ApplicationController
 
   def boss
     @quest = Quest.find(params[:quest_id])
+    set_boss_animations
   end
 
   private
@@ -92,9 +94,25 @@ class Public::AdventuresController < ApplicationController
     @avatar_standing = find_by_situation(avatar, "standing")
     @avatar_running = find_by_situation(avatar, "running")
     @avatar_attack = find_by_situation(avatar, "attack")
+    @enemies = Actor.enemy.where(map_id: @quest.map_id)
+    @avatar_source = url_for(@avatar_attack.image)
+  end
 
-    @enemy_standing = find_by_situation(@quest.map.actors.enemy.first.id, "standing")
-    @enemy_damaged = find_by_situation(@quest.map.actors.enemy.first.id, "damaged")
+  def set_boss_animations
+    avatar = current_user.actor.id
+    @avatar_standing = find_by_situation(avatar, "standing")
+    @avatar_deathblow = find_by_situation(avatar, "deathblow")
+
+    @boss_standing = find_by_situation(@quest.map.actors.boss.first.id, "standing")
+    @boss_damaged = find_by_situation(@quest.map.actors.boss.first.id, "damaged")
+  end
+
+  def enemy_animation_sources
+    @enemy_animation_sources = []
+    @enemies.each do |enemy|
+      source = url_for(find_by_situation(enemy.id, "damaged").image)
+      @enemy_animation_sources.push(source)
+    end
   end
 
 end
