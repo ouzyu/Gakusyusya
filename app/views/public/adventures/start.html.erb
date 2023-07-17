@@ -3,8 +3,10 @@
     <%= render 'loading' %>
     <div class="fadein-content">
       <div class="animation-field">
+
         <%= image_tag @quest.map.get_map_image(1000, 500), id: "map-img" %>
         <%= image_tag @quest.map.image, size: "1000x500", id: "map-gif", class: "d-none" %>
+
         <div class="avatar-frame">
           <%= image_tag @avatar_standing.image, size: "480x480", id: "avatar-standing" %>
           <%= image_tag @avatar_running.image, size: "480x480", id: "avatar-running", class: "d-none" %>
@@ -12,8 +14,8 @@
         </div>
 
         <div class="enemy-frame">
-          <%= image_tag @enemy_standing.image, size: "160x160", class: "d-none" %>
-          <%= image_tag @enemy_damaged.image, size: "160x160", class: "d-none" %>
+          <%= image_tag @enemy_standing.image, size: "160x160", id: "enemy-standing", class: "d-none" %>
+          <%= image_tag @enemy_damaged.image, size: "160x160", id: "enemy-damaged" %>
         </div>
       </div>
 

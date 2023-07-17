@@ -14,8 +14,6 @@ class Public::AdventuresController < ApplicationController
 
     @enemy_standing = find_by_situation(@quest.map.actors.enemy.first.id, "standing")
     @enemy_damaged = find_by_situation(@quest.map.actors.enemy.first.id, "damaged")
-    # @enemy_standing = @quest.map.actors.enemy.first
-
 
     incorrect_quest_path
   end
@@ -24,6 +22,16 @@ class Public::AdventuresController < ApplicationController
     @quest = Quest.find(params[:quest_id])
     @quest.update(start_time: Time.now, study_time: 0)
     @study_time = @quest.study_time
+
+    # animations
+    avatar = current_user.actor.id
+    @avatar_standing = find_by_situation(avatar, "standing")
+    @avatar_running = find_by_situation(avatar, "running")
+    @avatar_attack = find_by_situation(avatar, "attack")
+
+    @enemy_standing = find_by_situation(@quest.map.actors.enemy.first.id, "standing")
+    @enemy_damaged = find_by_situation(@quest.map.actors.enemy.first.id, "damaged")
+
   end
 
   def retire

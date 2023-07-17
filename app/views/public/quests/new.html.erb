@@ -1,5 +1,6 @@
 <div class="container">
   <div class="action-view-frame system-font quest-counter">
+    <%= render 'loading' %>
     <div class="fadein-content">
       <div class="d-flex quest-counter-bg">
         <div class="d-flex align-items-start flex-column slide-window quest-left-sidebar">
@@ -32,11 +33,12 @@
 </div>
 
 <script>
-  $(document).ready(function(){
-
+  window.addEventListener("load", function () {
     let click_slide_name = ""
 
-    $('.fadein-content').fadeIn("slow");
+    $('.fadein-content').fadeIn("slow", function() {
+      $('.loading-box').fadeOut();
+    });
 
     $('.map_id').change(function() {
       $(".map-image").addClass("d-none");

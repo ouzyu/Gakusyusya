@@ -1,8 +1,20 @@
 .avatar-frame {
   position: absolute;
   z-index: 99;
-  left: 150px;
+  left: 230px;
   bottom: 50px;
+}
+
+#avatar-standing {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+#avatar-attack {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
 }
 
 .enemy-frame {
@@ -10,6 +22,19 @@
   z-index: 98;
   bottom: 40px;
   right: 300px;
+}
+
+#enemy-damaged {
+  display: none;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+#enemy-standing {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
 }
 
 .boss-frame {
