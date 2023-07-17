@@ -519,6 +519,25 @@
   top: 500px;
 }
 
+.loading-box {
+  width: 1000px;
+  height: 600px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgb(19, 19, 19);
+  z-index: 100;
+}
+
+.loading-box div {
+  width: 1000px;
+  height: 600px;
+}
+
+.loading-box div p {
+  font-size: 50px;
+}
+
 .quest-start-btn-box {
   width: 1000px;
   height: 500px;

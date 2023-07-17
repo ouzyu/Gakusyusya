@@ -1,5 +1,6 @@
 <div class="container">
   <div class="action-view-frame system-font adventures-box">
+    <%= render 'loading' %>
     <div class="fadein-content">
       <div class="animation-field">
         <%= image_tag @quest.map.get_map_image(1000, 500), id: "map-img" %>
@@ -44,7 +45,9 @@
 <script>
   window.addEventListener("load", function () {
     $('.fadein-content').fadeIn("slow", function() {
-      $('.quest-start-btn-box').slideDown("slow");
+      $('.loading-box').fadeOut(function() {
+        $('.quest-start-btn-box').slideDown("slow");
+      });
     });
 
     $('#btn-quest-start').click(function() {
