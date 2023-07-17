@@ -2,59 +2,66 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="container">
-  <%= render "layouts/sound_menu" %>
   <div class="action-view-frame system-window system-window-border system-font">
-    <div class="abilities-container p-1">
-      <div class="abilities-left-sidebar">
-        <div class="system-window-border">
-          <h2 class="text-center">アビリティのしょうさい</h2>
-        </div>
-        <h5 class="mt-1">※アビリティをクリックすると、なまえをへんこうすることができます。</h5>
-        <div class="abilities-box system-window-border mt-1 p-2">
-          <h4>アビリティ</h4>
-          <% if @abilities.present? %>
-            <table>
-              <% @abilities.each do |ability| %>
-                <tr>
-                  <td>
-                    <%= link_to edit_ability_path(ability), class: "text-initialize" do %>
-                      <%= ability.name %>
-                    <% end %>
-                  </td>
-                  <td>Lv.<%= ability.level %></td>
-                </tr>
-              <% end %>
-            </table>
-          <% else %>
-            <p>アビリティがとうろくされていません。</p>
-          <% end %>
-        </div>
-      </div>
-      <div class="abilities-right-sidebar system-window-border ml-1">
-        <div class="radar-chart">
-          <canvas id="myChart"></canvas>
-        </div>
-      </div>
-    </div>
-    <div class="add-abilities-container system-window-border m-1 p-2">
-      <div>
-        <h3>あたらしくアビリティをふやす</h3>
-      </div>
-      <%= form_with model: @ability, url: abilities_path do |f| %>
-        <div class="d-flex justify-content-between">
-          <div>
-            <%= f.text_field :name, class: "form-control add-abilities-form" %>
+    <div class="fadein-content">
+      <div class="abilities-container p-1">
+        <div class="abilities-left-sidebar">
+          <div class="system-window-border">
+            <h2 class="text-center">アビリティのしょうさい</h2>
           </div>
-          <div>
-            <%= f.submit "アビリティをふやす", class: "btn btn-light mr-3" %>
+          <h5 class="mt-1">※アビリティをクリックすると、なまえをへんこうすることができます。</h5>
+          <div class="abilities-box system-window-border mt-1 p-2">
+            <h5>アビリティ</h5>
+            <% if @abilities.present? %>
+              <table>
+                <% @abilities.each do |ability| %>
+                  <tr>
+                    <td>
+                      <%= link_to edit_ability_path(ability), class: "text-initialize" do %>
+                        <%= ability.name %>
+                      <% end %>
+                    </td>
+                    <td>Lv.<%= ability.level %></td>
+                  </tr>
+                <% end %>
+              </table>
+            <% else %>
+              <p>アビリティがとうろくされていません。</p>
+            <% end %>
           </div>
         </div>
-      <% end %>
+        <div class="abilities-right-sidebar system-window-border ml-1">
+          <div class="radar-chart mx-auto">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="add-abilities-container system-window-border m-1 p-2">
+        <div>
+          <h3>あたらしくアビリティをふやす</h3>
+        </div>
+        <%= form_with model: @ability, url: abilities_path do |f| %>
+          <div class="d-flex justify-content-between">
+            <div>
+              <%= f.text_field :name, class: "form-control add-abilities-form" %>
+            </div>
+            <div>
+              <%= f.submit "アビリティをふやす", class: "btn btn-light mr-3" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-<!--レーダーチャート-->
+
+
 <script>
+  $(document).ready(function() {
+    $('.fadein-content').fadeIn("slow");
+  });
+
+  //レーダーチャート
   var ctx = document.getElementById("myChart");
   var myChart = new Chart(ctx, {
     type: 'radar',
@@ -106,4 +113,5 @@
       }
     }
   });
+
 </script>

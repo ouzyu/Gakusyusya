@@ -4,22 +4,22 @@
       <%= form_with model: quest, url: quests_path do |f| %>
       <div class="mt-2">
         <%= f.label :map_id, "マップをえらんでください。" %>
-        <%= f.select :map_id, options_from_collection_for_select(Map.all, :id, :name), { include_blank: "みせんたく" }, class: "form-control" %>
+        <%= f.select :map_id, options_from_collection_for_select(@maps, :id, :name), { include_blank: "みせんたく" }, class: "map_id form-control" %>
       </div>
 
       <div class="mt-2">
         <%= f.label :actor_id, "たおしたいボスをえらんでください。" %>
-        <%= f.select :actor_id, options_from_collection_for_select(Actor.where(role: "boss"), :id, :name), { include_blank: "みせんたく" }, class: "form-control" %>
+        <%= f.select :actor_id, options_from_collection_for_select(@actors, :id, :name), { include_blank: "みせんたく" }, class: "boss_id form-control" %>
       </div>
 
       <div class="mt-2">
         <%= f.label :ability_id, "つよくしたいアビリティをえらんでください。" %>
-        <%= f.select :ability_id, options_from_collection_for_select(Ability.where(user_id: user.id), :id, :name), { include_blank: "みせんたく" }, class: "form-control" %>
+        <%= f.select :ability_id, options_from_collection_for_select(@abilities, :id, :name), { include_blank: "みせんたく" }, class: "form-control" %>
       </div>
 
       <div class="mt-2">
-        <%= f.label :seconds, "クエストのじかんをえらんでください。" %>
-        <%= f.select :seconds, [['5ふん', 300], ['10ぷん', 600], ['15ふん', 900], ['20ぷん', 1200], ['25ふん', 1500]], {}, class: "form-control" %>
+        <%= f.label :set_seconds, "クエストのじかんをえらんでください。" %>
+        <%= f.select :set_seconds, [['5ふん', 300], ['10ぷん', 600], ['15ふん', 900], ['20ぷん', 1200], ['25ふん', 1500]], {}, class: "form-control" %>
       </div>
 
       <div class="mt-2">
@@ -30,13 +30,17 @@
 
     <div class="new-quest-right-sidebar d-flex align-items-end flex-column">
       <div class="preview-map-box mt-3 mx-auto">
-        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; max-height: 150px; min-height: 150px; max-width: 150px; object-fit: cover;">
+        <% @maps.each_with_index do |map, i| %>
+          <%= image_tag map.image, size: "200x100", id: "map-image-#{map.id}", class: "map-image d-none" %>
+        <% end %>
       </div>
       <div class="preview-boss-box mt-2 mx-auto">
-
+        <% @actors.each_with_index do |actor, i| %>
+          <%= image_tag actor.have_first_animation.image, size: "200x200", id: "boss-image-#{actor.id}", class: "boss-image d-none" %>
+        <% end %>
       </div>
       <div class="btn-quest-start mt-auto mx-auto">
-        <%= f.submit "クエストかいし！", class: "btn btn-lg btn-success" %>
+        <%= f.submit "クエストをうける！", class: "btn btn-lg btn-success" %>
       </div>
     </div>
     <% end %>

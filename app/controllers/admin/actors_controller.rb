@@ -40,15 +40,10 @@ class Admin::ActorsController < ApplicationController
 
   def update
     @actor = Actor.find(params[:id])
-    unless params[:role] == "enemy" && params[:map_id].blank?
-      if @actor.update(actor_params)
-        redirect_to admin_actor_path(@actor), notice: "情報の更新に成功しました。"
-      else
-        flash.now[:alert] = "情報の更新に失敗しました。"
-        render "edit"
-      end
+    if @actor.update(actor_params)
+      redirect_to admin_actor_path(@actor), notice: "情報の更新に成功しました。"
     else
-      flash.now[:alert] = "エネミーとマップを関連付けてください。"
+      flash.now[:alert] = "情報の更新に失敗しました。"
       render "edit"
     end
   end

@@ -7,10 +7,10 @@ class Admin::AnimationsController < ApplicationController
     if animation.save
       redirect_to admin_situation_path(situation), notice: "新規アニメーションを作成しました。"
     else
-      @situation = Situation.find(animation.situation_id)
+      @situation = Situation.find(situation)
       @actor = Actor.find(@situation.actor_id)
       @animations = Animation.where(situation_id: @situation.id).page(params[:page]).per(6)
-      @animation = Animation.new
+      @animation = Animation.new(situation_id: @situation.id)
       flash.now[:alert] = "アニメーションの作成に失敗しました。"
       render "admin/situations/show"
     end

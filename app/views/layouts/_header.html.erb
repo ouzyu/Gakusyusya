@@ -1,41 +1,56 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark system-window">
+  <nav class="navbar navbar-expand-md navbar-dark system-window">
     <div class="container">
-      <% unless admin_signed_in? %>
-        <%= link_to "LOGO", root_path %>
-      <% else %>
-        <div></div>
-      <% end %>
-      <div>
-        <ul class="ml-auto mb-0">
-          <div class="navbar-nav ml-auto">
-            <div class="navbar-nav">
-              <% if admin_signed_in? %>
-                <li><%= link_to "Users", admin_users_path, class: 'btn navbar-btn btn-outline-light' %></li>
-                <li><%= link_to "Actors", admin_actors_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
-                <li><%= link_to "Maps", admin_maps_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
-                <li>
-                  <%= link_to destroy_admin_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
-                    Log out
-                  <% end %>
-                </li>
-              <% elsif user_signed_in? %>
-                <li><%= link_to "ステータスをみる", mypage_path, class: 'btn navbar-btn btn-outline-light ml-5' %></li>
-                <li><%= link_to "アビリティをみる", abilities_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
-                <li><%= link_to "クエストをうける", new_quest_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
-                <li>
-                  <%= link_to destroy_user_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
-                    ぼうけんをやめる
-                  <% end %>
-                </li>
-              <% else %>
-                <li><%= link_to "せつめいしょをよむ", about_path, class: 'btn navbar-btn btn-outline-light' %></li>
-                <li><%= link_to "セーブデータをロードする", new_user_session_path , class: 'btn navbar-btn btn-outline-light ml-3' %></li>
-                <li><%= link_to "あたらしい「がくしゅうしゃ」になる",attention_path , class: 'btn navbar-btn btn-outline-light ml-3' %></li>
-              <% end %>
+      <div class="nav-box d-flex align-items-center">
+        <% unless admin_signed_in? %>
+          <% unless user_signed_in? %>
+            <%= link_to root_path do %>
+              <%= image_tag 'gakusyusya_logo.gif', class: "logo" %>
+              <span class="text-initialize">がくしゅうしゃ</span>
+            <% end %>
+          <% else %>
+            <%= link_to mypage_path do %>
+              <%= image_tag 'gakusyusya_logo.gif', class: "logo" %>
+              <span class="text-initialize">がくしゅうしゃ</span>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to admin_actors_path do %>
+            <%= image_tag 'gakusyusya_logo.gif', class: "logo" %>
+            <span class="text-initialize">がくしゅうしゃ</span>
+          <% end %>
+        <% end %>
+        <div class="ml-auto">
+          <ul class="ml-auto mb-0">
+            <div class="navbar-nav ml-auto">
+              <div class="navbar-nav">
+                <% if admin_signed_in? %>
+                  <li><%= link_to "Users", admin_users_path, class: 'btn navbar-btn btn-outline-light' %></li>
+                  <li><%= link_to "Actors", admin_actors_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
+                  <li><%= link_to "Maps", admin_maps_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
+                  <li>
+                    <%= link_to destroy_admin_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
+                      Log out
+                    <% end %>
+                  </li>
+                <% elsif user_signed_in? %>
+                  <li><%= link_to "ステータスをみる", mypage_path, class: 'btn navbar-btn btn-outline-light ml-5' %></li>
+                  <li><%= link_to "アビリティをみる", abilities_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                  <li><%= link_to "クエストをうける", new_quest_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                  <li>
+                    <%= link_to destroy_user_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
+                      ぼうけんをやめる
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li><%= link_to "せつめいしょをよむ", about_path, class: 'btn navbar-btn btn-outline-light' %></li>
+                  <li><%= link_to "セーブデータをロードする", new_user_session_path , class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                  <li><%= link_to "あたらしい「がくしゅうしゃ」になる",attention_path , class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                <% end %>
+              </div>
             </div>
-          </div>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>

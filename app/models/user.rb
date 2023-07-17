@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :quests
   belongs_to :actor
 
+  validates :name,  presence: true, length: { in: 1..10 }
+  validates :email, presence: true, uniqueness: true
+
   def hours_minutes_seconds
     st = self.study_time
     h = st / 3600

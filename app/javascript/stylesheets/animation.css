@@ -1,0 +1,52 @@
+.avatar-frame {
+  position: absolute;
+  z-index: 99;
+  left: 230px;
+  bottom: 50px;
+}
+
+.avatar-layer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.enemy-frame {
+  position: absolute;
+  z-index: 98;
+  bottom: 50px;
+  right: 300px;
+}
+
+.enemy-damaged {
+  display: none;
+}
+
+.enemy-layer {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.boss-frame {
+  position: absolute;
+  z-index: 97;
+  bottom: 40px;
+  right: 150px;
+}
+
+.boss-standing {
+  display: none;
+}
+
+.boss-layer {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.shalica-frame {
+  position: absolute;
+  top: 180px;
+  left: 360px;
+}

@@ -1,0 +1,102 @@
+$('.adventures-command-container').fadeIn();
+$('#timer-box').fadeIn();
+
+const elmMin = document.querySelector(".min");
+const elmSec = document.querySelector(".sec");
+var quest_finished = false;
+let startTime = new Date('<%= @quest.start_time.iso8601 %>'); //クエストを始めた時間
+let finish = <%= @quest.set_seconds - @study_time %>; // クエスト時間
+
+// タイマー
+function countdown() {
+  const nowTime = new Date(); // 現在時刻を取得
+  let finishTime = new Date(startTime.getTime() + finish * 1000 ); //クエスト終了時刻をセット
+  let diff = finishTime.getTime() - nowTime.getTime(); // 時間の差を取得（ミリ秒）
+
+  // ミリ秒から単位を修正
+  const calcMin = Math.floor(diff / 1000 / 60) % 60;
+  const calcSec = Math.floor(diff / 1000) % 60;
+
+  // 取得した時間を表示（2桁表示）
+  elmMin.textContent = String(calcMin).padStart(2, "0");
+  elmSec.textContent = String(calcSec).padStart(2, "0");
+
+  // 終了時刻との差が0.001秒より小さい場合
+  if (diff < 1 ) {
+    clearInterval(timerId);
+    document.querySelector(".timer-text").textContent = String("おつかれさまでした！");
+    quest_finished = true
+  }
+};
+
+countdown();
+let timerId = setInterval(countdown, 1000);
+
+let enemyId = 0;
+const enemyCount = <%= @enemies.count %>;
+const enemySources = <%= raw @enemy_animation_sources %>;
+
+// エンカウント機能
+function encount() {
+
+  enemyId = Math.floor( Math.random() * enemyCount ) + 1;
+  enemyDamagedImage = enemySources.splice(enemyId);
+
+  $('.animation-field').fadeOut(function() {
+    //map停止
+    $('#map-img').removeClass("d-none");
+    $('#avatar-standing').removeClass("d-none")
+    $('#map-gif').addClass("d-none");
+    $('#avatar-running').addClass("d-none");
+    $('.animation-field').fadeIn();
+    $(`#enemy-standing-${enemyId}`).removeClass("d-none");
+
+    // 3000ms後に処理
+    setTimeout(function() {
+      $('#avatar-attack').removeClass("d-none");
+
+      //10ms後に処理
+      setTimeout(function() {
+        $('#avatar-standing').addClass("d-none");
+        $('#avatar-attack').attr("src",'<%= url_for(@avatar_attack.image) %>');
+      }, 10);
+
+      //900ms後に処理
+      setTimeout(function() {
+        $(`#enemy-damaged-${enemyId}`).fadeIn(0, function() {
+          $(`#enemy-damaged-${enemyId}`).removeClass("d-none");
+
+          //10ms後に処理
+          setTimeout(function() {
+            $(`#enemy-standing-${enemyId}`).addClass("d-none");
+            // $(`#enemy-damaged-${enemyId}`).attr("src",'enemyDamagedImage');
+          },10);
+        });;
+
+        //2000ms後に処理
+        setTimeout(function() {
+          $(`#enemy-damaged-${enemyId}`).fadeOut(function() {
+            $(`#enemy-damaged-${enemyId}`).addClass("d-none");
+
+            //1000ms後に処理
+            setTimeout(function() {
+              $('.animation-field').fadeOut(function() {
+                $('#map-img').addClass("d-none");
+                $('#avatar-attack').addClass("d-none")
+                $('#map-gif').removeClass("d-none");
+                $('#avatar-running').removeClass("d-none");
+                $('#map-gif').attr("src",'<%= url_for(@quest.map.image) %>');
+                $('.animation-field').fadeIn();
+              });
+            },1000);
+          });
+
+        },2000);
+
+      },900);
+
+    },3000);
+  });
+};
+
+let encountId = setInterval(encount, 30000);

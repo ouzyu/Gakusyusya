@@ -23,10 +23,15 @@ Rails.application.routes.draw do
     get 'users/attention'         => 'users#attention',   as: 'attention'
 
     resources :abilities, only: [:index, :create, :edit, :update, :destroy]
-    resources :quests
+    resources :quests,    only: [:new, :create]
 
-    get 'adventures/start'  => 'adventures#start'
-    get 'adventures/boss'   => 'adventures#boss'
+    get 'adventures/start'       => 'adventures#start'
+    get 'adventures/boss'        => 'adventures#boss'
+    patch 'adventures/start_btn' => 'adventures#start_btn'
+    get 'adventures/retire'    => 'adventures#retire'
+    patch 'adventures/pause'     => 'adventures#pause'
+    patch 'adventures/unpause'   => 'adventures#unpause'
+    patch 'adventures/finish'    => 'adventures#finish'
 
   end
 

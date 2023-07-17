@@ -8,6 +8,7 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @actors = Actor.avatar
   end
 
   def update

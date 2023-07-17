@@ -1,2 +1,76 @@
-<h1>Public::Adventures#boss</h1>
-<p>Find me in app/views/public/adventures/boss.html.erb</p>
+<div class="container">
+  <div class="action-view-frame system-font adventures-box">
+    <div class="fadein-content">
+      <div class="animation-field">
+        <%= image_tag @quest.map.get_map_image(1000, 500), id: "map-img" %>
+
+        <div class="avatar-frame">
+          <%= image_tag @avatar_standing.image, size: "480x480", id: "avatar-standing", class: "avatar-layer" %>
+          <%= image_tag @avatar_deathblow.image, size: "480x480", id: "avatar-deathblow", class: "d-none avatar-layer" %>
+        </div>
+
+        <div class="boss-frame">
+          <%= image_tag @boss_standing.image, size: "320x320", id: "boss-standing", class: "boss-layer boss-standing" %>
+          <%= image_tag @boss_damaged.image, size: "320x320", id: "boss-damaged", class: "boss-layer d-none" %>
+        </div>
+      </div>
+
+      <%= render 'clear' %>
+      <%= render 'level_up', quest: @quest %>
+
+
+      <div class="adventures-command-window system-window system-window-border">
+        <div class="adventures-command-container">
+          <div class="adventures-command-box d-flex justify-content-between align-items-center">
+            <div id="boss-command" class="adventures-command d-flex align-items-center justify-content-center ml-2 mx-auto">
+              <button id="command-deathblow" type="button" class="command-font">ひっさつわざ！</button>
+              <button id="command-clear-next" type="button" class="command-font d-none">つぎへ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function deathblow() {
+    $('#avatar-deathblow').removeClass("d-none");
+    $('#avatar-standing').addClass("d-none");
+
+    // 500ms後に処理
+    setTimeout(function() {
+      $('#boss-standing').addClass("d-none");
+      $('#boss-damaged').removeClass("d-none");
+
+      setTimeout(function() {
+        $('#boss-damaged').fadeOut(1200);
+      }, 1000);
+    }, 500);
+  };
+
+  window.addEventListener("load", function () {
+    $('.fadein-content').fadeIn("slow", function() {
+      $('.quest-start-btn-box').slideDown("slow");
+      $('.adventures-command-container').fadeIn();
+      $('#boss-standing').fadeIn();
+    });
+
+    $('#command-deathblow').click(function() {
+      deathblow();
+      setTimeout(function(){
+        $('.screen-clear-box').slideDown();
+        $('#command-clear-next').removeClass("d-none");
+        $('#command-deathblow').addClass("d-none");
+      }, 3000);
+    });
+
+    $('#command-clear-next').click(function() {
+      $('.screen-clear-box').slideUp(function() {
+        $('.screen-level-up-box').slideDown();
+        $('#boss-command').html('<%= link_to "ステータスにもどる", mypage_path %>');
+      });
+    });
+
+  });
+</script>

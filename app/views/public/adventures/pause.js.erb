@@ -1,0 +1,15 @@
+$('#pause-command').html("<%= j(render 'pause_command', is_stoped: @is_stoped, quest: @quest) %>");
+$('#timer-box').slideUp(function() {
+  $('.screen-stop-box').slideDown();
+
+  $('.animation-field').fadeOut(function() {
+    $('#map-img').removeClass("d-none");
+    $('#avatar-standing').removeClass("d-none")
+    $('#map-gif').addClass("d-none");
+    $('#avatar-running').addClass("d-none");
+    $('.animation-field').fadeIn();
+  });
+});
+
+clearInterval(timerId);
+clearInterval(encountId);

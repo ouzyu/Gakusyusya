@@ -12,11 +12,16 @@ class Public::AbilitiesController < ApplicationController
       @chart_abilities_name << ability.name
       @chart_abilities_level << ability.level
     end
-    @chart_max_level = @chart_abilities_level.sum
+    if @chart_abilities_level.blank?
+      @chart_max_level = 1
+    else
+      @chart_max_level = @chart_abilities_level.max
+    end
   end
 
   def create
     @user = current_user
+    @ability = Ability.new
     @abilities = Ability.where(user_id: @user.id)
     ability = Ability.new(ability_params)
     ability.user_id = @user.id
