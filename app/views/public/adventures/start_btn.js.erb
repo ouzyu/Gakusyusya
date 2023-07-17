@@ -29,8 +29,12 @@ function countdown() {
   }
 };
 
+countdown();
+let timerId = setInterval(countdown, 1000);
+
 // エンカウント機能
 function encount() {
+
   $('.animation-field').fadeOut(function() {
     //map停止
     $('#map-img').removeClass("d-none");
@@ -44,22 +48,22 @@ function encount() {
     setTimeout(function() {
       $('#avatar-attack').removeClass("d-none");
 
-      //5ms後に処理
+      //10ms後に処理
       setTimeout(function() {
         $('#avatar-standing').addClass("d-none");
         $('#avatar-attack').attr("src",'<%= url_for(@avatar_attack.image) %>');
-      }, 5);
+      }, 10);
 
       //900ms後に処理
       setTimeout(function() {
         $('#enemy-damaged').fadeIn(0, function() {
           $('#enemy-damaged').removeClass("d-none");
 
-          //5ms後に処理
+          //10ms後に処理
           setTimeout(function() {
             $('#enemy-standing').addClass("d-none");
             $('#enemy-damaged').attr("src",'<%= url_for(@enemy_damaged.image) %>');
-          },5);
+          },10);
         });;
 
         //2000ms後に処理
@@ -88,6 +92,4 @@ function encount() {
   });
 };
 
-countdown();
-let timerId = setInterval(countdown, 1000);
 let encountId = setInterval(encount, 30000);

@@ -3,6 +3,15 @@
     <div class="fadein-content">
       <div class="animation-field">
         <%= image_tag @quest.map.image, size: "1000x500" %>
+
+        <div class="avatar-frame">
+          <%= image_tag @avatar_standing.image, size: "480x480", id: "avatar-standing", class: "avatar-layer" %>
+          <%= image_tag @avatar_attack.image, size: "480x480", id: "avatar-attack", class: "d-none avatar-layer" %>
+        </div>
+
+        <div class="boss-frame">
+
+        </div>
       </div>
 
       <%= render 'clear' %>
@@ -24,7 +33,7 @@
 </div>
 
 <script>
-  $(document).ready(function() {
+  window.addEventListener("load", function () {
     $('.fadein-content').fadeIn("slow", function() {
       $('.quest-start-btn-box').slideDown("slow");
       $('.adventures-command-container').fadeIn();

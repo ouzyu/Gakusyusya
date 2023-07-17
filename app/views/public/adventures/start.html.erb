@@ -8,9 +8,9 @@
         <%= image_tag @quest.map.image, size: "1000x500", id: "map-gif", class: "d-none" %>
 
         <div class="avatar-frame">
-          <%= image_tag @avatar_standing.image, size: "480x480", id: "avatar-standing" %>
-          <%= image_tag @avatar_running.image, size: "480x480", id: "avatar-running", class: "d-none" %>
-          <%= image_tag @avatar_attack.image, size: "480x480", id: "avatar-attack", class: "d-none" %>
+          <%= image_tag @avatar_standing.image, size: "480x480", id: "avatar-standing", class: "avatar-layer" %>
+          <%= image_tag @avatar_running.image, size: "480x480", id: "avatar-running", class: "d-none avatar-layer" %>
+          <%= image_tag @avatar_attack.image, size: "480x480", id: "avatar-attack", class: "d-none avatar-layer" %>
         </div>
 
         <div class="enemy-frame">

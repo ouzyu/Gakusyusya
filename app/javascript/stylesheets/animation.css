@@ -5,13 +5,7 @@
   bottom: 50px;
 }
 
-#avatar-standing {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-}
-
-#avatar-attack {
+.avatar-layer {
   position: absolute;
   bottom: 0px;
   left: 0px;

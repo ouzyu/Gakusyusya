@@ -6,14 +6,7 @@ class Public::AdventuresController < ApplicationController
     @is_stoped = false
     @study_time = 0
 
-    # animations
-    avatar = current_user.actor.id
-    @avatar_standing = find_by_situation(avatar, "standing")
-    @avatar_running = find_by_situation(avatar, "running")
-    @avatar_attack = find_by_situation(avatar, "attack")
-
-    @enemy_standing = find_by_situation(@quest.map.actors.enemy.first.id, "standing")
-    @enemy_damaged = find_by_situation(@quest.map.actors.enemy.first.id, "damaged")
+    set_start_animations
 
     incorrect_quest_path
   end
@@ -23,14 +16,7 @@ class Public::AdventuresController < ApplicationController
     @quest.update(start_time: Time.now, study_time: 0)
     @study_time = @quest.study_time
 
-    # animations
-    avatar = current_user.actor.id
-    @avatar_standing = find_by_situation(avatar, "standing")
-    @avatar_running = find_by_situation(avatar, "running")
-    @avatar_attack = find_by_situation(avatar, "attack")
-
-    @enemy_standing = find_by_situation(@quest.map.actors.enemy.first.id, "standing")
-    @enemy_damaged = find_by_situation(@quest.map.actors.enemy.first.id, "damaged")
+    set_start_animations
 
   end
 
@@ -55,6 +41,9 @@ class Public::AdventuresController < ApplicationController
     @quest.update(start_time: Time.now)
     @study_time = @quest.study_time
     @is_stoped = false
+
+    set_start_animations
+
   end
 
   def finish
@@ -96,6 +85,16 @@ class Public::AdventuresController < ApplicationController
 
   def find_by_situation(actor_id, situation_name)
     Animation.find_by(situation_id: Situation.find_by(name: situation_name, actor_id: Actor.find(actor_id)).id)
+  end
+
+  def set_start_animations
+    avatar = current_user.actor.id
+    @avatar_standing = find_by_situation(avatar, "standing")
+    @avatar_running = find_by_situation(avatar, "running")
+    @avatar_attack = find_by_situation(avatar, "attack")
+
+    @enemy_standing = find_by_situation(@quest.map.actors.enemy.first.id, "standing")
+    @enemy_damaged = find_by_situation(@quest.map.actors.enemy.first.id, "damaged")
   end
 
 end
