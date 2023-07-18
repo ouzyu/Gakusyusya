@@ -94,6 +94,12 @@
   height: 600px;
 }
 
+.title-trial {
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+}
+
 /*about*/
 
 .loading-container {
