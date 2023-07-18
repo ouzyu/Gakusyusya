@@ -96,6 +96,10 @@
 
 /*about*/
 
+.loading-container {
+  position: relative;
+}
+
 .about-container {
   width: 1000px;
   height: 600px;
@@ -105,7 +109,7 @@
 .about-message-window {
   width: 1000px;
   height: 125px;
-  font-size: 35px;
+  font-size: 32px;
   position: absolute;
   top: 474px;
   left: -1px;
@@ -115,14 +119,37 @@
   width: 1000px;
   height: 500px;
   background-color: rgb(0,200,255);
+  position: relative;
+}
+
+.about-content-slide-box {
+  width: 1000px;
+  height: 500px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.about-content-slide {
+  width: 1000px;
+  height: 500px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: none;
+  background-color: rgba(29, 29, 29, 0.5);
 }
 
 .command-next-message {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .about-message-window-box {
   width: 1000px;
+}
+
+.about-message-window-box p {
+  max-width: 800px;
 }
 
 /*pagination*/

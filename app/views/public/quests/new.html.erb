@@ -33,7 +33,7 @@
 </div>
 
 <script>
-  window.addEventListener("load", function () {
+  $(document).ready(function() {
     let click_slide_name = ""
 
     $('.fadein-content').fadeIn("slow", function() {
@@ -120,6 +120,7 @@
       var quest_id = show_button_id.substr(show_button_id.indexOf('-') + 1);
       $('#quest-index-box').slideUp(function(){
         $(`#quest-show-box-${quest_id}`).slideDown("slow");
+        click_slide_name = "quests-show"
       });
     });
 

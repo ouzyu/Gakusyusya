@@ -1,19 +1,18 @@
 <div class="container">
-  <div>
-    <div class="action-view-frame border">
-      <div class="fadein-content">
-        <div class="title-container d-flex flex-column">
-          <div class="title mb-auto">
-            <div class="title-command-box d-flex flex-column text-center">
-              <div class="mb-2">
-                <%= link_to "はじめから", attention_path, class: "h2 text-initialize" %>
-              </div>
-              <div class="mb-2">
-                <%= link_to "つづきから", new_user_session_path, class: "h2 text-initialize" %>
-              </div>
-              <div class="mb-5">
-                <%= link_to "せつめいしょ", about_path, class: "h2 text-initialize" %>
-              </div>
+  <div class="action-view-frame border system-font loading-container">
+    <%= render 'now_loading' %>
+    <div class="fadein-content">
+      <div class="title-container d-flex flex-column">
+        <div class="title mb-auto">
+          <div class="title-command-box d-flex flex-column text-center">
+            <div class="mb-2">
+              <%= link_to "はじめから", attention_path, class: "h2 text-initialize" %>
+            </div>
+            <div class="mb-2">
+              <%= link_to "つづきから", new_user_session_path, class: "h2 text-initialize" %>
+            </div>
+            <div class="mb-5">
+              <%= link_to "せつめいしょ", about_path, class: "h2 text-initialize" %>
             </div>
           </div>
         </div>
@@ -24,6 +23,8 @@
 
 <script>
   $(document).ready(function() {
-    $('.fadein-content').fadeIn("slow")
+    $('.fadein-content').fadeIn(3000, function() {
+      $('.loading-box').fadeOut();
+    });
   });
 </script>
