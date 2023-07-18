@@ -16,7 +16,9 @@
             </div>
           </div>
           <div class="title-trial">
-            <%= link_to "たいけんばん", root_path, class: "h2 text-initialize" %>
+            <%= link_to users_guest_sign_in_path, method: :post, class: "h2 text-initialize mb-0 text-center" do %>
+              <p>たいけんばん<br>(ゲストログイン)</p>
+            <% end %>
           </div>
         </div>
       </div>

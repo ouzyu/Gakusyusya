@@ -96,8 +96,8 @@
 
 .title-trial {
   position: absolute;
-  bottom: 20px;
-  right: 25px;
+  bottom: -10px;
+  right: 10px
 }
 
 /*about*/
