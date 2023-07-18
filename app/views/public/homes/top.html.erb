@@ -15,6 +15,11 @@
               <%= link_to "せつめいしょ", about_path, class: "h2 text-initialize" %>
             </div>
           </div>
+          <div class="title-trial">
+            <%= link_to users_guest_sign_in_path, method: :post, class: "h2 text-initialize mb-0 text-center" do %>
+              <p>たいけんばん<br>(ゲストログイン)</p>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -23,7 +28,7 @@
 
 <script>
   $(document).ready(function() {
-    $('.fadein-content').fadeIn(3000, function() {
+    $('.fadein-content').fadeIn(2000, function() {
       $('.loading-box').fadeOut();
     });
   });

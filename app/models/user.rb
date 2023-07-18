@@ -11,6 +11,20 @@ class User < ApplicationRecord
   validates :name,  presence: true, length: { in: 1..10 }
   validates :email, presence: true, uniqueness: true
 
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "がくしゅうしゃ"
+      user.actor_id = 1
+    end
+  end
+
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
+
   def hours_minutes_seconds
     st = self.study_time
     h = st / 3600
