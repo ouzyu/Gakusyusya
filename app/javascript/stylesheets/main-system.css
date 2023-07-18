@@ -5,6 +5,11 @@
   height: 64px;
 }
 
+.base-frame {
+  width: 1000px;
+  margin: 0 auto;
+}
+
 .action-view-frame {
   min-width: 1000px;
   max-width: 1000px;
@@ -75,8 +80,8 @@
 /*title*/
 
 .title {
-  width: 1000px;
-  height: 600px;
+  width: 998px;
+  height: 598px;
   background-image: url(../../assets/images/title_image.gif);
   background-position: center;
   background-size: cover;
@@ -398,7 +403,7 @@
 .quest-message-window {
   width: 1000px;
   height: 100px;
-  font-size: 35px;
+  font-size: 30px;
   position: absolute;
   top: 500px;
 }
