@@ -1,13 +1,14 @@
 $('.adventures-command-container').fadeIn();
 $('#timer-box').fadeIn();
 
+// 以下タイマー機能
+// タイマー機能に必要な変数,定数を用意
 const elmMin = document.querySelector(".min");
 const elmSec = document.querySelector(".sec");
 var quest_finished = false;
 let startTime = new Date('<%= @quest.start_time.iso8601 %>'); //クエストを始めた時間
 let finish = <%= @quest.set_seconds - @study_time %>; // クエスト時間
 
-// タイマー
 function countdown() {
   const nowTime = new Date(); // 現在時刻を取得
   let finishTime = new Date(startTime.getTime() + finish * 1000 ); //クエスト終了時刻をセット
@@ -32,6 +33,8 @@ function countdown() {
 countdown();
 let timerId = setInterval(countdown, 1000);
 
+// 以下アドベンチャー機能
+// エネミーに関する情報を取得し変数に代入
 let enemyId = 0;
 const enemyCount = <%= @enemies.count %>;
 const enemySources = <%= raw @enemy_animation_sources %>;
@@ -39,64 +42,112 @@ const enemySources = <%= raw @enemy_animation_sources %>;
 // エンカウント機能
 function encount() {
 
+  // ランダムエンカウントするエネミーを決定
   enemyId = Math.floor( Math.random() * enemyCount ) + 1;
   enemyDamagedImage = enemySources.splice(enemyId);
 
-  $('.animation-field').fadeOut(function() {
-    //map停止
-    $('#map-img').removeClass("d-none");
-    $('#avatar-standing').removeClass("d-none")
-    $('#map-gif').addClass("d-none");
-    $('#avatar-running').addClass("d-none");
-    $('.animation-field').fadeIn();
-    $(`#enemy-standing-${enemyId}`).removeClass("d-none");
+  //画面フェードアウト
+  return new Promise((resolve, reject) => {
+    $('.animation-field').fadeOut()
+    resolve();
+  })
 
-    // 3000ms後に処理
-    setTimeout(function() {
-      $('#avatar-attack').removeClass("d-none");
+  // map,avatar,enemyの表示切替
+  .then(() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        $('#map-img').removeClass("d-none");
+        $('#avatar-standing').removeClass("d-none")
+        $('#map-gif').addClass("d-none");
+        $('#avatar-running').addClass("d-none");
+        $(`#enemy-standing-${enemyId}`).removeClass("d-none");
+        resolve();
+      }, 600)
+    })
+  })
 
-      //10ms後に処理
-      setTimeout(function() {
-        $('#avatar-standing').addClass("d-none");
+  // 画面フェードイン
+  .then(() => {
+    return new Promise((resolve, reject) => {
+      $('.animation-field').fadeIn();
+      resolve();
+    })
+  })
+
+  // avatar-attackを表示し再生
+  .then(() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        $('#avatar-attack').removeClass("d-none");
+        resolve();
+      }, 3000)
+    })
+  })
+
+  // avatar-standingを非表示
+  .then(() => {
+    return new Promise((resolve, reject) => {
+      $('#avatar-standing').addClass("d-none");
+      resolve();
+    })
+  })
+
+  // enemy-damagedをd-noneで非表示のまま、cssのdisplay-noneを外す
+  .then(() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        $(`#enemy-damaged-${enemyId}`).fadeIn(0);
+        $(`#enemy-damaged-${enemyId}`).removeClass("d-none");
+        <!--$(`#enemy-damaged-${enemyId}`).attr("src",'enemyDamagedImage');-->
+        resolve();
+      }, 1100)
+    })
+  })
+
+  // enemy-standingを非表示
+  .then(() => {
+    return new Promise((resolve, reject) => {
+      $(`#enemy-standing-${enemyId}`).addClass("d-none");
+      resolve();
+    })
+  })
+
+  // enemy-damagedをフェードアウト
+  .then(() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        $(`#enemy-damaged-${enemyId}`).fadeOut();
+        resolve();
+      }, 1000)
+    })
+  })
+
+  // 画面フェードアウト
+  .then(() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        $('.animation-field').fadeOut();
+        resolve();
+      }, 1000)
+    })
+  })
+
+  // map,avatar,enemyの表示切替
+  .then(() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        $(`#enemy-damaged-${enemyId}`).addClass("d-none");
+        $('#map-img').addClass("d-none");
+        $('#avatar-attack').addClass("d-none")
         $('#avatar-attack').attr("src",'<%= url_for(@avatar_attack.image) %>');
-      }, 10);
-
-      //900ms後に処理
-      setTimeout(function() {
-        $(`#enemy-damaged-${enemyId}`).fadeIn(0, function() {
-          $(`#enemy-damaged-${enemyId}`).removeClass("d-none");
-
-          //10ms後に処理
-          setTimeout(function() {
-            $(`#enemy-standing-${enemyId}`).addClass("d-none");
-            // $(`#enemy-damaged-${enemyId}`).attr("src",'enemyDamagedImage');
-          },10);
-        });;
-
-        //2000ms後に処理
-        setTimeout(function() {
-          $(`#enemy-damaged-${enemyId}`).fadeOut(function() {
-            $(`#enemy-damaged-${enemyId}`).addClass("d-none");
-
-            //1000ms後に処理
-            setTimeout(function() {
-              $('.animation-field').fadeOut(function() {
-                $('#map-img').addClass("d-none");
-                $('#avatar-attack').addClass("d-none")
-                $('#map-gif').removeClass("d-none");
-                $('#avatar-running').removeClass("d-none");
-                $('#map-gif').attr("src",'<%= url_for(@quest.map.image) %>');
-                $('.animation-field').fadeIn();
-              });
-            },1000);
-          });
-
-        },2000);
-
-      },900);
-
-    },3000);
-  });
+        $('#map-gif').removeClass("d-none");
+        $('#avatar-running').removeClass("d-none");
+        $('#map-gif').attr("src",'<%= url_for(@quest.map.image) %>');
+        $('.animation-field').fadeIn();
+        resolve();
+      }, 600)
+    })
+  })
 };
 
 let encountId = setInterval(encount, 30000);
