@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:attention]
+  before_action :ensure_guest_user, only: [:edit]
 
   def show
     @user = current_user
@@ -39,5 +40,12 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:actor_id, :name, :is_deleted)
+  end
+
+  def ensure_guest_user
+    @user = current_user
+    if @user.guest_user?
+      redirect_to mypage_path, alert: "たいけんばんではじょうほうをへんこうできません。"
+    end
   end
 end

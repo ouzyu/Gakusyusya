@@ -40,7 +40,9 @@
           </div>
           <div class="btn-box d-flex align-items-start flex-column">
             <div class="mt-3 mb-auto mx-auto">
-              <%= link_to "じょうほうをへんこう", edit_information_path, class: "btn btn-light" %>
+              <% unless @user.guest_user? %>
+                <%= link_to "じょうほうをへんこう", edit_information_path, class: "btn btn-light" %>
+              <% end %>
             </div>
             <div class="mt-2 mx-auto">
               <%= link_to "アビリティしょうさい", abilities_path, class: "btn btn-light" %>
