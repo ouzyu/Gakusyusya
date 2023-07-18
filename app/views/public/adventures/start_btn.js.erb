@@ -37,14 +37,12 @@ let timerId = setInterval(countdown, 1000);
 // エネミーに関する情報を取得し変数に代入
 let enemyId = 0;
 const enemyCount = <%= @enemies.count %>;
-const enemySources = <%= raw @enemy_animation_sources %>;
 
 // エンカウント機能
 function encount() {
 
   // ランダムエンカウントするエネミーを決定
   enemyId = Math.floor( Math.random() * enemyCount ) + 1;
-  enemyDamagedImage = enemySources.splice(enemyId);
 
   //画面フェードアウト
   return new Promise((resolve, reject) => {
@@ -98,7 +96,6 @@ function encount() {
       setTimeout(() => {
         $(`#enemy-damaged-${enemyId}`).fadeIn(0);
         $(`#enemy-damaged-${enemyId}`).removeClass("d-none");
-        <!--$(`#enemy-damaged-${enemyId}`).attr("src",'enemyDamagedImage');-->
         resolve();
       }, 1100)
     })
