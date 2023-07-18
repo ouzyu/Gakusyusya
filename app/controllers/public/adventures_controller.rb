@@ -5,10 +5,7 @@ class Public::AdventuresController < ApplicationController
     @quest = Quest.find(params[:quest_id])
     @is_stoped = false
     @study_time = 0
-
     set_start_animations
-    enemy_animation_sources
-
     incorrect_quest_path
   end
 
@@ -16,18 +13,14 @@ class Public::AdventuresController < ApplicationController
     @quest = Quest.find(params[:quest_id])
     @quest.update(start_time: Time.now, study_time: 0)
     @study_time = @quest.study_time
-
     set_start_animations
-    enemy_animation_sources
   end
 
   def retire
     quest = Quest.find(params[:quest_id])
     user = quest.user
-
     quest.update(study_time: (Time.now - quest.start_time).to_i + quest.study_time)
     user.update(study_time: user.study_time + quest.study_time)
-
     redirect_to new_quest_path
   end
 
@@ -42,9 +35,7 @@ class Public::AdventuresController < ApplicationController
     @quest.update(start_time: Time.now)
     @study_time = @quest.study_time
     @is_stoped = false
-
     set_start_animations
-    enemy_animation_sources
   end
 
   def finish
@@ -105,14 +96,6 @@ class Public::AdventuresController < ApplicationController
 
     @boss_standing = find_by_situation(@quest.map.actors.boss.first.id, "standing")
     @boss_damaged = find_by_situation(@quest.map.actors.boss.first.id, "damaged")
-  end
-
-  def enemy_animation_sources
-    @enemy_animation_sources = []
-    @enemies.each do |enemy|
-      source = url_for(find_by_situation(enemy.id, "damaged").image)
-      @enemy_animation_sources.push(source)
-    end
   end
 
 end

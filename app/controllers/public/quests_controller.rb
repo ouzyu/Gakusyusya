@@ -10,7 +10,7 @@ class Public::QuestsController < ApplicationController
     else
       @show_box_exist = true
     end
-    @shalica = Actor.find_by(role: "npc")
+    @shalica = Actor.find_by(name: "シャリカ")
     @actors = Actor.boss
     @maps = Map.all
     @abilities = Ability.where(user_id: @user.id)
@@ -38,6 +38,11 @@ class Public::QuestsController < ApplicationController
       @actors = Actor.boss
       @maps = Map.all
       @abilities = Ability.where(user_id: @user.id)
+      if @quests.blank?
+        @show_box_exist = false
+      else
+        @show_box_exist = true
+      end
       flash.now[:alert] = "クエストのさくせいにしっぱいしました。"
       render "new"
     end
