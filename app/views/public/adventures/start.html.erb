@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="action-view-frame system-font adventures-box">
+    <%= render 'loading' %>
+    <div class="fadein-content">
+      <div class="animation-field">
+
+        <%= image_tag @quest.map.get_map_image(1000, 500), id: "map-img" %>
+        <%= image_tag @quest.map.image, size: "1000x500", id: "map-gif", class: "d-none" %>
+
+        <div class="avatar-frame">
+          <%= image_tag @avatar_standing.image, size: "480x480", id: "avatar-standing", class: "avatar-layer" %>
+          <%= image_tag @avatar_running.image, size: "480x480", id: "avatar-running", class: "d-none avatar-layer" %>
+          <%= image_tag @avatar_attack.image, size: "480x480", id: "avatar-attack", class: "d-none avatar-layer" %>
+        </div>
+
+        <div class="enemy-frame">
+          <% @enemies.each_with_index do |enemy, i| %>
+            <%= image_tag find_by_situation(enemy.id, "standing").image, size: "160x160", id: "enemy-standing-#{i + 1}", class: "d-none enemy-layer" %>
+            <%= image_tag find_by_situation(enemy.id, "damaged").image, size: "160x160", id: "enemy-damaged-#{i + 1}", class: "enemy-layer enemy-damaged" %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= render 'start_btn_box', quest: @quest %>
+      <%= render 'screen_pause' %>
+      <%= render 'timer' %>
+
+      <div class="adventures-command-window system-window system-window-border">
+        <div class="adventures-command-container">
+          <div class="adventures-command-box d-flex justify-content-between align-items-center">
+            <div class="adventures-command d-flex align-items-center justify-content-center ml-2">
+              <%= link_to "リタイアする", adventures_retire_path(quest_id: @quest.id), data: { confirm: 'ほんとうにクエストをリタイアしますか？'} %>
+            </div>
+
+            <div id="pause-command" class="adventures-command d-flex align-items-center justify-content-center">
+              <%= render 'pause_command', is_stoped: @is_stoped, quest: @quest %>
+            </div>
+
+            <div class="adventures-command d-flex align-items-center justify-content-center mr-2">
+              <%= link_to "ボスにすすむ", adventures_finish_path(quest_id: @quest.id), method: :patch, data: { confirm: 'がくしゅうをしゅうりょうしてボスにむかいますか？'} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener("load", function () {
+    $('.fadein-content').fadeIn("slow", function() {
+      $('.loading-box').fadeOut(function() {
+        $('.quest-start-btn-box').slideDown("slow");
+      });
+    });
+
+    $('#btn-quest-start').click(function() {
+      $('.quest-start-btn-box').slideUp();
+      $('#map-img').addClass("d-none");
+      $('#avatar-standing').addClass("d-none")
+      $('#map-gif').removeClass("d-none");
+      $('#avatar-running').removeClass("d-none");
+    });
+
+  });
+</script>

@@ -1,0 +1,40 @@
+<% if @actor.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @actor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="row d-flex align-items-center">
+    <h2 class="mt-3 mr-auto"><%= @actor.name %>を編集</h2>
+    <div>
+      <%= link_to "Delete Actor", admin_actor_path(@actor), method: :delete,data: { confirm: "[確認]アクターを削除します。よろしいですか？"}, class: "btn btn-danger mb-0 mt-3" %>
+    </div>
+  </div>
+  <%= form_with model: @actor, url: admin_actor_path do |f| %>
+    <div class="row">
+      <table class="table mt-3">
+        <tr>
+          <td class="col-md-2">Actor Name</td>
+          <td><%= f.text_field :name, class: "form-control col-md-4" %></td>
+        </tr>
+        <tr>
+          <td>Role</td>
+          <td><%= f.select :role, Actor.roles.keys.map, {}, class: "form-control col-md-4" %></td>
+        </tr>
+        <tr>
+          <td>Spawn Maps</td>
+          <td><%= f.select :map_id, options_from_collection_for_select(Map.all, :id, :name, selected: @actor.map_id ), { include_blank: "選択無し" }, class: "form-control col-md-4" %></td>
+        </tr>
+      </table>
+      <div class="row mx-auto">
+        <%= link_to "Return actor page", admin_actor_path(@actor), class: "btn btn-secondary btn-md" %>
+        <%= f.submit "Save changes", class: "btn btn-success btn-md ml-3" %>
+      </div>
+    </div>
+  <% end %>
+</div>

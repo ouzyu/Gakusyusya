@@ -1,0 +1,195 @@
+<div class="container">
+  <div class="action-view-frame border system-font loading-container">
+    <%= render 'now_loading' %>
+    <div class="fadein-content">
+      <div class="about-container">
+        <div class="about-content-box">
+          <div class="shalica-frame">
+            <%= image_tag @shalica_standing.image, size: "240x160" %>
+          </div>
+
+          <div class="about-content-slide-box">
+            <%= render 'sign_up' %>
+            <%= render 'sign_in' %>
+            <%= render 'mypage' %>
+            <%= render 'ability' %>
+            <%= render 'quest' %>
+            <%= render 'quest_new' %>
+            <%= render 'loading' %>
+            <%= render 'adv_start' %>
+            <%= render 'adv' %>
+            <%= render 'adv_boss' %>
+            <%= render 'adv_level_up' %>
+          </div>
+        </div>
+
+        <div class="about-message-window system-window system-window-border d-flex align-items-center">
+          <div class="about-message-window-box d-flex p-1 align-items-center">
+            <%= image_tag @shalica.have_first_animation.image, size: "80x80" %>
+            <p id="quest-message-text" class="system-font mb-0 ml-1">はじめまして！！わたしのなまえは「シャリカ」です！</p>
+            <button id="command-next-message" type="button" class="text-initialize command-next-message ml-auto">つぎへ...</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener("load", function () {
+    $('.fadein-content').fadeIn(2000, function() {
+      $('.loading-box').fadeOut();
+    });
+
+    let message_id = 0
+
+    $('#command-next-message').click(function(){
+      if (message_id == 0) {
+        $('#quest-message-text').text("いきなりですが、「がくしゅうしゃ」についてせつめいをしますね！");
+        message_id++;
+      } else if (message_id == 1 ) {
+        $('#quest-message-text').text("「がくしゅうしゃ」とは、いろいろな「がくしゅう」をしながらぼうけんをする「ゆうしゃ」のことです。");
+        message_id++;
+      } else if (message_id == 2 ) {
+        $('#quest-message-text').text("あなたさまにはぜひ、その「がくしゅうしゃ」となっていただきたいのです！");
+        message_id++;
+      } else if (message_id == 3 ) {
+        $('#quest-message-text').text("いまから「がくしゅうしゃ」になるくわしいほうほうをおはなしします！");
+        message_id++;
+      } else if (message_id == 4 ) {
+        $('#about-sign-up').slideDown();
+        $('#quest-message-text').text("はじめに、「あたらしいがくしゅうしゃになる」からデータのとうろくをします。");
+        message_id++;
+      } else if (message_id == 5 ) {
+        $('#quest-message-text').text("ひつようなじょうほうを、１つずつにゅうりょくしていきます。");
+        message_id++;
+      } else if (message_id == 6 ) {
+        $('#quest-message-text').text("わからないところは、かならず、おとうさんやおかあさんといっしょににゅうりょくしましょうね。");
+        message_id++;
+      } else if (message_id == 7 ) {
+        $('#about-sign-up').slideUp(function() {
+          $('#quest-message-text').text("データがあるばあいは、「セーブデータをロード」をクリックしましょう。");
+          message_id++;
+          $('#about-sign-in').slideDown();
+        });
+      } else if (message_id == 8 ) {
+        $('#quest-message-text').text("ここでも、ひつようなじょうほうをにゅうりょくしましょう。");
+        message_id++;
+      } else if (message_id == 9 ) {
+        $('#quest-message-text').text("もしパスワードをわすれてしまったら、おとうさんやおかあさんにきいてみましょう。");
+        message_id++;
+      } else if (message_id == 10 ) {
+        $('#about-sign-in').slideUp(function() {
+          $('#quest-message-text').text("データのさくせいや、ロードにせいこうしたばあいはステータスがめんへとうつります。");
+          message_id++;
+          $('#about-mypage').slideDown();
+        });
+      } else if (message_id == 11 ) {
+        $('#quest-message-text').text("ステータスがめんでは、がくしゅうしゃレベルとアビリティレベルのかくにんと、");
+        message_id++;
+      } else if (message_id == 12 ) {
+        $('#quest-message-text').text("とうろくされたがくしゅうしゃのじょうほうをへんこうできます。");
+        message_id++;
+      } else if (message_id == 13 ) {
+        $('#quest-message-text').text("がくしゅうしゃのみためをへんこうしたいときは、「じょうほうのへんこう」をクリックしましょう。");
+        message_id++;
+      } else if (message_id == 14 ) {
+        $('#quest-message-text').text("また、アビリティがとうろくされていなければクエストにいくことはできないため、");
+        message_id++;
+      } else if (message_id == 15 ) {
+        $('#quest-message-text').text("「アビリティしょうさい」、または、「アビリティをみる」をクリックしましょう。");
+        message_id++;
+      } else if (message_id == 16 ) {
+        $('#about-mypage').slideUp(function() {
+          $('#quest-message-text').text("アビリティのしょうさいでは、あたらしいアビリティのとうろくとへんこうをすることができます。");
+          message_id++;
+          $('#about-ability').slideDown();
+        });
+      } else if (message_id == 17 ) {
+        $('#quest-message-text').text("アビリティは６つまでとうろくでき、３つとうろくするとグラフがひょうじされます。");
+        message_id++;
+      } else if (message_id == 18 ) {
+        $('#quest-message-text').text("アビリティのなまえをクリックすると、アビリティのなまえのへんこうとさくじょができます。");
+        message_id++;
+      } else if (message_id == 19 ) {
+        $('#quest-message-text').text("アビリティのとうろくがおわったら、クエストにむかいましょう！");
+        message_id++;
+      } else if (message_id == 20 ) {
+        $('#about-ability').slideUp(function() {
+          $('#quest-message-text').text("クエストがめんでは、「クエストをうける」ことと「いままでのクエスト」をみることができます。");
+          message_id++;
+          $('#about-quest').slideDown();
+        });
+      } else if (message_id == 21 ) {
+        $('#about-quest').slideUp(function() {
+          $('#quest-message-text').text("クエストをうけるときは、むかいたいマップとたおしたいボス、つよくしたいアビリティをえらびましょう。");
+          message_id++;
+          $('#about-quest-new').slideDown();
+        });
+      } else if (message_id == 22 ) {
+        $('#quest-message-text').text("つぎに、クエストのじかんをせっていして、クエストのないようをメモしましょう。");
+        message_id++;
+      } else if (message_id == 23 ) {
+        $('#quest-message-text').text("すべてのにゅうりょくがおわったら、いよいよぼうけんにしゅっぱつしましょう！");
+        message_id++;
+      } else if (message_id == 24 ) {
+        $('#about-quest-new').slideUp(function() {
+          $('#quest-message-text').text("クエストのよみこみにはじかんがかかるばあいがあります。そのままおまちくださいね。");
+          message_id++;
+          $('#about-loading').slideDown();
+        });
+      } else if (message_id == 25 ) {
+        $('#about-loading').slideUp(function() {
+          $('#quest-message-text').text("よみこみおわったらボタンをおしてクエストスタート！");
+          message_id++;
+          $('#about-adv-start').slideDown();
+        });
+      } else if (message_id == 26 ) {
+        $('#about-adv-start').slideUp(function() {
+          $('#quest-message-text').text("クエストがはじまると、タイマーがすすんでいくのでしゅうちゅうしてがくしゅうしましょう。");
+          message_id++;
+          $('#about-adv').slideDown();
+        });
+      } else if (message_id == 27 ) {
+        $('#quest-message-text').text("クエストをとちゅうでやめるばあいは「リタイアする」をクリックしましょう。");
+        message_id++;
+      } else if (message_id == 28 ) {
+        $('#quest-message-text').text("リタイアしたばあいは、がくしゅうじかんだけがきろくされます。");
+        message_id++;
+      } else if (message_id == 29 ) {
+        $('#quest-message-text').text("「ポーズする」をクリックするとタイマーがとまります。「ポーズかいじょ」でうごきだします。");
+        message_id++;
+      } else if (message_id == 30 ) {
+        $('#quest-message-text').text("タイマーがおわるか、がくしゅうがはやくおわったばあいは「ボスにすすむ」をクリックしましょう！");
+        message_id++;
+      } else if (message_id == 31 ) {
+        $('#about-adv').slideUp(function() {
+          $('#quest-message-text').text("クエストボスとのたたかいです！きょうりょくな「ひっさつわざ」をつかいましょう！！");
+          message_id++;
+          $('#about-adv-boss').slideDown();
+        });
+      } else if (message_id == 32 ) {
+        $('#about-adv-boss').slideUp(function() {
+          $('#quest-message-text').text("ボスをたおすと、がくしゅうしゃレベルとアビリティレベルがアップします！！");
+          message_id++;
+          $('#about-adv-level-up').slideDown();
+        });
+      } else if (message_id == 33 ) {
+        $('#about-adv-level-up').slideUp(function() {
+          $('#quest-message-text').text("「がくしゅうしゃ」のせつめいはこれでぜんぶです！！");
+          message_id++;
+        });
+      } else if (message_id == 34 ) {
+        $('#quest-message-text').text("もういちど、せつめいをききたいばあいは、「さいしょから」をクリックしてくださいね。");
+        $('#command-next-message').text("さいしょから");
+        message_id++;
+      } else if (message_id == 35 ) {
+        $('#about-adv-level-up').slideUp(function() {
+          $('#quest-message-text').text("「がくしゅうしゃ」とは、いろいろな「がくしゅう」をしながらぼうけんをする「ゆうしゃ」のことです。");
+          $('#command-next-message').text("つぎへ...");
+          message_id = 2;
+        });
+      }
+    });
+  });
+</script>

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row d-inline">
+    <div class="offset-2 pl-3">
+      <h2 class="col-4 px-0">Users</h5>
+    </div>
+    <div class="col-md-8 mx-auto">
+      <table class="table table-hover border-bottom">
+        <thead class="text-center">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>email</th>
+            <th>status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr class="text-center">
+              <td class="align-middle"><%= user.id %></td>
+              <td>
+                <%= link_to admin_user_path(user) do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td class="align-middle"><%= user.email %></td>
+              <td class="align-middle">
+                <% if user.is_deleted == false %>
+                  <p class="text-success font-weight-bold align-middle mb-0">有効</p>
+                <% else %>
+                  <p class="text-secondary font-weight-bold align-middle mb-0">退会</p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="paginate-div mx-auto mb-5">
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>

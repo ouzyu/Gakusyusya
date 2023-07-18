@@ -1,0 +1,54 @@
+<div class="container">
+  <h2 class="mt-3 offset-md-3 col-md-9">Actors</h2>
+  <div class='row'>
+    <div class="col-md-2 my-3 border pb-2">
+      <%= form_with model: @actor, url: admin_actors_path do |f| %>
+        <ul class="list-unstyled text-center">
+          <li class="h4">New Actor</li>
+          <li><%= f.label :name %></li>
+          <li><%= f.text_field :name, class: "form-control" %></li>
+          <li class="mt-2"><%= f.label :role %></li>
+          <li><%= f.select :role, Actor.roles.keys.map, {}, class: "form-control" %></li>
+          <li class="mt-2"><%= f.label :map_id, "Map" %><br>(only enemy need)</li>
+          <li><%= f.select :map_id, options_from_collection_for_select(Map.all, :id, :name), { include_blank: "選択無し" }, class: "form-control" %></li>
+          <li><%= f.submit class: "btn btn-success mt-2" %></li>
+        </ul>
+      <% end %>
+    </div>
+    <div class='col-md-9 offset-md-1 my-3'>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="col-md-3 text-center align-middle">Graphic</th>
+            <th class="text-center align-middle">Name</th>
+            <th class="text-center align-middle">Role</th>
+            <th class="text-center align-middle">Spawn Map</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @actors.each do |actor| %>
+            <tr>
+              <td class="text-center align-middle">
+                <% if actor.have_first_animation.present? %>
+                  <%= image_tag actor.have_first_animation.image, size: "80x80" %>
+                <% end %>
+              </td>
+              <td class="text-center align-middle"><%= link_to actor.name, admin_actor_path(actor) %></td>
+              <td class="text-center align-middle"><%= actor.role %></td>
+              <td class="text-center align-middle">
+                <% if actor.map_id.present? %>
+                  <%= link_to actor.map.name, edit_admin_map_path(actor.map_id) %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="paginate-div mx-auto">
+      <%= paginate @actors, class: "col-md-9" %>
+    </div>
+  </div>
+</div>

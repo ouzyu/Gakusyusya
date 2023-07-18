@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <h2 class="mt-3"><%= @user.name %>さんの情報編集</h2>
+  </div>
+  <%= form_with model: @user, url: admin_user_path do |f| %>
+    <div class="row">
+      <table class="table mt-3">
+        <tr>
+          <td class="col-md-2">ID</td>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <td>Nick Name</td>
+          <td><%= f.text_field :name, class: "form-control col-md-4" %></td>
+        </tr>
+        <tr>
+          <td>Actor</td>
+          <td><%= f.select :actor_id, options_from_collection_for_select(Actor.where(role: "avatar"), :id, :name, selected: @user.actor_id ), {}, class: "form-control col-md-4" %></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td>email</td>
+          <td><%= f.email_field :email, class: "form-control col-md-4" %></td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td>
+            <%= f.label :is_deleted, "有効" %>
+            <%= f.radio_button :is_deleted, false %>
+            <%= f.label :is_deleted, "退会" %>
+            <%= f.radio_button :is_deleted, true %>
+          </td>
+        </tr>
+      </table>
+
+      <div class="row mx-auto">
+        <%= link_to "Return User page", admin_user_path(@user), class: "btn btn-secondary btn-md" %>
+        <%= f.submit "Save changes", class: "btn btn-success btn-md ml-3" %>
+      </div>
+    </div>
+  <% end %>
+</div>

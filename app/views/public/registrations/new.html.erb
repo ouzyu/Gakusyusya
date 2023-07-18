@@ -1,29 +1,62 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="container">
   <%= render "public/shared/error_messages", resource: resource %>
+  <div class="action-view-frame system-window system-window-border system-font">
+    <div class="fadein-content">
+      <%= form_with model: @user, url: user_registration_path do |f| %>
+        <div class="form-container p-1">
+          <div class="sign_up-left-sidebar system-window-border p-4">
+            <div class="field">
+              <%= f.label :name, "がくしゅうしゃのなまえをにゅうりょくしてください。" %><br />
+              <%= f.text_field :name, autofocus: true, class: "form-control col-md-10" %>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class="field mt-4">
+              <%= f.label :actor_id, "がくしゅうしゃのみためをえらんでください。" %><br />
+              <%= f.select :actor_id, options_from_collection_for_select(@actors, :id, :name), {}, class: "form-control col-md-10" %>
+            </div>
+
+            <div class="field mt-4">
+              <%= f.label :email, "メールアドレスをにゅうりょくしてください。" %><br />
+              <%= f.email_field :email, autocomplete: "email", class: "form-control col-md-10" %>
+            </div>
+
+            <div class="field mt-4">
+              <%= f.label :password, "パスワードをにゅうりょくしてください。（６もじいじょう）" %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-md-10" %>
+            </div>
+
+            <div class="field mt-4">
+              <%= f.label :password_confirmation, "パスワードをもういちどにゅうりょくしてください。" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-md-10" %>
+            </div>
+          </div>
+          <div class="sign_up-right-sidebar system-window-border ml-1 p-1">
+            <div class="avatar-preview-box border" style="min-height: 300px; min-width: 300px;">
+              <% @actors.each do |actor| %>
+                <%= image_tag actor.have_first_animation.image, size: "300x300", id: "avatar-image-#{actor.id}", class: "avatar-image d-none" %>
+              <% end %>
+            </div>
+
+            <div class="actions sign_up-start-box d-flex align-items-end">
+              <%= f.submit "がくしゅうをはじめる！", class: "btn btn-success sign_up-start-btn mx-auto" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+<script>
+  $(document).ready(function(){
+    $('.fadein-content').fadeIn("slow");
+    var selectActorId = "#avatar-image-" + $('select').val();
+    $(selectActorId).removeClass("d-none");
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+    $('select').change(function() {
+      $(".avatar-image").addClass("d-none");
+      var imageId = "#avatar-image-" + $(this).val();
+      $(imageId).removeClass("d-none");
+    });
+  });
+</script>
