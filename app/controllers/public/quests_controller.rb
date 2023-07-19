@@ -26,13 +26,12 @@ class Public::QuestsController < ApplicationController
 
   def create
     @user = current_user
-    quest = Quest.new(quest_params)
-    quest.user_id = @user.id
-    quest.start_time = Time.now
-    if quest.save
+    @quest = Quest.new(quest_params)
+    @quest.user_id = @user.id
+    @quest.start_time = Time.now
+    if @quest.save
       redirect_to adventures_start_path(quest_id: quest.id)
     else
-      @quest = Quest.new
       @quests = Quest.where(user_id: @user)
       @shalica = Actor.find_by(name: "シャリカ")
       @actors = Actor.boss

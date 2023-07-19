@@ -1,7 +1,11 @@
 /*system*/
 
+header {
+  margin-bottom: 10px;
+}
+
 .logo {
-  width: 64px;
+  width: 192px;
   height: 64px;
 }
 
@@ -16,6 +20,7 @@
   min-height: 600px;
   max-height: 600px;
   box-shadow: 0 0 0 1px black;
+  position: relative;
 }
 
 .sound-menu {
@@ -75,6 +80,23 @@
 
 .nav-box {
   width: 1000px;
+}
+
+.error-frame {
+  box-shadow: 0 0 0 1px black;
+}
+
+.error-frame p {
+  font-size: 30px;
+}
+
+#flash-message {
+  width: 1000px;
+  position: absolute;
+  top: 0px;
+  font-size: 20px;
+  display: none;
+  z-index: 101;
 }
 
 /*title*/
