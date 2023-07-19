@@ -2,15 +2,14 @@ class Admin::AnimationsController < ApplicationController
   before_action :authenticate_admin!
 
   def create
-    animation = Animation.new(animation_params)
-    situation = animation.situation_id
-    if animation.save
+    @animation = Animation.new(animation_params)
+    situation = @animation.situation_id
+    if @animation.save
       redirect_to admin_situation_path(situation), notice: "新規アニメーションを作成しました。"
     else
       @situation = Situation.find(situation)
       @actor = Actor.find(@situation.actor_id)
       @animations = Animation.where(situation_id: @situation.id).page(params[:page]).per(6)
-      @animation = Animation.new(situation_id: @situation.id)
       flash.now[:alert] = "アニメーションの作成に失敗しました。"
       render "admin/situations/show"
     end
@@ -21,9 +20,9 @@ class Admin::AnimationsController < ApplicationController
   end
 
   def update
-    animation = Animation.find(params[:id])
-    situation = animation.situation_id
-    if animation.update(animation_params)
+    @animation = Animation.find(params[:id])
+    situation = @animation.situation_id
+    if @animation.update(animation_params)
       redirect_to admin_situation_path(situation), notice: "アニメーションの更新に成功しました。"
     else
       flash.now[:alert] = "情報の更新に失敗しました。"

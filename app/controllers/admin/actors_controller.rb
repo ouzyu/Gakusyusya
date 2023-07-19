@@ -19,7 +19,7 @@ class Admin::ActorsController < ApplicationController
       redirect_to admin_actor_path(actor), notice: "新規アクターを作成しました。"
     else
       flash.now[:alert] = "作成に失敗しました。"
-      render "index", status: :unprocessable_entity
+      render "index"
     end
   end
 

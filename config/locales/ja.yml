@@ -33,7 +33,8 @@ ja:
 
       map:
         map:                    'マップ'
-        content:                'マップ名'
+        name:                   'マップ名'
+        image:                  'マップ画像'
 
       actor:
         actor:                  'アクター'
@@ -48,12 +49,17 @@ ja:
       animation:
         animation:              'アニメーション'
         name:                   'アニメーション名'
+        image:                  'アニメーション画像'
 
     errors:
       messages:
-        blank:            "をにゅうりょくしてください。"
-        invalid:          "は「ふせい」な「あたい」です。"
-        not_saved:        "「ただしく」にゅうりょくしてください。"
-        not_a_number:     "は「すうじ」をにゅうりょくしてください。"
-        required:         "をにゅうりょくしてください。"
-        confirmation:     "とにゅうりょくされたパスワードの「ないよう」がいっちしません"
+        blank:                    "をにゅうりょくしてください。"
+        invalid:                  "は「ふせい」な「あたい」です。"
+        not_saved:                "「ただしく」にゅうりょくしてください。"
+        not_a_number:             "は「すうじ」をにゅうりょくしてください。"
+        required:                 "をにゅうりょくしてください。"
+        confirmation:             "とにゅうりょくされたパスワードの「ないよう」がいっちしません。"
+        greater_than_or_equal_to: "いじょうでにゅうりょくしてください。"
+        too_short:                "は「%{count}もじいじょう」でにゅうりょくしてください。"
+        too_long:                 "は「%{count}もじいない」でにゅうりょくしてください。"
+        taken:                    "はすでにとうろくされています。"
