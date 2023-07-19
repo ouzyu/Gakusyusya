@@ -104,7 +104,7 @@ header {
 .title {
   width: 998px;
   height: 598px;
-  background-image: url(../../assets/images/title_image.gif);
+  background-image: url(../../assets/images/animations/title_image.gif);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -403,7 +403,7 @@ header {
 }
 
 .quest-counter-bg {
-  background-image: url(../../assets/images/quest_counter.gif);
+  background-image: url(../../assets/images/animations/quest_counter.gif);
   background-position: center;
   background-size: cover;
 }
