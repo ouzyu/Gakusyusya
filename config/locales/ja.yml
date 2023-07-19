@@ -6,7 +6,54 @@ ja:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%m/%d %H:%M"
+
+  activerecord:
+    attributes:
+      user:
+        user:                   'がくしゅうしゃのじょうほう'
+        name:                   'なまえ'
+        email:                  'メールアドレス'
+        password:               'パスワード'
+        password_confirmation:  'かくにんようパスワード'
+
+      ability:
+        ability:                'アビリティ'
+        name:                   'アビリティのなまえ'
+        level:                  'アビリティレベル'
+
+      quest:
+        quest:                  'クエスト'
+        content:                'クエストないよう'
+        seconds:                'タイム'
+
+      map:
+        map:                    'マップ'
+        content:                'マップ名'
+
+      actor:
+        actor:                  'アクター'
+        name:                   'アクター名'
+        role:                   'ロール'
+        map_id:                 'マップ選択'
+
+      situation:
+        situation:              'シチュエーション'
+        name:                   'シチュエーション名'
+
+      animation:
+        animation:              'アニメーション'
+        name:                   'アニメーション名'
+
+    errors:
+      messages:
+        blank:            "をにゅうりょくしてください。"
+        invalid:          "は「ふせい」な「あたい」です。"
+        not_saved:        "「ただしく」にゅうりょくしてください。"
+        not_a_number:     "は「すうじ」をにゅうりょくしてください。"
+        required:         "をにゅうりょくしてください。"
+        confirmation:     "とにゅうりょくされたパスワードの「ないよう」がいっちしません"
