@@ -3,14 +3,19 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :set_avatar_image, only: [:new]
 
   def after_sign_in_path_for(resource)
     mypage_path
   end
 
-  # GET /resource/sign_up
-  def new
+  def set_avatar_image
     @actors = Actor.avatar
+  end
+  # GET /resource/sign_up
+
+  def create
+    set_avatar_image
     super
   end
 

@@ -18,7 +18,7 @@ class Actor < ApplicationRecord
 
   def check_map_id
     if (self.role == "enemy" || self.role == "boss" ) && !self.map_id.present?
-      errors.add :map_id, "エネミーとボスはマップと関連付けてください。"
+      errors.add :map_id, "　エネミーとボスはマップと関連付けてください。"
       return false
     end
     return true

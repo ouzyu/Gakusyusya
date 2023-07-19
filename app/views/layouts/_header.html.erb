@@ -6,18 +6,15 @@
           <% unless user_signed_in? %>
             <%= link_to root_path do %>
               <%= image_tag 'gakusyusya_logo.gif', class: "logo" %>
-              <span class="text-initialize">がくしゅうしゃ</span>
             <% end %>
           <% else %>
             <%= link_to mypage_path do %>
               <%= image_tag 'gakusyusya_logo.gif', class: "logo" %>
-              <span class="text-initialize">がくしゅうしゃ</span>
             <% end %>
           <% end %>
         <% else %>
           <%= link_to admin_actors_path do %>
             <%= image_tag 'gakusyusya_logo.gif', class: "logo" %>
-            <span class="text-initialize">がくしゅうしゃ</span>
           <% end %>
         <% end %>
         <div class="ml-auto">

@@ -10,14 +10,13 @@ class Public::AbilitiesController < ApplicationController
 
   def create
     @user = current_user
-    @ability = Ability.new
     @abilities = Ability.where(user_id: @user.id)
     set_chart_data
 
-    ability = Ability.new(ability_params)
-    ability.user_id = @user.id
+    @ability = Ability.new(ability_params)
+    @ability.user_id = @user.id
     unless @abilities.count >= 6
-      if ability.save
+      if @ability.save
         redirect_to abilities_path, notice: "あたらしいアビリティをついかしました。"
       else
 

@@ -14,20 +14,33 @@
   <body>
     <%= render 'layouts/header' %>
     <main>
-      <div class="alert-success">
-        <div class="base-frame">
-          <%= notice %>
+      <% if admin_signed_in? %>
+        <div class="alert-success">
+          <div class="base-frame">
+            <%= notice %>
+          </div>
         </div>
-      </div>
-      <div class="alert-danger">
-        <div class="base-frame">
-          <%= alert %>
+
+        <div class="alert-danger">
+          <div class="base-frame">
+            <%= alert %>
+          </div>
         </div>
-      </div>
+      <% end %>
+
       <%= yield %>
     </main>
     <% unless admin_signed_in? %>
       <%= render 'layouts/footer' %>
     <% end %>
+
+    <script>
+      $(document).ready(function() {
+        $('#flash-message').slideDown();
+        setTimeout(() => {
+          $('#flash-message').slideUp();
+        },3000)
+      });
+    </script>
   </body>
 </html>
