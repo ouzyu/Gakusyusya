@@ -5,30 +5,21 @@ class Public::AbilitiesController < ApplicationController
     @user = current_user
     @abilities = Ability.where(user_id: @user.id)
     @ability = Ability.new
-    # グラフ表示用
-    @chart_abilities_name = Array.new
-    @chart_abilities_level = Array.new
-    @abilities.each do |ability|
-      @chart_abilities_name << ability.name
-      @chart_abilities_level << ability.level
-    end
-    if @chart_abilities_level.blank?
-      @chart_max_level = 1
-    else
-      @chart_max_level = @chart_abilities_level.max
-    end
+    set_chart_data
   end
 
   def create
     @user = current_user
-    @ability = Ability.new
     @abilities = Ability.where(user_id: @user.id)
-    ability = Ability.new(ability_params)
-    ability.user_id = @user.id
+    set_chart_data
+
+    @ability = Ability.new(ability_params)
+    @ability.user_id = @user.id
     unless @abilities.count >= 6
-      if ability.save
+      if @ability.save
         redirect_to abilities_path, notice: "あたらしいアビリティをついかしました。"
       else
+
         flash.now[:alert] = "アビリティのついかにしっぱいしました。"
         render "index"
       end
@@ -62,5 +53,19 @@ class Public::AbilitiesController < ApplicationController
 
   def ability_params
     params.require(:ability).permit(:name)
+  end
+
+  def set_chart_data
+    @chart_abilities_name = Array.new
+    @chart_abilities_level = Array.new
+    @abilities.each do |ability|
+      @chart_abilities_name << ability.name
+      @chart_abilities_level << ability.level
+    end
+    if @chart_abilities_level.blank?
+      @chart_max_level = 1
+    else
+      @chart_max_level = @chart_abilities_level.max
+    end
   end
 end

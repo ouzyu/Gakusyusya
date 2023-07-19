@@ -14,22 +14,11 @@ class Admin::ActorsController < ApplicationController
 
   def create
     @actors = Actor.page(params[:page]).per(6)
-    @actor = Actor.new
-    actor = Actor.new(actor_params)
-    unless actor.role == "enemy" && actor.map_id == nil
-      unless actor.role == "boss" && actor.map_id == nil
-        if actor.save
-          redirect_to admin_actor_path(actor), notice: "新規アクターを作成しました。"
-        else
-          flash.now[:alert] = "作成に失敗しました。"
-          render "index"
-        end
-      else
-        flash.now[:alert] = "ボスとマップを関連付けてください。"
-        render "index"
-      end
+    @actor = Actor.new(actor_params)
+    if @actor.save
+      redirect_to admin_actor_path(actor), notice: "新規アクターを作成しました。"
     else
-      flash.now[:alert] = "エネミーとマップを関連付けてください。"
+      flash.now[:alert] = "作成に失敗しました。"
       render "index"
     end
   end

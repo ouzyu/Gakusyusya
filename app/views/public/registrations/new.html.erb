@@ -1,8 +1,8 @@
-<div class="container">
-  <%= render "public/shared/error_messages", resource: resource %>
+<div class="base-frame">
+  <%= form_with model: @user, url: user_registration_path do |f| %>
+  <%= render 'layouts/error_message_shalica.html.erb', model: f.object %>
   <div class="action-view-frame system-window system-window-border system-font">
     <div class="fadein-content">
-      <%= form_with model: @user, url: user_registration_path do |f| %>
         <div class="form-container p-1">
           <div class="sign_up-left-sidebar system-window-border p-4">
             <div class="field">
@@ -42,9 +42,9 @@
             </div>
           </div>
         </div>
-      <% end %>
     </div>
   </div>
+      <% end %>
 </div>
 
 <script>

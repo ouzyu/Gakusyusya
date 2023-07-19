@@ -1,38 +1,39 @@
-<div class="container">
-  <div class="action-view-frame system-window system-window-border system-font">
-    <div class="fadein-content">
-      <%= form_with model: @user, url: update_information_path do |f| %>
-        <div class="form-container p-1">
-          <div class="sign_up-left-sidebar system-window-border d-flex align-items-start flex-column p-4">
-            <div class="field user_info-edit-form">
-              <%= f.label :name, "がくしゅうしゃのなまえをへんこう。" %><br />
-              <%= f.text_field :name, autofocus: true, class: "form-control" %>
-            </div>
+<div class="base-frame">
+  <%= form_with model: @user, url: update_information_path do |f| %>
+    <%= render 'layouts/error_message_shalica.html.erb', model: f.object %>
+    <div class="action-view-frame system-window system-window-border system-font">
+      <div class="fadein-content">
+          <div class="form-container p-1">
+            <div class="sign_up-left-sidebar system-window-border d-flex align-items-start flex-column p-4">
+              <div class="field user_info-edit-form">
+                <%= f.label :name, "がくしゅうしゃのなまえをへんこう。" %><br />
+                <%= f.text_field :name, autofocus: true, class: "form-control" %>
+              </div>
 
-            <div class="field mt-4 user_info-edit-form">
-              <%= f.label :actor_id, "がくしゅうしゃのみためをへんこう。" %><br />
-              <%= f.select :actor_id, options_from_collection_for_select(@actors, :id, :name, selected: @user.actor_id ), {}, class: "form-control" %>
-            </div>
+              <div class="field mt-4 user_info-edit-form">
+                <%= f.label :actor_id, "がくしゅうしゃのみためをへんこう。" %><br />
+                <%= f.select :actor_id, options_from_collection_for_select(@actors, :id, :name, selected: @user.actor_id ), {}, class: "form-control" %>
+              </div>
 
-            <div class="mt-auto mb-3">
-              <%= link_to "データをさくじょする", confirm_unsubscribe_path, class: "btn btn-danger" %>
+              <div class="mt-auto mb-3">
+                <%= link_to "データをさくじょする", confirm_unsubscribe_path, class: "btn btn-danger" %>
+              </div>
+            </div>
+            <div class="sign_up-right-sidebar system-window-border ml-1 p-1">
+              <div class="border" style="min-height: 300px; min-width: 300px;">
+                <% @actors.each do |actor| %>
+                  <%= image_tag actor.have_first_animation.image, size: "300x300", id: "avatar-image-#{actor.id}", class: "avatar-image d-none" %>
+                <% end %>
+              </div>
+
+              <div class="actions sign_up-start-box d-flex align-items-end">
+                <%= f.submit "へんこうをほぞんする！", class: "btn btn-success sign_up-start-btn mx-auto" %>
+              </div>
             </div>
           </div>
-          <div class="sign_up-right-sidebar system-window-border ml-1 p-1">
-            <div class="border" style="min-height: 300px; min-width: 300px;">
-              <% @actors.each do |actor| %>
-                <%= image_tag actor.have_first_animation.image, size: "300x300", id: "avatar-image-#{actor.id}", class: "avatar-image d-none" %>
-              <% end %>
-            </div>
-
-            <div class="actions sign_up-start-box d-flex align-items-end">
-              <%= f.submit "へんこうをほぞんする！", class: "btn btn-success sign_up-start-btn mx-auto" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <script>

@@ -18,6 +18,7 @@ class Public::UsersController < ApplicationController
       redirect_to mypage_path, notice: "へんこうをほぞんしました。"
     else
       flash.now[:alert] = "へんこうのほぞんにしっぱいしました。"
+      @actors = Actor.avatar
       render :edit
     end
   end

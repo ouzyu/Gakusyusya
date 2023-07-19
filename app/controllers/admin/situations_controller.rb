@@ -9,13 +9,12 @@ class Admin::SituationsController < ApplicationController
   end
 
   def create
-    situation = Situation.new(situation_params)
-    if situation.save
-      redirect_to admin_situation_path(situation), notice: "新規シチュエーションを作成しました"
+    @situation = Situation.new(situation_params)
+    if @situation.save
+      redirect_to admin_situation_path(@situation), notice: "新規シチュエーションを作成しました"
     else
-      @actor = Actor.find(situation.actor_id)
+      @actor = Actor.find(@situation.actor_id)
       @situations = Situation.where(actor_id: @actor.id).page(params[:page]).per(6)
-      @situation = Situation.new(actor_id: @actor.id)
       flash.now[:alert] = "作成に失敗しました。"
       render "admin/actors/show"
     end
@@ -26,9 +25,9 @@ class Admin::SituationsController < ApplicationController
   end
 
   def update
-    situation = Situation.find(params[:id])
-    if situation.update(situation_params)
-      redirect_to admin_situation_path(situation), notice: "情報の更新に成功しました。"
+    @situation = Situation.find(params[:id])
+    if @situation.update(situation_params)
+      redirect_to admin_situation_path(@situation), notice: "情報の更新に成功しました。"
     else
       flash.now[:alert] = "情報の更新に失敗しました。"
       render "edit"

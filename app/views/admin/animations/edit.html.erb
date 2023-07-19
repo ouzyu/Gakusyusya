@@ -1,11 +1,17 @@
-<div class="container">
-  <%= form_with model: @animation, url: admin_animation_path do |f| %>
+<%= form_with model: @animation, url: admin_animation_path do |f| %>
+  <div id="error-message" class="alert alert-warning d-none">
+    <ul>
+      <li>アニメーションを選択してください。</li>
+    </ul>
+  </div>
+
+  <div class="base-frame">
     <div class="row d-flex align-items-center">
       <h2 class="mt-3 mr-2">アニメーションを編集</h2>
-      <%= f.file_field :image, id: "fileElem",class: "form-control-file", accept: 'image/*', onchange: "previewImage(this);", style: "display:none" %>
+      <%= f.file_field :image, id: "fileElem", required: true, class: "form-control-file", accept: 'image/*', onchange: "previewImage(this);", style: "display:none" %>
       <button id="fileSelect" class="btn btn-secondary mt-2 mr-auto" type="button">画像を選択</button>
       <div>
-        <%= link_to "Delete animation", admin_animation_path(@animation), method: :delete,data: { confirm: "[確認]アニメーションを削除します。よろしいですか？"}, class: "btn btn-danger mb-0 mt-3" %>
+        <%= link_to "Delete animation", admin_animation_path(@animation), method: :delete, data: { confirm: "[確認]アニメーションを削除します。よろしいですか？"}, class: "btn btn-danger mb-0 mt-3" %>
       </div>
     </div>
     <div class="row">
@@ -25,14 +31,19 @@
       </div>
       <div class="row mx-auto mt-3">
         <%= link_to "Return Situatin page", admin_situation_path(@animation.situation_id), class: "btn btn-secondary btn-md" %>
-        <%= f.submit "Save changes", class: "btn btn-success btn-md ml-3" %>
+        <%= f.submit "Save changes", id: "submit", class: "btn btn-success btn-md ml-3" %>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
-<!--画像プレビュー-->
 <script>
+  const fileSelect = document.getElementById("fileSelect");
+  const fileElem = document.getElementById("fileElem");
+  const submitBtn = document.getElementById("submit");
+  let fileSelected = false;
+
+  // 画像プレビュー
   function previewImage(obj) {
   	var fileReader = new FileReader();
   	fileReader.onload = (function() {
@@ -40,16 +51,19 @@
   	});
   	fileReader.readAsDataURL(obj.files[0]);
   }
-</script>
 
-<!--選択ファイル名非表示-->
-<script>
-  const fileSelect = document.getElementById("fileSelect");
-  const fileElem = document.getElementById("fileElem");
-
+  // 選択ファイル名非表示
   fileSelect.addEventListener("click", (e) => {
     if (fileElem) {
       fileElem.click();
+      fileSelected = true;
+    }
+  }, false);
+
+  // アニメーション未選択エラー
+  submitBtn.addEventListener("click", (e) => {
+    if (fileSelected == false) {
+      $('#error-message').removeClass("d-none");
     }
   }, false);
 </script>

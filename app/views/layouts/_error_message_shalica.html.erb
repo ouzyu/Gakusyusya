@@ -1,0 +1,15 @@
+<% if model.errors.any? %>
+  <div class="error-frame system-window system-window-border system-font mt-3 mb-3">
+    <div class="d-flex p-1 align-items-center">
+      <%= image_tag 'animations/shalica_face.gif', size: "80x80" %>
+      <p class="mb-0 ml-1">がくしゅうしゃさま！エラーがでています！</p>
+    </div>
+    <div>
+      <ul>
+        <% model.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

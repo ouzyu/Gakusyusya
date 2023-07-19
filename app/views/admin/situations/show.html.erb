@@ -1,58 +1,64 @@
-<div class="container">
-  <div class="row d-flex align-items-center">
-    <h2 class="mt-3 offset-md-3 col-md-7"><%= @actor.name + " " + @situation.name %> Animations</h2>
-    <div class="ml-auto">
-      <%= link_to "Return Actor Details", admin_actor_path(@actor), class: "btn btn-secondary mb-0 mt-3" %>
-    </div>
-  </div>
-  <div class='row'>
-    <div class="col-md-2 my-3 border pb-2">
-      <%= form_with model: @animation, url: admin_animations_path do |f| %>
-        <%= f.hidden_field :situation_id %>
-        <ul class="list-unstyled text-center">
-          <li class="h4">New Animation</li>
-          <li>
-            <div class="border" style="min-height: 150px; min-width: 150px;">
-              <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; max-height: 150px; min-height: 150px; max-width: 150px; object-fit: cover;">
-            </div>
-          </li>
-          <li>
-            <%= f.file_field :image, id: "fileElem",class: "form-control-file", accept: 'image/*', onchange: "previewImage(this);", style: "display:none" %>
-            <button id="fileSelect" class="btn btn-secondary mt-2" type="button">画像を選択</button>
-          </li>
-          <li><%= f.submit class: "btn btn-success mt-2" %></li>
-        </ul>
-      <% end %>
-      <div class="edit-situation-box d-flex align-items-end">
-        <%= link_to "Edit situation", edit_admin_situation_path(@situation), class: "btn btn-success mx-auto" %>
+<%= form_with model: @animation, url: admin_animations_path do |f| %>
+  <%= render 'layouts/error_message.html.erb', model: f.object %>
+  <div class="base-frame">
+    <div class="row d-flex align-items-center">
+      <h2 class="mt-3 offset-md-3 col-md-7"><%= @actor.name + " " + @situation.name %> Animations</h2>
+      <div class="ml-auto">
+        <%= link_to "Return Actor Details", admin_actor_path(@actor), class: "btn btn-secondary mb-0 mt-3" %>
       </div>
     </div>
-    <div class='col-md-9 offset-md-1 my-3'>
-      <div style="min-height: 550px; max-width: 880px;">
-        <div class="mx-auto">
-          <h4>Graphic</h4>
-        </div>
-        <div class="situation-show-animations-container border d-flex flex-wrap">
-          <% @animations.each do |animation| %>
-            <div class="situation-show-animations-box">
-              <%= link_to edit_admin_animation_path(animation) do %>
-                <%= image_tag animation.image, size: "200x200" %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="paginate-div mx-auto">
-      <%= paginate @animations, class: "col-md-9" %>
-    </div>
-  </div>
-</div>
 
-<!--画像プレビュー-->
+    <div class='row'>
+      <div class="col-md-2 my-3 border pb-2">
+          <%= f.hidden_field :situation_id %>
+          <ul class="list-unstyled text-center">
+            <li class="h4">New Animation</li>
+            <li>
+              <div class="border" style="min-height: 150px; min-width: 150px;">
+                <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; max-height: 150px; min-height: 150px; max-width: 150px; object-fit: cover;">
+              </div>
+            </li>
+            <li>
+              <%= f.file_field :image, id: "fileElem",class: "form-control-file", accept: 'image/*', onchange: "previewImage(this);", style: "display:none" %>
+              <button id="fileSelect" class="btn btn-secondary mt-2" type="button">画像を選択</button>
+            </li>
+            <li><%= f.submit class: "btn btn-success mt-2" %></li>
+          </ul>
+        <div class="edit-situation-box d-flex align-items-end">
+          <%= link_to "Edit situation", edit_admin_situation_path(@situation), class: "btn btn-success mx-auto" %>
+        </div>
+      </div>
+
+      <div class='col-md-9 offset-md-1 my-3'>
+        <div style="min-height: 550px; max-width: 880px;">
+          <div class="mx-auto">
+            <h4>Graphic</h4>
+          </div>
+          <div class="situation-show-animations-container border d-flex flex-wrap">
+            <% @animations.each do |animation| %>
+              <div class="situation-show-animations-box">
+                <%= link_to edit_admin_animation_path(animation) do %>
+                  <%= image_tag animation.image, size: "200x200" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="paginate-div mx-auto">
+        <%= paginate @animations, class: "col-md-9" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
 <script>
+
+  // 画像プレビュー
   function previewImage(obj) {
   	var fileReader = new FileReader();
   	fileReader.onload = (function() {
@@ -60,10 +66,8 @@
   	});
   	fileReader.readAsDataURL(obj.files[0]);
   }
-</script>
 
-<!--選択ファイル名非表示-->
-<script>
+  // 選択ファイル名非表示
   const fileSelect = document.getElementById("fileSelect");
   const fileElem = document.getElementById("fileElem");
 

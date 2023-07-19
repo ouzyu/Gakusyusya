@@ -1,0 +1,15 @@
+<% unless admin_signed_in? %>
+  <% if notice || alert %>
+    <div class="base-frame">
+      <div id="flash-message" class="error-frame system-window system-window-border system-font">
+        <div class="d-flex p-1 align-items-center">
+          <%= image_tag 'animations/shalica_face.gif', size: "80x80" %>
+          <div class="mb-0 ml-1">
+            <%= notice %>
+            <%= alert %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

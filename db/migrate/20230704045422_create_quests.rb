@@ -10,7 +10,6 @@ class CreateQuests < ActiveRecord::Migration[6.1]
       t.integer :study_time,  default: 0
       t.boolean :is_finished, default: false
       t.datetime :start_time, null: false
-      t.datetime :pause_time,  null: true
 
       t.timestamps
     end
