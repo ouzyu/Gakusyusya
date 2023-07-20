@@ -5,7 +5,9 @@ class Public::AdventuresController < ApplicationController
     @quest = Quest.find(params[:quest_id])
     @is_stoped = false
     @study_time = 0
+
     set_start_animations
+    set_animation_sources
     incorrect_quest_path
   end
 
@@ -13,7 +15,9 @@ class Public::AdventuresController < ApplicationController
     @quest = Quest.find(params[:quest_id])
     @quest.update(start_time: Time.now, study_time: 0)
     @study_time = @quest.study_time
+
     set_start_animations
+    set_animation_sources
   end
 
   def retire
@@ -35,7 +39,9 @@ class Public::AdventuresController < ApplicationController
     @quest.update(start_time: Time.now)
     @study_time = @quest.study_time
     @is_stoped = false
+
     set_start_animations
+    set_animation_sources
   end
 
   def finish
@@ -86,7 +92,6 @@ class Public::AdventuresController < ApplicationController
     @avatar_running = find_by_situation(avatar, "running")
     @avatar_attack = find_by_situation(avatar, "attack")
     @enemies = Actor.enemy.where(map_id: @quest.map_id)
-    @avatar_source = url_for(@avatar_attack.image)
   end
 
   def set_boss_animations
@@ -96,6 +101,15 @@ class Public::AdventuresController < ApplicationController
 
     @boss_standing = find_by_situation(@quest.map.actors.boss.first.id, "standing")
     @boss_damaged = find_by_situation(@quest.map.actors.boss.first.id, "damaged")
+  end
+
+  def set_animation_sources
+    @avatar_source = rails_storage_proxy_url(@avatar_attack.image)
+    @enemy_animation_sources = []
+    @enemies.each do |enemy|
+      source = rails_storage_proxy_url(find_by_situation(enemy.id, "damaged").image)
+      @enemy_animation_sources.push(source)
+    end
   end
 
 end

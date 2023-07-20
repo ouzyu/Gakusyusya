@@ -34,15 +34,20 @@ countdown();
 let timerId = setInterval(countdown, 1000);
 
 // 以下アドベンチャー機能
-// エネミーに関する情報を取得し変数に代入
+// アニメーションに必要な変数を代入
+let avatarSource = "<%= raw @avatar_source %>";
 let enemyId = 0;
+const enemySources = <%= raw @enemy_animation_sources %>;
 const enemyCount = <%= @enemies.count %>;
 
 // エンカウント機能
 function encount() {
+  console.log(enemySources)
+  let timestamp = new Date().getTime();
 
   // ランダムエンカウントするエネミーを決定
   enemyId = Math.floor( Math.random() * enemyCount ) + 1;
+  let enemyDamagedImage =  enemySources[enemyId - 1];
 
   //画面フェードアウト
   return new Promise((resolve, reject) => {
@@ -56,8 +61,10 @@ function encount() {
       setTimeout(() => {
         $('#map-img').removeClass("d-none");
         $('#avatar-standing').removeClass("d-none")
+
         $('#map-gif').addClass("d-none");
         $('#avatar-running').addClass("d-none");
+
         $(`#enemy-standing-${enemyId}`).removeClass("d-none");
         resolve();
       }, 600)
@@ -136,13 +143,22 @@ function encount() {
         $(`#enemy-damaged-${enemyId}`).addClass("d-none");
         $('#map-img').addClass("d-none");
         $('#avatar-attack').addClass("d-none")
-        $('#avatar-attack').attr("src",'<%= url_for(@avatar_attack.image) %>');
+
         $('#map-gif').removeClass("d-none");
         $('#avatar-running').removeClass("d-none");
-        $('#map-gif').attr("src",'<%= url_for(@quest.map.image) %>');
-        $('.animation-field').fadeIn();
+
+        $('#avatar-attack').attr("src", avatarSource + '?' + timestamp);
+
+        $(`#enemy-damaged-${enemyId}`).attr("src", enemyDamagedImage + '?' + timestamp);
         resolve();
       }, 600)
+    })
+  })
+
+  // 画面フェードイン
+  .then(() => {
+    return new Promise((resolve, reject) => {
+      $('.animation-field').fadeIn();
     })
   })
 };
