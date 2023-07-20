@@ -30,7 +30,7 @@ class Public::QuestsController < ApplicationController
     @quest.user_id = @user.id
     @quest.start_time = Time.now
     if @quest.save
-      redirect_to adventures_start_path(quest_id: quest.id)
+      redirect_to adventures_start_path(quest_id: @quest.id)
     else
       @quests = Quest.where(user_id: @user)
       @shalica = Actor.find_by(name: "シャリカ")
