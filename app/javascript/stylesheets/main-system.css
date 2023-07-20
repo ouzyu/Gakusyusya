@@ -4,6 +4,10 @@ header {
   margin-bottom: 10px;
 }
 
+footer {
+  background-color: white;
+}
+
 .logo {
   width: 192px;
   height: 64px;
@@ -21,6 +25,7 @@ header {
   max-height: 600px;
   box-shadow: 0 0 0 1px black;
   position: relative;
+  margin-bottom: 60px;
 }
 
 .sound-menu {
