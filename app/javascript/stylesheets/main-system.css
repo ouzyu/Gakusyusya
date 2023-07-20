@@ -104,6 +104,10 @@ footer {
   z-index: 101;
 }
 
+.admin-new-flash-box {
+  position: relative;
+}
+
 /*title*/
 
 .title {

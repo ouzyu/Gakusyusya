@@ -2,21 +2,21 @@
   <nav class="navbar navbar-expand-md navbar-dark system-window">
     <div class="base-frame">
       <div class="nav-box d-flex align-items-center">
-        <% unless admin_signed_in? %>
-          <% unless user_signed_in? %>
-            <%= link_to root_path do %>
-              <%= image_tag 'animations/gakusyusya_logo.gif', class: "logo" %>
-            <% end %>
-          <% else %>
-            <%= link_to mypage_path do %>
-              <%= image_tag 'animations/gakusyusya_logo.gif', class: "logo" %>
-            <% end %>
-          <% end %>
-        <% else %>
+
+        <% if admin_signed_in? %>
           <%= link_to admin_actors_path do %>
             <%= image_tag 'animations/gakusyusya_logo.gif', class: "logo" %>
           <% end %>
+        <% elsif user_signed_in? %>
+          <%= link_to mypage_path do %>
+            <%= image_tag 'animations/gakusyusya_logo.gif', class: "logo" %>
+          <% end %>
+        <% else %>
+          <%= link_to root_path do %>
+            <%= image_tag 'animations/gakusyusya_logo.gif', class: "logo" %>
+          <% end %>
         <% end %>
+
         <div class="ml-auto">
           <ul class="ml-auto mb-0">
             <div class="navbar-nav ml-auto">
