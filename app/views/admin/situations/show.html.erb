@@ -20,19 +20,19 @@
             </li>
             <li>
               <%= f.file_field :image, id: "fileElem",class: "form-control-file", accept: 'image/*', onchange: "previewImage(this);", style: "display:none" %>
-              <button id="fileSelect" class="btn btn-secondary mt-2" type="button">画像を選択</button>
+              <button id="fileSelect" class="btn btn-secondary mt-2" type="button">Select Image</button>
             </li>
-            <li><%= f.submit class: "btn btn-success mt-2" %></li>
+            <li><%= f.submit "Create Animation", class: "btn btn-success mt-2" %></li>
           </ul>
         <div class="edit-situation-box d-flex align-items-end">
-          <%= link_to "Edit situation", edit_admin_situation_path(@situation), class: "btn btn-success mx-auto" %>
+          <%= link_to "Edit Situation", edit_admin_situation_path(@situation), class: "btn btn-success mx-auto" %>
         </div>
       </div>
 
       <div class='col-md-9 offset-md-1 my-3'>
         <div style="min-height: 550px; max-width: 880px;">
           <div class="mx-auto">
-            <h4>Graphic</h4>
+            <h4>Graphics</h4>
           </div>
           <div class="situation-show-animations-container border d-flex flex-wrap">
             <% @animations.each do |animation| %>

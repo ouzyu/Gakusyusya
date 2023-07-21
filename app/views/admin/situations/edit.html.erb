@@ -4,7 +4,7 @@
     <div class="row d-flex align-items-center">
       <h2 class="mt-3 mr-auto"><%= @situation.name %>を編集</h2>
       <div>
-        <%= link_to "Delete situation", admin_situation_path(@situation), method: :delete,data: { confirm: "[確認]シチュエーションを削除します。よろしいですか？"}, class: "btn btn-danger mb-0 mt-3" %>
+        <%= link_to "Delete Situation", admin_situation_path(@situation), method: :delete,data: { confirm: "[確認]シチュエーションを削除します。よろしいですか？"}, class: "btn btn-danger mb-0 mt-3" %>
       </div>
     </div>
 
@@ -16,8 +16,8 @@
         </tr>
       </table>
       <div class="row mx-auto">
-        <%= link_to "Return situation page", admin_situation_path(@situation), class: "btn btn-secondary btn-md" %>
-        <%= f.submit "Save changes", class: "btn btn-success btn-md ml-3" %>
+        <%= link_to "Return Situation Detail", admin_situation_path(@situation), class: "btn btn-secondary btn-md" %>
+        <%= f.submit "Save Changes", class: "btn btn-success btn-md ml-3" %>
       </div>
     </div>
   </div>

@@ -20,6 +20,9 @@ class Actor < ApplicationRecord
     if (self.role == "enemy" || self.role == "boss" ) && !self.map_id.present?
       errors.add :map_id, "　エネミーとボスはマップと関連付けてください。"
       return false
+    elsif !(self.role == "enemy" || self.role == "boss" ) && self.map_id.present?
+      errors.add :map_id, "　エネミーとボス以外はマップと関連付けないでください。"
+      return false
     end
     return true
   end
