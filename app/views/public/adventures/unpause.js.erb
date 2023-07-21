@@ -1,14 +1,19 @@
 $('#pause-command').html("<%= j(render 'pause_command', is_stoped: @is_stoped, quest: @quest) %>");
-$('.screen-stop-box').slideUp(function() {
-  $('#timer-box').slideDown();
+$('.screen-stop-box').fadeOut(() => {
+  $('.animation-field').fadeIn(() => {
+    $('#map-img').addClass("d-none");
+    $('#avatar-standing').addClass("d-none")
 
-  $('#map-img').addClass("d-none");
-  $('#avatar-standing').addClass("d-none")
-  $('#map-gif').removeClass("d-none");
-  $('#avatar-running').removeClass("d-none");
+    $('#map-gif').removeClass("d-none");
+    $('#avatar-running').removeClass("d-none");
+
+    $('#map-gif').attr("src",'<%= url_for(@quest.map.image) %>');
+    $('.animation-field').fadeIn(() => {
+      $('#timer-box').slideDown()
+    });
+  });
 });
 
-$('#map-gif').attr("src",'<%= url_for(@quest.map.image) %>');
 
 startTime = new Date('<%= @quest.start_time.iso8601 %>'); //クエストを始めた時間
 finish = <%= @quest.set_seconds - @study_time %>; // クエスト時間

@@ -624,7 +624,7 @@ footer {
   position: absolute;
   top: 0px;
   left: 0px;
-  background-color: rgba(29, 29, 29, 0.5);
+  background-color: rgb(29, 29, 29);
   display: none;
   z-index: 100;
 }

@@ -1,13 +1,14 @@
 $('#pause-command').html("<%= j(render 'pause_command', is_stoped: @is_stoped, quest: @quest) %>");
+$('#retire-command').html("<%= j(render 'retire', is_stoped: @is_stoped, quest: @quest) %>");
 $('#timer-box').slideUp(function() {
-  $('.screen-stop-box').slideDown();
+  $('.screen-stop-box').fadeIn(() => {
+    $('.animation-field').fadeOut(function() {
+      $('#map-img').removeClass("d-none");
+      $('#avatar-standing').removeClass("d-none")
 
-  $('.animation-field').fadeOut(function() {
-    $('#map-img').removeClass("d-none");
-    $('#avatar-standing').removeClass("d-none")
-    $('#map-gif').addClass("d-none");
-    $('#avatar-running').addClass("d-none");
-    $('.animation-field').fadeIn();
+      $('#map-gif').addClass("d-none");
+      $('#avatar-running').addClass("d-none");
+    });
   });
 });
 
