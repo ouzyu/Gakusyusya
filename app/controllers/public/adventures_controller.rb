@@ -15,6 +15,7 @@ class Public::AdventuresController < ApplicationController
     @quest = Quest.find(params[:quest_id])
     @quest.update(start_time: Time.now, study_time: 0)
     @study_time = @quest.study_time
+    @is_stoped = false
 
     set_start_animations
     set_animation_sources
@@ -23,9 +24,15 @@ class Public::AdventuresController < ApplicationController
   def retire
     quest = Quest.find(params[:quest_id])
     user = quest.user
-    quest.update(study_time: (Time.now - quest.start_time).to_i + quest.study_time)
-    user.update(study_time: user.study_time + quest.study_time)
-    redirect_to new_quest_path
+    is_stoped = params[:is_stoped]
+    if is_stoped == "true"
+      user.update(study_time: user.study_time + quest.study_time)
+      redirect_to new_quest_path
+    else
+      quest.update(study_time: (Time.now - quest.start_time).to_i + quest.study_time)
+      user.update(study_time: user.study_time + quest.study_time)
+      redirect_to new_quest_path
+    end
   end
 
   def pause

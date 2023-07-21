@@ -49,6 +49,10 @@ function encount() {
   enemyId = Math.floor( Math.random() * enemyCount ) + 1;
   let enemyDamagedImage =  enemySources[enemyId - 1];
 
+  // gifアニメの繰り返し再生の準備
+  $('#avatar-attack').attr("src", avatarSource + '?' + timestamp);
+  $(`#enemy-damaged-${enemyId}`).attr("src", enemyDamagedImage + '?' + timestamp);
+
   //画面フェードアウト
   return new Promise((resolve, reject) => {
     $('.animation-field').fadeOut()
@@ -147,9 +151,6 @@ function encount() {
         $('#map-gif').removeClass("d-none");
         $('#avatar-running').removeClass("d-none");
 
-        $('#avatar-attack').attr("src", avatarSource + '?' + timestamp);
-
-        $(`#enemy-damaged-${enemyId}`).attr("src", enemyDamagedImage + '?' + timestamp);
         resolve();
       }, 600)
     })
