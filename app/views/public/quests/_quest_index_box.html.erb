@@ -8,7 +8,11 @@
               <tr class="border-bottom">
                 <td class="quest-index-td"><%= image_tag quest.map.image, size: "150x50" %></td>
                 <td class="quest-index-td"><%= image_tag quest.actor.have_first_animation.image, size: "50x50" %></td>
-                <td class="quest-index-td"><%= quest.content %></td>
+                <td class="quest-index-td">
+                  <div class="text-overflow">
+                    <%= quest.content %>
+                  </div>
+                </td>
                 <td class="quest-index-td">
                   <button id="quest-<%= quest.id %>" class="btn-quest-show btn btn-success" type="button">
                     しょうさい

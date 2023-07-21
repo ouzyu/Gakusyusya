@@ -108,6 +108,12 @@ footer {
   position: relative;
 }
 
+.text-overflow {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 /*title*/
 
 .title {
@@ -500,7 +506,7 @@ footer {
 }
 
 .quest-index-td:nth-child(3) {
-  width: 280px;
+  max-width: 280px;
 }
 
 /*quest-show*/

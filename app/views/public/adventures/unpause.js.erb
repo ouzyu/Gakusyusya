@@ -1,17 +1,17 @@
 $('#pause-command').html("<%= j(render 'pause_command', is_stoped: @is_stoped, quest: @quest) %>");
 $('.screen-stop-box').fadeOut(() => {
-  $('.animation-field').fadeIn(() => {
-    $('#map-img').addClass("d-none");
-    $('#avatar-standing').addClass("d-none")
+  $('#map-img').addClass("d-none");
+  $('#avatar-standing').addClass("d-none")
 
-    $('#map-gif').removeClass("d-none");
-    $('#avatar-running').removeClass("d-none");
+  $('#map-gif').removeClass("d-none");
+  $('#avatar-running').removeClass("d-none");
 
-    $('#map-gif').attr("src",'<%= url_for(@quest.map.image) %>');
+  $('#map-gif').attr("src",'<%= url_for(@quest.map.image) %>');
+  setTimeout(() => {
     $('.animation-field').fadeIn(() => {
       $('#timer-box').slideDown()
     });
-  });
+  }), 1000;
 });
 
 
