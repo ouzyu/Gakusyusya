@@ -6,13 +6,13 @@
       <div class="col-md-2 my-3 border pb-2">
           <ul class="list-unstyled text-center">
             <li class="h4">New Actor</li>
-            <li><%= f.label :name %></li>
+            <li><%= f.label :name, "Name" %></li>
             <li><%= f.text_field :name, class: "form-control" %></li>
-            <li class="mt-2"><%= f.label :role %></li>
+            <li class="mt-2"><%= f.label :role, "Role" %></li>
             <li><%= f.select :role, Actor.roles.keys.map, {}, class: "form-control" %></li>
-            <li class="mt-2"><%= f.label :map_id, "Map" %><br>(only enemy need)</li>
+            <li class="mt-2"><%= f.label :map_id, "Spawn Map" %></li>
             <li><%= f.select :map_id, options_from_collection_for_select(Map.all, :id, :name), { include_blank: "選択無し" }, class: "form-control" %></li>
-            <li><%= f.submit class: "btn btn-success mt-2" %></li>
+            <li><%= f.submit "Create Actor",class: "btn btn-success mt-2" %></li>
           </ul>
       </div>
       <div class='col-md-9 offset-md-1 my-3'>

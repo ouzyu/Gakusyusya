@@ -12,7 +12,7 @@
           <td><%= @user.id %></td>
         </tr>
         <tr>
-          <td>Nick Name</td>
+          <td>Name</td>
           <td><%= f.text_field :name, class: "form-control col-md-4" %></td>
         </tr>
         <tr>
@@ -36,8 +36,8 @@
       </table>
 
       <div class="row mx-auto">
-        <%= link_to "Return User page", admin_user_path(@user), class: "btn btn-secondary btn-md" %>
-        <%= f.submit "Save changes", class: "btn btn-success btn-md ml-3" %>
+        <%= link_to "Return User Detail", admin_user_path(@user), class: "btn btn-secondary btn-md" %>
+        <%= f.submit "Save Changes", class: "btn btn-success btn-md ml-3" %>
       </div>
     </div>
   </div>

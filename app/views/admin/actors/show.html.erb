@@ -15,7 +15,7 @@
               <%= f.text_field :name, class: "form-control" %>
               <%= f.hidden_field :actor_id %>
             </li>
-            <li><%= f.submit class: "btn btn-success mt-2" %></li>
+            <li><%= f.submit "Create Situation", class: "btn btn-success mt-2" %></li>
         </ul>
         <div class="edit-actor-box d-flex align-items-end">
           <%= link_to "Edit Actor", edit_admin_actor_path(@actor), class: "btn btn-success mx-auto" %>
