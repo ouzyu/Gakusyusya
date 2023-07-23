@@ -65,6 +65,7 @@ class Public::AbilitiesController < ApplicationController
     end
     if @chart_abilities_level.blank?
       @chart_abilities_max_level << 1
+      @max_level = 1
     else
       @max_level = @chart_abilities_level.max
       abilities_count = @chart_abilities_level.length
