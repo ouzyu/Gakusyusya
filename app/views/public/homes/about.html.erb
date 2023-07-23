@@ -47,6 +47,7 @@
 
     let message_id = 0
 
+    // スライドを進める処理
     $('#command-next-message').click(() => {
       if (message_id == 0) {
         $('#quest-message-text').text("いきなりですが、「がくしゅうしゃ」についてせつめいをしますね！");
@@ -235,6 +236,7 @@
       }
     });
 
+    // スライドを戻す処理
     $('#command-back-message').click(() => {
       if (message_id == 1) {
         $('#quest-message-text').text("はじめまして！！わたしのなまえは「シャリカ」です！");
