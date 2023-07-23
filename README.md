@@ -46,3 +46,17 @@ https://docs.google.com/spreadsheets/d/13xHDjOi6o5Bwp1dwTuyY8KJmIZlT4b7MCKG3yg7k
 
 ## 使用素材
 - 音楽、グラフィックは全て自作となります。
+
+## 試用してみる
+※管理者側でActorやMapを用意しなければUser側は正常に動作しません。seed.rbファイルを用意している為、クローン後にそちらをご利用ください。
+
+管理者サインインページは「/admins/sign_in」となっております。
+パスとemailは、rails db:seed後に
+- email: mail@1
+- pass: 123456
+
+となっております。
+
+同様に、User側にもゲスト以外でアカウントを用意してあります。併せてご確認ください。
+- email: mail@1
+- pass: 123456
