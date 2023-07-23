@@ -206,6 +206,19 @@ footer {
   height: 112px;
 }
 
+#about-to-first-page {
+  width: 1000px;
+  height: 100px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: none;
+}
+
+#about-to-first-page div {
+  height: 100px;
+}
+
 /*pagination*/
 
 .paginate-div {

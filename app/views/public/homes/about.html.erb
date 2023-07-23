@@ -20,6 +20,7 @@
             <%= render 'adv' %>
             <%= render 'adv_boss' %>
             <%= render 'adv_level_up' %>
+            <%= render 'to_first_page' %>
           </div>
         </div>
 
@@ -30,7 +31,7 @@
             <div class="about-command-box system-window-border ml-auto d-flex flex-column">
               <button id="command-next-message" type="button" class="text-initialize command-next-message">つぎへ</button>
               <button id="command-back-message" type="button" class="text-initialize command-next-message mt-auto"></button>
-              <p id="num-of-pages" class="command-next-message text-center mt-auto mb-0">1/37p</p>
+              <p id="num-of-pages" class="command-next-message text-center mt-auto mb-0">1/36p</p>
             </div>
           </div>
         </div>
@@ -81,7 +82,7 @@
       "クエストボスとのたたかいです！きょうりょくな「ひっさつわざ」をつかいましょう！！",                    // 33p
       "ボスをたおすと、がくしゅうしゃレベルとアビリティレベルがアップします！！",                            // 34p
       "「がくしゅうしゃ」のせつめいはこれでぜんぶです！！",                                                  // 35p
-      "もういちど、せつめいをききたいばあいは、「さいしょから」をクリックしてくださいね。"                   // 36p
+      "もういちど、せつめいをききたいばあいは、がめんうえの「さいしょから」をクリックしてくださいね。"                   // 36p
     ];
 
     let currentPage = 1
@@ -166,21 +167,15 @@
           $('#about-adv-level-up').slideUp();
           break;
         case 36:
-          $('#command-next-message').text("さいしょから");
-          $('#command-back-message').text("もどる");
+           $('#about-to-first-page').slideDown(() => {
+            $('#command-next-message').text("");
+            $('#command-back-message').text("もどる");
+           });
           break;
         case 37:
-          let confirm = window.confirm("ほんとうに、せつめいをさいしょからききますか？");
-          if (confirm) {
-            $('#command-next-message').text("つぎへ");
-            $('#command-back-message').text("もどる");
-            currentPage = 3;
-            $('#num-of-pages').text(`${currentPage}/${pageCounts}p`);
-            $('#quest-message-text').text(aboutTexts[currentPage - 1]);
-          } else {
-            currentPage = 36;
-            $('#num-of-pages').text(`${currentPage}/${pageCounts}p`);
-          }
+          currentPage = 36;
+          $('#num-of-pages').text(`${currentPage}/${pageCounts}p`);
+          $('#quest-message-text').text(aboutTexts[currentPage - 1]);
           break;
       }
     });
@@ -251,8 +246,20 @@
           break;
         case 35:
           $('#command-next-message').text("つぎへ");
+          $('#about-to-first-page').slideUp();
           break;
       }
+    });
+
+    // さいしょからボタン
+    $('#command-to-first').click(() => {
+      $('#about-to-first-page').slideUp(() => {
+        $('#command-next-message').text("つぎへ");
+        $('#command-back-message').text("もどる");
+        currentPage = 3;
+        $('#num-of-pages').text(`${currentPage}/${pageCounts}p`);
+        $('#quest-message-text').text(aboutTexts[currentPage - 1]);
+      });
     });
   });
 </script>
