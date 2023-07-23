@@ -1,8 +1,8 @@
 # がくしゅうしゃ
-![Gakusyusya_wireframe](https://github.com/ouzyu/Gakusyusya/assets/129580397/0540d7c8-4c7b-4888-aedb-57ea9a4e04fe)
+![title_image_for_github](https://github.com/ouzyu/Gakusyusya/assets/129580397/6eb1b213-0a74-4a72-bd67-285d7cd1f284)
 ## サイト概要
 ### サイトテーマ
-キャラクターのアニメーションを用いて、子供たちが楽しく学習出来る事を目的とした記録と管理を行うサイトです。
+キャラクターのアニメーションを用いて、子供たちが楽しく勉強出来る事を目的とした、学習時間の記録と管理を行うサイトです。
 
 ### テーマを選んだ理由
 学童保育の支援員として働いていた際に児童たちの宿題を指導していたのですが、
@@ -20,17 +20,22 @@
 
 ## 設計書
 - ER図
-![Gakusyusya drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/e4f0b299-f3b4-466f-97da-1a134597784d)
+![Gakusyusya_er_graph drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/f2ca7110-6dfa-4bca-9e7d-401867dbc731)
 - 管理者側UIフロー
-![Gakusyusya_Admin_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/a2083bb3-7029-4e2f-9884-4f467e79c8c1)
+![Gakusyusya_Admin_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/f65c9a1b-9673-4a43-a1c8-ee17963041d6)
 - ユーザー側UIフロー
-![Gakusyusya_User_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/d1b55b75-b522-4a75-9789-caffa06caea7)
+![Gakusyusya_User_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/a9513c59-d878-4d54-ab94-3b7a50b5efa2)
+
 - ワイヤーフレーム(閲覧にはFigmaアカウントが必要です)
 https://www.figma.com/file/wmUrhU66a6K21xuso6iyvb/Gakusyusya_wireframe?type=design&node-id=19%3A7&mode=design&t=dcEuRNoMayndmceK-1
 - テーブル定義書
 https://docs.google.com/spreadsheets/d/1j0O0XZ-fZttLLpBUQvT6pn8Jo8ZmGXgYNXGtYQ37TJI/edit?usp=sharing
 - アプリケーション詳細設計
 https://docs.google.com/spreadsheets/d/14rNsCNkWDJqcEqb43ymJtHAwY94dvT5eDOl0NgDopIg/edit?usp=sharing
+- テスト仕様書
+https://docs.google.com/spreadsheets/d/1AeBx2qTEoZ3EpG8P17JaH5_3Afv23vZJ/edit?usp=sharing&ouid=114789396950183428579&rtpof=true&sd=true
+- WBS
+https://docs.google.com/spreadsheets/d/13xHDjOi6o5Bwp1dwTuyY8KJmIZlT4b7MCKG3yg7knvs/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)

@@ -19,11 +19,6 @@ class Public::QuestsController < ApplicationController
     end
   end
 
-  def index
-    @user = current_user
-    @quests = Quest.where(user_id: @user)
-  end
-
   def create
     @user = current_user
     @quest = Quest.new(quest_params)
