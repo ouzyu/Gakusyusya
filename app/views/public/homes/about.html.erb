@@ -40,383 +40,212 @@
 </div>
 
 <script>
-  window.addEventListener("load", function () {
-    $('.fadein-content').fadeIn(2000, function() {
+  window.addEventListener("load",() => {
+    $('.fadein-content').fadeIn(2000,() => {
       $('.loading-box').fadeOut();
     });
 
-    let message_id = 0
+    const aboutTexts = [
+      "はじめまして！！わたしのなまえは「シャリカ」です！",                                                  //  1p
+      "いきなりですが、「がくしゅうしゃ」についてせつめいをしますね！",                                      //  2p
+      "「がくしゅうしゃ」とは、いろいろな「がくしゅう」をしながらぼうけんをする「ゆうしゃ」のことです。",    //  3p
+      "あなたさまにはぜひ、その「がくしゅうしゃ」となっていただきたいのです！",                              //  4p
+      "いまから「がくしゅうしゃ」になるくわしいほうほうをおはなしします！",                                  //  5p
+      "はじめに、「あたらしいがくしゅうしゃになる」からデータのとうろくをします。",                          //  6p
+      "ひつようなじょうほうを、１つずつにゅうりょくしていきます。",                                          //  7p
+      "わからないところは、かならず、おとうさんやおかあさんといっしょににゅうりょくしましょうね。",          //  8p
+      "データがあるばあいは、「セーブデータをロード」をクリックしましょう。",                                //  9p
+      "ここでも、ひつようなじょうほうをにゅうりょくしましょう。",                                            // 10p
+      "もしパスワードをわすれてしまったら、おとうさんやおかあさんにきいてみましょう。",                      // 11p
+      "データのさくせいや、ロードにせいこうしたばあいはステータスがめんへとうつります。",                    // 12p
+      "ステータスがめんでは、がくしゅうしゃレベルとアビリティレベルのかくにんと、",                          // 13p
+      "とうろくされたがくしゅうしゃのじょうほうをへんこうできます。",                                        // 14p
+      "がくしゅうしゃのみためをへんこうしたいときは、「じょうほうのへんこう」をクリックしましょう。",        // 15p
+      "また、アビリティがとうろくされていなければクエストにいくことはできないため、",                        // 16p
+      "「アビリティしょうさい」、または、「アビリティをみる」をクリックしましょう。",                        // 17p
+      "アビリティのしょうさいでは、あたらしいアビリティのとうろくとへんこうをすることができます。",          // 18p
+      "アビリティは６つまでとうろくでき、３つとうろくするとグラフがひょうじされます。",                      // 19p
+      "アビリティのなまえをクリックすると、アビリティのなまえのへんこうとさくじょができます。",              // 20p
+      "アビリティのとうろくがおわったら、クエストにむかいましょう！",                                        // 21p
+      "クエストがめんでは、「クエストをうける」ことと「いままでのクエスト」をみることができます。",          // 22p
+      "クエストをうけるときは、むかいたいマップとたおしたいボス、つよくしたいアビリティをえらびましょう。",  // 23p
+      "つぎに、クエストのじかんをせっていして、クエストのないようをメモしましょう。",                        // 24p
+      "すべてのにゅうりょくがおわったら、いよいよぼうけんにしゅっぱつしましょう！",                          // 25p
+      "クエストのよみこみにはじかんがかかるばあいがあります。そのままおまちくださいね。",                    // 26p
+      "よみこみおわったらボタンをおしてクエストスタート！",                                                  // 27p
+      "クエストがはじまると、タイマーがすすんでいくのでしゅうちゅうしてがくしゅうしましょう。",              // 28p
+      "クエストをとちゅうでやめるばあいは「リタイアする」をクリックしましょう。",                            // 29p
+      "リタイアしたばあいは、がくしゅうじかんだけがきろくされます。",                                        // 30p
+      "「ポーズする」をクリックするとタイマーがとまります。「ポーズかいじょ」でうごきだします。",            // 31p
+      "タイマーがおわるか、がくしゅうがはやくおわったばあいは「ボスにすすむ」をクリックしましょう！",        // 32p
+      "クエストボスとのたたかいです！きょうりょくな「ひっさつわざ」をつかいましょう！！",                    // 33p
+      "ボスをたおすと、がくしゅうしゃレベルとアビリティレベルがアップします！！",                            // 34p
+      "「がくしゅうしゃ」のせつめいはこれでぜんぶです！！",                                                  // 35p
+      "もういちど、せつめいをききたいばあいは、「さいしょから」をクリックしてくださいね。"                   // 36p
+    ];
 
-    // スライドを進める処理
+    let currentPage = 1
+    const pageCounts = aboutTexts.length
+
+    // スライドを進める
+    const increamentPage = () => {
+      currentPage++;
+      $('#num-of-pages').text(`${currentPage}/${pageCounts}p`);
+      $('#quest-message-text').text(aboutTexts[currentPage - 1]);
+    };
+
+    // スライドを戻す
+    const decrementPage = () => {
+      currentPage--;
+      $('#num-of-pages').text(`${currentPage}/${pageCounts}p`);
+      $('#quest-message-text').text(aboutTexts[currentPage - 1]);
+    };
+
+    // つぎへボタン
     $('#command-next-message').click(() => {
-      if (message_id == 0) {
-        $('#quest-message-text').text("いきなりですが、「がくしゅうしゃ」についてせつめいをしますね！");
-        $('#command-back-message').text("もどる");
-        $('#num-of-pages').text("2/37p");
-        message_id++;
-      } else if (message_id == 1 ) {
-        $('#quest-message-text').text("「がくしゅうしゃ」とは、いろいろな「がくしゅう」をしながらぼうけんをする「ゆうしゃ」のことです。");
-        $('#num-of-pages').text("3/37p");
-        message_id++;
-      } else if (message_id == 2 ) {
-        $('#quest-message-text').text("あなたさまにはぜひ、その「がくしゅうしゃ」となっていただきたいのです！");
-        $('#num-of-pages').text("4/37p");
-        message_id++;
-      } else if (message_id == 3 ) {
-        $('#quest-message-text').text("いまから「がくしゅうしゃ」になるくわしいほうほうをおはなしします！");
-        $('#num-of-pages').text("5/37p");
-        message_id++;
-      } else if (message_id == 4 ) {
-        $('#about-sign-up').slideDown();
-        $('#quest-message-text').text("はじめに、「あたらしいがくしゅうしゃになる」からデータのとうろくをします。");
-        $('#num-of-pages').text("6/37p");
-        message_id++;
-      } else if (message_id == 5 ) {
-        $('#quest-message-text').text("ひつようなじょうほうを、１つずつにゅうりょくしていきます。");
-        $('#num-of-pages').text("7/37p");
-        message_id++;
-      } else if (message_id == 6 ) {
-        $('#quest-message-text').text("わからないところは、かならず、おとうさんやおかあさんといっしょににゅうりょくしましょうね。");
-        $('#num-of-pages').text("8/37p");
-        message_id++;
-      } else if (message_id == 7 ) {
-        $('#about-sign-up').slideUp(function() {
-          $('#quest-message-text').text("データがあるばあいは、「セーブデータをロード」をクリックしましょう。");
-          $('#num-of-pages').text("9/37p");
-          message_id++;
-          $('#about-sign-in').slideDown();
-        });
-      } else if (message_id == 8 ) {
-        $('#quest-message-text').text("ここでも、ひつようなじょうほうをにゅうりょくしましょう。");
-        $('#num-of-pages').text("10/37p");
-        message_id++;
-      } else if (message_id == 9 ) {
-        $('#quest-message-text').text("もしパスワードをわすれてしまったら、おとうさんやおかあさんにきいてみましょう。");
-        $('#num-of-pages').text("11/37p");
-        message_id++;
-      } else if (message_id == 10 ) {
-        $('#about-sign-in').slideUp(function() {
-          $('#quest-message-text').text("データのさくせいや、ロードにせいこうしたばあいはステータスがめんへとうつります。");
-          $('#num-of-pages').text("12/37p");
-          message_id++;
-          $('#about-mypage').slideDown();
-        });
-      } else if (message_id == 11 ) {
-        $('#quest-message-text').text("ステータスがめんでは、がくしゅうしゃレベルとアビリティレベルのかくにんと、");
-        $('#num-of-pages').text("13/37p");
-        message_id++;
-      } else if (message_id == 12 ) {
-        $('#quest-message-text').text("とうろくされたがくしゅうしゃのじょうほうをへんこうできます。");
-        $('#num-of-pages').text("14/37p");
-        message_id++;
-      } else if (message_id == 13 ) {
-        $('#quest-message-text').text("がくしゅうしゃのみためをへんこうしたいときは、「じょうほうのへんこう」をクリックしましょう。");
-        $('#num-of-pages').text("15/37p");
-        message_id++;
-      } else if (message_id == 14 ) {
-        $('#quest-message-text').text("また、アビリティがとうろくされていなければクエストにいくことはできないため、");
-        $('#num-of-pages').text("16/37p");
-        message_id++;
-      } else if (message_id == 15 ) {
-        $('#quest-message-text').text("「アビリティしょうさい」、または、「アビリティをみる」をクリックしましょう。");
-        $('#num-of-pages').text("17/37p");
-        message_id++;
-      } else if (message_id == 16 ) {
-        $('#about-mypage').slideUp(function() {
-          $('#quest-message-text').text("アビリティのしょうさいでは、あたらしいアビリティのとうろくとへんこうをすることができます。");
-          $('#num-of-pages').text("18/37p");
-          message_id++;
-          $('#about-ability').slideDown();
-        });
-      } else if (message_id == 17 ) {
-        $('#quest-message-text').text("アビリティは６つまでとうろくでき、３つとうろくするとグラフがひょうじされます。");
-        $('#num-of-pages').text("19/37p");
-        message_id++;
-      } else if (message_id == 18 ) {
-        $('#quest-message-text').text("アビリティのなまえをクリックすると、アビリティのなまえのへんこうとさくじょができます。");
-        $('#num-of-pages').text("20/37p");
-        message_id++;
-      } else if (message_id == 19 ) {
-        $('#quest-message-text').text("アビリティのとうろくがおわったら、クエストにむかいましょう！");
-        $('#num-of-pages').text("21/37p");
-        message_id++;
-      } else if (message_id == 20 ) {
-        $('#about-ability').slideUp(function() {
-          $('#quest-message-text').text("クエストがめんでは、「クエストをうける」ことと「いままでのクエスト」をみることができます。");
-          $('#num-of-pages').text("22/37p");
-          message_id++;
-          $('#about-quest').slideDown();
-        });
-      } else if (message_id == 21 ) {
-        $('#about-quest').slideUp(function() {
-          $('#quest-message-text').text("クエストをうけるときは、むかいたいマップとたおしたいボス、つよくしたいアビリティをえらびましょう。");
-          $('#num-of-pages').text("23/37p");
-          message_id++;
-          $('#about-quest-new').slideDown();
-        });
-      } else if (message_id == 22 ) {
-        $('#quest-message-text').text("つぎに、クエストのじかんをせっていして、クエストのないようをメモしましょう。");
-        $('#num-of-pages').text("24/37p");
-        message_id++;
-      } else if (message_id == 23 ) {
-        $('#quest-message-text').text("すべてのにゅうりょくがおわったら、いよいよぼうけんにしゅっぱつしましょう！");
-        $('#num-of-pages').text("25/37p");
-        message_id++;
-      } else if (message_id == 24 ) {
-        $('#about-quest-new').slideUp(function() {
-          $('#quest-message-text').text("クエストのよみこみにはじかんがかかるばあいがあります。そのままおまちくださいね。");
-          $('#num-of-pages').text("26/37p");
-          message_id++;
-          $('#about-loading').slideDown();
-        });
-      } else if (message_id == 25 ) {
-        $('#about-loading').slideUp(function() {
-          $('#quest-message-text').text("よみこみおわったらボタンをおしてクエストスタート！");
-          $('#num-of-pages').text("27/37p");
-          message_id++;
-          $('#about-adv-start').slideDown();
-        });
-      } else if (message_id == 26 ) {
-        $('#about-adv-start').slideUp(function() {
-          $('#quest-message-text').text("クエストがはじまると、タイマーがすすんでいくのでしゅうちゅうしてがくしゅうしましょう。");
-          $('#num-of-pages').text("28/37p");
-          message_id++;
-          $('#about-adv').slideDown();
-        });
-      } else if (message_id == 27 ) {
-        $('#quest-message-text').text("クエストをとちゅうでやめるばあいは「リタイアする」をクリックしましょう。");
-        $('#num-of-pages').text("29/37p");
-        message_id++;
-      } else if (message_id == 28 ) {
-        $('#quest-message-text').text("リタイアしたばあいは、がくしゅうじかんだけがきろくされます。");
-        $('#num-of-pages').text("30/37p");
-        message_id++;
-      } else if (message_id == 29 ) {
-        $('#quest-message-text').text("「ポーズする」をクリックするとタイマーがとまります。「ポーズかいじょ」でうごきだします。");
-        $('#num-of-pages').text("31/37p");
-        message_id++;
-      } else if (message_id == 30 ) {
-        $('#quest-message-text').text("タイマーがおわるか、がくしゅうがはやくおわったばあいは「ボスにすすむ」をクリックしましょう！");
-        $('#num-of-pages').text("32/37p");
-        message_id++;
-      } else if (message_id == 31 ) {
-        $('#about-adv').slideUp(function() {
-          $('#quest-message-text').text("クエストボスとのたたかいです！きょうりょくな「ひっさつわざ」をつかいましょう！！");
-          $('#num-of-pages').text("33/37p");
-          message_id++;
-          $('#about-adv-boss').slideDown();
-        });
-      } else if (message_id == 32 ) {
-        $('#about-adv-boss').slideUp(function() {
-          $('#quest-message-text').text("ボスをたおすと、がくしゅうしゃレベルとアビリティレベルがアップします！！");
-          $('#num-of-pages').text("34/37p");
-          message_id++;
-          $('#about-adv-level-up').slideDown();
-        });
-      } else if (message_id == 33 ) {
-        $('#about-adv-level-up').slideUp(function() {
-          $('#quest-message-text').text("「がくしゅうしゃ」のせつめいはこれでぜんぶです！！");
-          $('#num-of-pages').text("36/37p");
-          message_id++;
-        });
-      } else if (message_id == 34 ) {
-        $('#quest-message-text').text("もういちど、せつめいをききたいばあいは、「さいしょから」をクリックしてくださいね。");
-        $('#command-next-message').text("さいしょから");
-        $('#command-back-message').text("もどる");
-        $('#num-of-pages').text("37/37p");
-        message_id++;
-      } else if (message_id == 35 ) {
-        $('#about-adv-level-up').slideUp(function() {
-          $('#quest-message-text').text("「がくしゅうしゃ」とは、いろいろな「がくしゅう」をしながらぼうけんをする「ゆうしゃ」のことです。");
+      increamentPage();
+
+      switch (currentPage) {
+        case 2:
+          $('#command-back-message').text("もどる");
+          break;
+        case 6:
+          $('#about-sign-up').slideDown();
+          break;
+        case 9:
+          $('#about-sign-up').slideUp(() =>  {
+            $('#about-sign-in').slideDown();
+          });
+          break;
+        case 12:
+          $('#about-sign-in').slideUp(() => {
+            $('#about-mypage').slideDown();
+          });
+          break;
+        case 18:
+          $('#about-mypage').slideUp(() => {
+            $('#about-ability').slideDown();
+          });
+          break;
+        case 22:
+          $('#about-ability').slideUp(() => {
+            $('#about-quest').slideDown();
+          });
+          break;
+        case 23:
+          $('#about-quest').slideUp(() => {
+            $('#about-quest-new').slideDown();
+          });
+          break;
+        case 26:
+          $('#about-quest-new').slideUp(() => {
+            $('#about-loading').slideDown();
+          });
+          break;
+        case 27:
+          $('#about-loading').slideUp(() => {
+            $('#about-adv-start').slideDown();
+          });
+          break;
+        case 28:
+          $('#about-adv-start').slideUp(() => {
+            $('#about-adv').slideDown();
+          });
+          break;
+        case 33:
+          $('#about-adv').slideUp(() => {
+            $('#about-adv-boss').slideDown();
+          });
+          break;
+        case 34:
+          $('#about-adv-boss').slideUp(() => {
+            $('#about-adv-level-up').slideDown();
+          });
+          break;
+        case 35:
+          $('#about-adv-level-up').slideUp();
+          break;
+        case 36:
+          $('#command-next-message').text("さいしょから");
+          $('#command-back-message').text("もどる");
+          break;
+        case 37:
           $('#command-next-message').text("つぎへ");
           $('#command-back-message').text("もどる");
-          $('#num-of-pages').text("3/37p");
-          message_id = 2;
-        });
+          currentPage = 3;
+          $('#num-of-pages').text(`${currentPage}/${pageCounts}p`);
+          $('#quest-message-text').text(aboutTexts[currentPage - 1]);
+          break;
       }
     });
 
-    // スライドを戻す処理
+    // もどるボタン
     $('#command-back-message').click(() => {
-      if (message_id == 1) {
-        $('#quest-message-text').text("はじめまして！！わたしのなまえは「シャリカ」です！");
-        $('#command-back-message').text("");
-        $('#num-of-pages').text("1/37p");
-        message_id--;
-      } else if (message_id == 2) {
-        $('#quest-message-text').text("いきなりですが、「がくしゅうしゃ」についてせつめいをしますね！");
-        $('#command-back-message').text("もどる");
-        $('#num-of-pages').text("2/37p");
-        message_id--;
-      } else if (message_id == 3 ) {
-        $('#quest-message-text').text("「がくしゅうしゃ」とは、いろいろな「がくしゅう」をしながらぼうけんをする「ゆうしゃ」のことです。");
-        $('#num-of-pages').text("3/37p");
-        message_id--;
-      } else if (message_id == 4 ) {
-        $('#quest-message-text').text("あなたさまにはぜひ、その「がくしゅうしゃ」となっていただきたいのです！");
-        $('#num-of-pages').text("4/37p");
-        message_id--;
-      } else if (message_id == 5 ) {
-        $('#about-sign-up').slideUp(function() {
-          $('#quest-message-text').text("いまから「がくしゅうしゃ」になるくわしいほうほうをおはなしします！");
-          $('#num-of-pages').text("5/37p");
-          message_id--;
-        });
-      } else if (message_id == 6 ) {
-        $('#quest-message-text').text("はじめに、「あたらしいがくしゅうしゃになる」からデータのとうろくをします。");
-        $('#num-of-pages').text("6/37p");
-        message_id--;
-      } else if (message_id == 7 ) {
-        $('#quest-message-text').text("ひつようなじょうほうを、１つずつにゅうりょくしていきます。");
-        $('#num-of-pages').text("7/37p");
-        message_id--;
-      } else if (message_id == 8 ) {
-        $('#about-sign-in').slideUp(function() {
-          $('#quest-message-text').text("わからないところは、かならず、おとうさんやおかあさんといっしょににゅうりょくしましょうね。");
-          $('#num-of-pages').text("8/37p");
-          message_id--;
-          $('#about-sign-up').slideDown();
-        });
-      } else if (message_id == 9 ) {
-        $('#quest-message-text').text("データがあるばあいは、「セーブデータをロード」をクリックしましょう。");
-        $('#num-of-pages').text("9/37p");
-        message_id--;
-      } else if (message_id == 10 ) {
-        $('#quest-message-text').text("ここでも、ひつようなじょうほうをにゅうりょくしましょう。");
-        $('#num-of-pages').text("10/37p");
-        message_id--;
-      } else if (message_id == 11 ) {
-        $('#about-mypage').slideUp(function() {
-          $('#quest-message-text').text("もしパスワードをわすれてしまったら、おとうさんやおかあさんにきいてみましょう。");
-          $('#num-of-pages').text("11/37p");
-          message_id--;
-          $('#about-sign-in').slideDown();
-        });
-      } else if (message_id == 12 ) {
-        $('#quest-message-text').text("データのさくせいや、ロードにせいこうしたばあいはステータスがめんへとうつります。");
-        $('#num-of-pages').text("12/37p");
-        message_id--;
-      } else if (message_id == 13 ) {
-        $('#quest-message-text').text("ステータスがめんでは、がくしゅうしゃレベルとアビリティレベルのかくにんと、");
-        $('#num-of-pages').text("13/37p");
-        message_id--;
-      } else if (message_id == 14 ) {
-        $('#quest-message-text').text("とうろくされたがくしゅうしゃのじょうほうをへんこうできます。");
-        $('#num-of-pages').text("14/37p");
-        message_id--;
-      } else if (message_id == 15 ) {
-        $('#quest-message-text').text("がくしゅうしゃのみためをへんこうしたいときは、「じょうほうのへんこう」をクリックしましょう。");
-        $('#num-of-pages').text("15/37p");
-        message_id--;
-      } else if (message_id == 16 ) {
-        $('#quest-message-text').text("また、アビリティがとうろくされていなければクエストにいくことはできないため、");
-        $('#num-of-pages').text("16/37p");
-        message_id--;
-      } else if (message_id == 17 ) {
-        $('#about-ability').slideUp(function() {
-          $('#quest-message-text').text("「アビリティしょうさい」、または、「アビリティをみる」をクリックしましょう。");
-          $('#num-of-pages').text("17/37p");
-          message_id--;
-          $('#about-mypage').slideDown();
-        });
-      } else if (message_id == 18 ) {
-        $('#quest-message-text').text("アビリティのしょうさいでは、あたらしいアビリティのとうろくとへんこうをすることができます。");
-        $('#num-of-pages').text("18/37p");
-        message_id--;
-      } else if (message_id == 19 ) {
-        $('#quest-message-text').text("アビリティは６つまでとうろくでき、３つとうろくするとグラフがひょうじされます。");
-        $('#num-of-pages').text("19/37p");
-        message_id--;
-      } else if (message_id == 20 ) {
-        $('#quest-message-text').text("アビリティのなまえをクリックすると、アビリティのなまえのへんこうとさくじょができます。");
-        $('#num-of-pages').text("20/37p");
-        message_id--;
-      } else if (message_id == 21 ) {
-        $('#about-quest').slideUp(function() {
-          $('#quest-message-text').text("アビリティのとうろくがおわったら、クエストにむかいましょう！");
-          $('#num-of-pages').text("21/37p");
-          message_id--;
-          $('#about-ability').slideDown();
-        });
-      } else if (message_id == 22 ) {
-        $('#about-quest-new').slideUp(function() {
-          $('#quest-message-text').text("クエストがめんでは、「クエストをうける」ことと「いままでのクエスト」をみることができます。");
-          $('#num-of-pages').text("22/37p");
-          message_id--;
-          $('#about-quest').slideDown();
-        });
-      } else if (message_id == 23 ) {
-        $('#quest-message-text').text("クエストをうけるときは、むかいたいマップとたおしたいボス、つよくしたいアビリティをえらびましょう。");
-        $('#num-of-pages').text("23/37p");
-        message_id--;
-      } else if (message_id == 24 ) {
-        $('#quest-message-text').text("つぎに、クエストのじかんをせっていして、クエストのないようをメモしましょう。");
-        $('#num-of-pages').text("24/37p");
-        message_id--;
-      } else if (message_id == 25 ) {
-        $('#about-loading').slideUp(function() {
-          $('#quest-message-text').text("すべてのにゅうりょくがおわったら、いよいよぼうけんにしゅっぱつしましょう！");
-          $('#num-of-pages').text("25/37p");
-          message_id--;
-          $('#about-quest-new').slideDown();
-        });
-      } else if (message_id == 26 ) {
-        $('#about-adv-start').slideUp(function() {
-          $('#quest-message-text').text("クエストのよみこみにはじかんがかかるばあいがあります。そのままおまちくださいね。");
-          $('#num-of-pages').text("26/37p");
-          message_id--;
-          $('#about-loading').slideDown();
-        });
-      } else if (message_id == 27 ) {
-        $('#about-adv').slideUp(function() {
-          $('#quest-message-text').text("よみこみおわったらボタンをおしてクエストスタート！");
-          $('#num-of-pages').text("27/37p");
-          message_id--;
-          $('#about-adv-start').slideDown();
-        });
-      } else if (message_id == 28 ) {
-        $('#quest-message-text').text("クエストがはじまると、タイマーがすすんでいくのでしゅうちゅうしてがくしゅうしましょう。");
-        $('#num-of-pages').text("28/37p");
-        message_id--;
-        $('#about-adv').slideDown();
-      } else if (message_id == 29 ) {
-        $('#quest-message-text').text("クエストをとちゅうでやめるばあいは「リタイアする」をクリックしましょう。");
-        $('#num-of-pages').text("29/37p");
-        message_id--;
-      } else if (message_id == 30 ) {
-        $('#quest-message-text').text("リタイアしたばあいは、がくしゅうじかんだけがきろくされます。");
-        $('#num-of-pages').text("30/37p");
-        message_id--;
-      } else if (message_id == 31 ) {
-        $('#quest-message-text').text("「ポーズする」をクリックするとタイマーがとまります。「ポーズかいじょ」でうごきだします。");
-        $('#num-of-pages').text("31/37p");
-        message_id--;
-      } else if (message_id == 32 ) {
-        $('#about-adv-boss').slideUp(function() {
-          $('#quest-message-text').text("タイマーがおわるか、がくしゅうがはやくおわったばあいは「ボスにすすむ」をクリックしましょう！");
-          $('#num-of-pages').text("32/37p");
-          $('#about-adv').slideDown();
-          message_id--;
-        });
-      } else if (message_id == 33 ) {
-        $('#about-adv-level-up').slideUp(function() {
-          $('#quest-message-text').text("クエストボスとのたたかいです！きょうりょくな「ひっさつわざをつかいましょう！！");
-          $('#num-of-pages').text("33/37p");
-          message_id--;
-          $('#about-adv-boss').slideDown();
-        });
-      } else if (message_id == 34 ) {
-        $('#quest-message-text').text("ボスをたおすと、がくしゅうしゃレベルとアビリティレベルがアップします！！");
-        $('#num-of-pages').text("34/37p");
-        message_id--;
-        $('#about-adv-level-up').slideDown();
-      } else if (message_id == 35 ) {
-        $('#about-adv-level-up').slideUp(function() {
-          $('#quest-message-text').text("「がくしゅうしゃ」のせつめいはこれでぜんぶです！！");
-          $('#num-of-pages').text("36/37p");
+      decrementPage();
+
+      switch (currentPage) {
+        case 1:
+          $('#command-back-message').text("");
+          break;
+        case 5:
+          $('#about-sign-up').slideUp();
+          break;
+        case 8:
+          $('#about-sign-in').slideUp(() => {
+            $('#about-sign-up').slideDown();
+          });
+          break;
+        case 11:
+          $('#about-mypage').slideUp(() => {
+            $('#about-sign-in').slideDown();
+          });
+          break;
+        case 17:
+          $('#about-ability').slideUp(() => {
+            $('#about-mypage').slideDown();
+          });
+          break;
+        case 21:
+          $('#about-quest').slideUp(() => {
+            $('#about-ability').slideDown();
+          });
+          break;
+        case 22:
+          $('#about-quest-new').slideUp(() => {
+            $('#about-quest').slideDown();
+          });
+          break;
+        case 25:
+          $('#about-loading').slideUp(() => {
+            $('#about-quest-new').slideDown();
+          });
+          break;
+        case 26:
+          $('#about-adv-start').slideUp(() => {
+            $('#about-loading').slideDown();
+          });
+          break;
+        case 27:
+          $('#about-adv').slideUp(() => {
+            $('#about-adv-start').slideDown();
+          });
+          break;
+        case 32:
+          $('#about-adv-boss').slideUp(() => {
+            $('#about-adv').slideDown();
+          });
+          break;
+        case 33:
+          $('#about-adv-level-up').slideUp(() => {
+            $('#about-adv-boss').slideDown();
+          });
+          break;
+        case 34:
+          $('#about-adv-level-up').slideDown();
+          break;
+        case 35:
           $('#command-next-message').text("つぎへ");
-          message_id--;
-        });
+          break;
       }
     });
   });
