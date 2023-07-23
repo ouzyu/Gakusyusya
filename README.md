@@ -1,5 +1,6 @@
 # がくしゅうしゃ
 ![title_image_for_github](https://github.com/ouzyu/Gakusyusya/assets/129580397/6eb1b213-0a74-4a72-bd67-285d7cd1f284)
+サイトURL:http://gakusyusya.com/
 ## サイト概要
 ### サイトテーマ
 キャラクターのアニメーションを用いて、子供たちが楽しく勉強出来る事を目的とした、学習時間の記録と管理を行うサイトです。
@@ -50,12 +51,12 @@ https://docs.google.com/spreadsheets/d/13xHDjOi6o5Bwp1dwTuyY8KJmIZlT4b7MCKG3yg7k
 ## 試用してみる
 ※管理者側でActorやMapを用意しなければUser側は正常に動作しません。seed.rbファイルを用意している為、クローン後にそちらをご利用ください。
 
-管理者サインインページは「/admins/sign_in」となっております。
+管理者サインインページは「 http://gakusyusya.com/admins/sign_in 」となっております。
 パスとemailは、rails db:seed後に
 - email: mail@1
 - pass: 123456
 
-となっております。
+を入力してください。
 
 同様に、User側にもゲスト以外でアカウントを用意してあります。併せてご確認ください。
 - email: mail@1
