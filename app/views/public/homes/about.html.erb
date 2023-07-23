@@ -170,11 +170,17 @@
           $('#command-back-message').text("もどる");
           break;
         case 37:
-          $('#command-next-message').text("つぎへ");
-          $('#command-back-message').text("もどる");
-          currentPage = 3;
-          $('#num-of-pages').text(`${currentPage}/${pageCounts}p`);
-          $('#quest-message-text').text(aboutTexts[currentPage - 1]);
+          let confirm = window.confirm("ほんとうに、せつめいをさいしょからききますか？");
+          if (confirm) {
+            $('#command-next-message').text("つぎへ");
+            $('#command-back-message').text("もどる");
+            currentPage = 3;
+            $('#num-of-pages').text(`${currentPage}/${pageCounts}p`);
+            $('#quest-message-text').text(aboutTexts[currentPage - 1]);
+          } else {
+            currentPage = 36;
+            $('#num-of-pages').text(`${currentPage}/${pageCounts}p`);
+          }
           break;
       }
     });
