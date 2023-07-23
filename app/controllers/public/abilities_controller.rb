@@ -58,14 +58,19 @@ class Public::AbilitiesController < ApplicationController
   def set_chart_data
     @chart_abilities_name = Array.new
     @chart_abilities_level = Array.new
+    @chart_abilities_max_level = Array.new
     @abilities.each do |ability|
       @chart_abilities_name << ability.name
       @chart_abilities_level << ability.level
     end
     if @chart_abilities_level.blank?
-      @chart_max_level = 1
+      @chart_abilities_max_level << 1
     else
-      @chart_max_level = @chart_abilities_level.max
+      @max_level = @chart_abilities_level.max
+      abilities_count = @chart_abilities_level.length
+      abilities_count.times do
+        @chart_abilities_max_level << @max_level
+      end
     end
   end
 end
