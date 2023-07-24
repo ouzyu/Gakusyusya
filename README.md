@@ -49,7 +49,9 @@ https://docs.google.com/spreadsheets/d/13xHDjOi6o5Bwp1dwTuyY8KJmIZlT4b7MCKG3yg7k
 - 音楽、グラフィックは全て自作となります。
 
 ## 試用してみる
-※管理者側でActorやMapを用意しなければUser側は正常に動作しません。seed.rbファイルを用意している為、クローン後にそちらをご利用ください。
+ゲストログイン機能を実装しており、ユーザー情報の変更以外は全て試用することが出来ます。
+
+※クローンを行う際は管理者側でActorやMapを用意しなければUser側は正常に動作しません。seed.rbファイルを用意している為、クローン後にそちらをご利用ください。
 
 管理者サインインページは「 http://gakusyusya.com/admins/sign_in 」となっております。
 パスとemailは、rails db:seed後に
