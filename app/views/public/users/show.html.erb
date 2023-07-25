@@ -7,6 +7,7 @@
           <div class="status-title system-window-border">
             <h2 class="text-center">ステータスがめん</h2>
           </div>
+
           <div class="user-status-box system-window-border mt-1 pl-2">
             <table>
               <tr>
@@ -19,6 +20,7 @@
               </tr>
             </table>
           </div>
+
           <div class="user-abilities-box system-window-border mt-1 p-2">
             <h5>アビリティ</h5>
             <% if @user.abilities.present? %>
@@ -35,22 +37,26 @@
             <% end %>
           </div>
         </div>
+
         <div class="status-right-sidebar system-window-border ml-1">
           <div class="user-profile-image">
             <%= image_tag @user.actor.have_first_animation.image, size: "300x300" %>
           </div>
+
           <div class="btn-box d-flex align-items-start flex-column">
             <div class="mt-3 mb-auto mx-auto">
               <% unless @user.guest_user? %>
                 <%= link_to "じょうほうをへんこう", edit_information_path, class: "btn btn-light" %>
               <% end %>
             </div>
+
             <div class="mt-2 mx-auto">
               <%= link_to "アビリティしょうさい", abilities_path, class: "btn btn-light" %>
             </div>
           </div>
         </div>
       </div>
+
       <div class="study_time-container p-1">
         <div class="system-window-border">
           <table>

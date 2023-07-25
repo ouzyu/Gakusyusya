@@ -4,45 +4,46 @@
   <div class="action-view-frame system-window system-window-border system-font">
     <%= render 'layouts/flash' %>
     <div class="fadein-content">
-        <div class="form-container p-1">
-          <div class="sign_up-left-sidebar system-window-border p-4">
-            <div class="field">
-              <%= f.label :name, "がくしゅうしゃのなまえをにゅうりょくしてください。" %><br />
-              <%= f.text_field :name, autofocus: true, class: "form-control col-md-10" %>
-            </div>
-
-            <div class="field mt-4">
-              <%= f.label :actor_id, "がくしゅうしゃのみためをえらんでください。" %><br />
-              <%= f.select :actor_id, options_from_collection_for_select(@actors, :id, :name), {}, class: "form-control col-md-10" %>
-            </div>
-
-            <div class="field mt-4">
-              <%= f.label :email, "メールアドレスをにゅうりょくしてください。" %><br />
-              <%= f.email_field :email, autocomplete: "email", class: "form-control col-md-10" %>
-            </div>
-
-            <div class="field mt-4">
-              <%= f.label :password, "パスワードをにゅうりょくしてください。（６もじいじょう）" %><br />
-              <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-md-10" %>
-            </div>
-
-            <div class="field mt-4">
-              <%= f.label :password_confirmation, "パスワードをもういちどにゅうりょくしてください。" %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-md-10" %>
-            </div>
+      <div class="form-container p-1">
+        <div class="sign_up-left-sidebar system-window-border p-4">
+          <div class="field">
+            <%= f.label :name, "がくしゅうしゃのなまえをにゅうりょくしてください。" %><br />
+            <%= f.text_field :name, autofocus: true, class: "form-control col-md-10" %>
           </div>
-          <div class="sign_up-right-sidebar system-window-border ml-1 p-1">
-            <div class="avatar-preview-box border" style="min-height: 300px; min-width: 300px;">
-              <% @actors.each do |actor| %>
-                <%= image_tag actor.have_first_animation.image, size: "300x300", id: "avatar-image-#{actor.id}", class: "avatar-image d-none" %>
-              <% end %>
-            </div>
 
-            <div class="actions sign_up-start-box d-flex align-items-end">
-              <%= f.submit "がくしゅうをはじめる！", class: "btn btn-success sign_up-start-btn mx-auto" %>
-            </div>
+          <div class="field mt-4">
+            <%= f.label :actor_id, "がくしゅうしゃのみためをえらんでください。" %><br />
+            <%= f.select :actor_id, options_from_collection_for_select(@actors, :id, :name), {}, class: "form-control col-md-10" %>
+          </div>
+
+          <div class="field mt-4">
+            <%= f.label :email, "メールアドレスをにゅうりょくしてください。" %><br />
+            <%= f.email_field :email, autocomplete: "email", class: "form-control col-md-10" %>
+          </div>
+
+          <div class="field mt-4">
+            <%= f.label :password, "パスワードをにゅうりょくしてください。（６もじいじょう）" %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-md-10" %>
+          </div>
+
+          <div class="field mt-4">
+            <%= f.label :password_confirmation, "パスワードをもういちどにゅうりょくしてください。" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-md-10" %>
           </div>
         </div>
+
+        <div class="sign_up-right-sidebar system-window-border ml-1 p-1">
+          <div class="avatar-preview-box border" style="min-height: 300px; min-width: 300px;">
+            <% @actors.each do |actor| %>
+              <%= image_tag actor.have_first_animation.image, size: "300x300", id: "avatar-image-#{actor.id}", class: "avatar-image d-none" %>
+            <% end %>
+          </div>
+
+          <div class="actions sign_up-start-box d-flex align-items-end">
+            <%= f.submit "がくしゅうをはじめる！", class: "btn btn-success sign_up-start-btn mx-auto" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <% end %>

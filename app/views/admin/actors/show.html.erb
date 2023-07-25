@@ -7,6 +7,7 @@
         <%= link_to "Return Actors", admin_actors_path, class: "btn btn-secondary mb-0 mt-3" %>
       </div>
     </div>
+
     <div class='row'>
       <div class="col-md-2 my-3 border pb-2">
         <ul class="list-unstyled text-center">
@@ -17,10 +18,12 @@
             </li>
             <li><%= f.submit "Create Situation", class: "btn btn-success mt-2" %></li>
         </ul>
+
         <div class="edit-actor-box d-flex align-items-end">
           <%= link_to "Edit Actor", edit_admin_actor_path(@actor), class: "btn btn-success mx-auto" %>
         </div>
       </div>
+
       <div class='col-md-9 offset-md-1 my-3'>
         <table class="table table-hover">
           <thead>
@@ -48,6 +51,7 @@
         </table>
       </div>
     </div>
+
     <div class="row">
       <div class="paginate-div mx-auto">
         <%= paginate @situations, class: "col-md-9" %>

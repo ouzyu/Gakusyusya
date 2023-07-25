@@ -14,6 +14,7 @@
         <%= link_to "Delete Animation", admin_animation_path(@animation), method: :delete, data: { confirm: "[確認]アニメーションを削除します。よろしいですか？"}, class: "btn btn-danger mb-0 mt-3" %>
       </div>
     </div>
+
     <div class="row">
       <div class="border d-flex justify-content-around" style="height: 490px; width: 1080px;">
         <div>
@@ -22,6 +23,7 @@
           </div>
           <p class="h4 text-center">Old Animation</p>
         </div>
+
         <div>
           <div class="border" style="min-height: 400px; min-width: 400px;">
             <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width: 100%; max-height: min-height: 400px; 400px; max-width: 400px; object-fit: cover;">
@@ -29,6 +31,7 @@
           <p class="h4 text-center">New Animation</p>
         </div>
       </div>
+
       <div class="row mx-auto mt-3">
         <%= link_to "Return Situatin Detail", admin_situation_path(@animation.situation_id), class: "btn btn-secondary btn-md" %>
         <%= f.submit "Save Changes", id: "submit", class: "btn btn-success btn-md ml-3" %>

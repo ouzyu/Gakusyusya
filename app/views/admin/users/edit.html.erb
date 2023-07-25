@@ -11,19 +11,23 @@
           <td class="col-md-2">ID</td>
           <td><%= @user.id %></td>
         </tr>
+
         <tr>
           <td>Name</td>
           <td><%= f.text_field :name, class: "form-control col-md-4" %></td>
         </tr>
+
         <tr>
           <td>Actor</td>
           <td><%= f.select :actor_id, options_from_collection_for_select(Actor.where(role: "avatar"), :id, :name, selected: @user.actor_id ), {}, class: "form-control col-md-4" %></td>
           <td colspan="2"></td>
         </tr>
+
         <tr>
           <td>email</td>
           <td><%= f.email_field :email, class: "form-control col-md-4" %></td>
         </tr>
+
         <tr>
           <td>Status</td>
           <td>

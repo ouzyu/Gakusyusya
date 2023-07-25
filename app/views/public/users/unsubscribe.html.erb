@@ -9,10 +9,12 @@
             <p>いままでのきろくがぜんぶきえてしまいます。</p>
             <p>まちがえたときは「みどりいろ」のボタンでもどりましょう。</p>
           </div>
+
           <div class="withdraw-btn-box mt-1 d-flex align-items-start flex-column">
             <div class="mt-1 pt-5 pb-5 mx-auto">
               <%= link_to "ステータスにもどる", mypage_path, class: "btn btn-success" %>
             </div>
+
             <div class="mt-auto pt-5 pb-2 mx-auto">
               <%= link_to "データをほんとうにさくじょする", withdraw_user_path(current_user), method: :patch, class: "btn btn-danger" %>
             </div>
