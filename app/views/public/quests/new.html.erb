@@ -43,6 +43,7 @@
     let show_button_id = 0
     let quest_id = 0
     let quit_button_id= 0
+    const show_box_exist = <%= @show_box_exist %>
 
     // ロード画面
     $('.fadein-content').fadeIn(3000, function() {
@@ -62,7 +63,7 @@
       $(imageId).removeClass("d-none");
     });
 
-    // new_quest_boxを表示
+    // new-quest-boxを表示
     $('#btn-new-quest').click(function() {
       if (click_slide_name == "new-quest") {
         $('#new-quest-box').slideUp();
@@ -77,11 +78,10 @@
 
       } else {
         $('#quest-message-text').text("クエストじょうほうをにゅうりょくしてください。");
-
         if (<%= @show_box_exist %> == false ) {
           $('#quest-index-box').slideUp(function() {
             $('#new-quest-box').slideDown();
-            click_slide_name = ""
+            click_slide_name = "new-quest"
           });
 
         } else {
@@ -94,14 +94,14 @@
     });
 
 
-    // new_quest_boxを非表示
+    // new-quest-boxを非表示
     $('#btn-quit-new-quest').click(function(){
       $('#new-quest-box').slideUp();
       $('#quest-message-text').text("");
       click_slide_name = ""
     });
 
-    //quest_index_boxを表示
+    //quest-index-boxを表示
     $('#btn-quest-index').click(function() {
       if (click_slide_name == "quest-index") {
         $('#quest-index-box').slideUp();
@@ -120,7 +120,7 @@
         if (<%= @show_box_exist %> == false ) {
           $('#new-quest-box').slideUp(function() {
             $('#quest-index-box').slideDown();
-            click_slide_name = ""
+            click_slide_name = "quest-index"
           });
 
         } else {
@@ -132,14 +132,14 @@
       }
     });
 
-    //quest_index_boxを非表示
+    //quest-index-boxを非表示
     $('#btn-quit-quest-index').click(function(){
       $('#quest-index-box').slideUp();
       $('#quest-message-text').text("");
       click_slide_name = ""
     });
 
-    // quest_show_boxを表示
+    // quest-show-boxを表示
     $('.btn-quest-show').click(function(){
       $('#quest-message-text').text("クエストのしょうさいになります。");
       show_button_id = $(this).attr("id");
@@ -150,7 +150,7 @@
       });
     });
 
-    //quest_show_boxを非表示
+    //quest-show-boxを非表示
     $('.btn-quit-quest-show').click(function(){
       click_slide_name = "quest-index"
       $('#quest-message-text').text("いままでうけたクエストを6つひょうじしています。");
