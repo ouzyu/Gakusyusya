@@ -46,7 +46,7 @@ https://docs.google.com/spreadsheets/d/13xHDjOi6o5Bwp1dwTuyY8KJmIZlT4b7MCKG3yg7k
 - IDE：Cloud9
 
 ## 使用素材
-- 音楽、グラフィックは全て自作となります。
+- アニメーション、グラフィックは全て自作となります。
 
 ## 試用してみる
 ゲストログイン機能を実装しており、ユーザー情報の変更以外は全て試用することが出来ます。
