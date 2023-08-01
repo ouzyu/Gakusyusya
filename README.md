@@ -27,16 +27,11 @@
 - ユーザー側UIフロー
 ![Gakusyusya_User_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/a9513c59-d878-4d54-ab94-3b7a50b5efa2)
 
-- ワイヤーフレーム(閲覧にはFigmaアカウントが必要です)
-https://www.figma.com/file/wmUrhU66a6K21xuso6iyvb/Gakusyusya_wireframe?type=design&node-id=19%3A7&mode=design&t=dcEuRNoMayndmceK-1
-- テーブル定義書
-https://docs.google.com/spreadsheets/d/1j0O0XZ-fZttLLpBUQvT6pn8Jo8ZmGXgYNXGtYQ37TJI/edit?usp=sharing
-- アプリケーション詳細設計
-https://docs.google.com/spreadsheets/d/14rNsCNkWDJqcEqb43ymJtHAwY94dvT5eDOl0NgDopIg/edit?usp=sharing
-- テスト仕様書
-https://docs.google.com/spreadsheets/d/1AeBx2qTEoZ3EpG8P17JaH5_3Afv23vZJ/edit?usp=sharing&ouid=114789396950183428579&rtpof=true&sd=true
-- WBS
-https://docs.google.com/spreadsheets/d/13xHDjOi6o5Bwp1dwTuyY8KJmIZlT4b7MCKG3yg7knvs/edit?usp=sharing
+- [ワイヤーフレーム(閲覧にはFigmaアカウントが必要です)](https://www.figma.com/file/wmUrhU66a6K21xuso6iyvb/Gakusyusya_wireframe?type=design&node-id=19%3A7&mode=design&t=dcEuRNoMayndmceK-1)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1j0O0XZ-fZttLLpBUQvT6pn8Jo8ZmGXgYNXGtYQ37TJI/edit?usp=sharing)
+- [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/14rNsCNkWDJqcEqb43ymJtHAwY94dvT5eDOl0NgDopIg/edit?usp=sharing)
+- [テスト仕様書](https://docs.google.com/spreadsheets/d/1AeBx2qTEoZ3EpG8P17JaH5_3Afv23vZJ/edit?usp=sharing&ouid=114789396950183428579&rtpof=true&sd=true)
+- [WBS](https://docs.google.com/spreadsheets/d/13xHDjOi6o5Bwp1dwTuyY8KJmIZlT4b7MCKG3yg7knvs/edit?usp=sharing)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -53,7 +48,8 @@ https://docs.google.com/spreadsheets/d/13xHDjOi6o5Bwp1dwTuyY8KJmIZlT4b7MCKG3yg7k
 
 ※クローンを行う際は管理者側でActorやMapを用意しなければUser側は正常に動作しません。seed.rbファイルを用意している為、クローン後にそちらをご利用ください。
 
-管理者サインインページは「 https://gakusyusya.com/admins/sign_in 」となっております。
+[管理者サインインページ](https://gakusyusya.com/admins/sign_in)
+
 パスとemailは、rails db:seed後に
 - email: mail@1
 - pass: 123456
