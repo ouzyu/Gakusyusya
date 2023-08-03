@@ -10,6 +10,11 @@ ja:
         new_boss:       "あたらしいボス"
         new_map:        "あたらしいマップ"
 
+      status:
+        not_checked:  "未確認"
+        responding:   "対応中"
+        responded:    "対応済み"
+
   views:
     pagination:
       first: "&laquo;"
