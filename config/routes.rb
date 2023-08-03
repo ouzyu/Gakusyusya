@@ -48,6 +48,10 @@ Rails.application.routes.draw do
     resources :animations,  only: [:create, :edit, :update, :destroy]
     resources :maps,        only: [:index, :create, :edit, :update, :destroy]
     resources :requests,    only: [:index, :show, :update]
+    get 'sort_by' => 'requests#sort_by'
+
+    get 'search' => 'searches#search'
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

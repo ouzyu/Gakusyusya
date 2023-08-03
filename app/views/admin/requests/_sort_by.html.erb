@@ -1,0 +1,21 @@
+<%= form_with url: admin_sort_by_path, local: false, method: :get do |f| %>
+  <div class="d-flex">
+    <%= f.select :sort_by, {
+      新しい順:       "latest",
+      古い順:         "old",
+      お問い合わせ:   "claim",
+      感想:           "impression",
+      新しい攻撃:     "new_attack",
+      新しい必殺技:   "new_deathblow",
+      新しいエネミー: "new_enemy",
+      新しいボス:     "new_boss",
+      新しいマップ:   "new_map",
+      スコアの高い順: "many_score",
+      スコアの低い順: "few_score",
+      未確認:         "not_checked",
+      対応中:         "responding",
+      対応済み:       "responded"
+      },{}, class: "form-control" %>
+    <%= f.submit "Sort", class: "btn btn-primary ml-1" %>
+  </div>
+<% end %>

@@ -17,4 +17,10 @@ class Request < ApplicationRecord
 
   validates :email,   presence: true
   validates :content, presence: true, length: { in: 1..500 }
+
+  scope :latest,      -> {order(created_at: :desc)}
+  scope :old,         -> {order(created_at: :asc)}
+  scope :many_score,  -> {order(score: :desc)}
+  scope :few_score,   -> {order(score: :asc)}
+
 end

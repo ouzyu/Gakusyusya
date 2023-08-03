@@ -757,3 +757,7 @@ footer {
 .timer-box-count {
   font-size: 70px;
 }
+
+.request-content {
+  max-width: 200px;
+}
