@@ -1,0 +1,45 @@
+<div class="base-frame">
+  <div class="row d-inline">
+    <div class="pl-3 d-flex">
+      <h2 class="col-5 px-0">Search for <%= @word %></h2>
+      <div class="ml-auto mr-3">
+        <%= render "admin/requests/search" %>
+      </div>
+    </div>
+
+    <div class="col-md-12 mx-auto">
+      <table class="table table-hover border-bottom">
+        <thead class="text-center">
+          <tr>
+            <th class="col-2">Genre</th>
+            <th class="col-2">email</th>
+            <th>Content</th>
+            <th class="col-1">Score</th>
+            <th class="col-2">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @requests.each do |request| %>
+            <tr class="text-center">
+              <td>
+                <%= link_to admin_request_path(request) do %>
+                  <%= request.genre_i18n %>
+                <% end %>
+              </td>
+              <td class="align-middle"><%= request.email %></td>
+              <td class="align-middle"><%= request.content %></td>
+              <td class="align-middle"><%= request.score %></td>
+              <td class="align-middle align-middle mb-0"><%= request.status_i18n %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="paginate-div mx-auto mb-5">
+      <%= paginate @requests %>
+    </div>
+  </div>
+</div>

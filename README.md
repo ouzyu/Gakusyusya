@@ -21,11 +21,11 @@
 
 ## 設計書
 - ER図
-![Gakusyusya_er_graph drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/f2ca7110-6dfa-4bca-9e7d-401867dbc731)
+![Gakusyusya_er_graph drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/b68d6415-ed0e-4f82-b715-0f6aee5fa949)
 - 管理者側UIフロー
-![Gakusyusya_Admin_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/f65c9a1b-9673-4a43-a1c8-ee17963041d6)
+![Gakusyusya_Admin_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/ab6110c6-4982-47cc-828e-ccbbde13d83a)
 - ユーザー側UIフロー
-![Gakusyusya_User_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/a9513c59-d878-4d54-ab94-3b7a50b5efa2)
+![Gakusyusya_User_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/b8d03713-6bee-4765-baa7-52e8dbf33f82)
 
 - [ワイヤーフレーム(閲覧にはFigmaアカウントが必要です)](https://www.figma.com/file/wmUrhU66a6K21xuso6iyvb/Gakusyusya_wireframe?type=design&node-id=19%3A7&mode=design&t=dcEuRNoMayndmceK-1)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1j0O0XZ-fZttLLpBUQvT6pn8Jo8ZmGXgYNXGtYQ37TJI/edit?usp=sharing)
