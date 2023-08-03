@@ -1,4 +1,15 @@
 ja:
+  enums:
+    request:
+      genre:
+        claim:          "おといあわせ"
+        impression:     "かんそう"
+        new_attack:     "あたらしいこうげき"
+        new_deathblow:  "あたらしいひっさつわざ"
+        new_enemy:      "あたらしいエネミー"
+        new_boss:       "あたらしいボス"
+        new_map:        "あたらしいマップ"
+
   views:
     pagination:
       first: "&laquo;"
@@ -30,9 +41,9 @@ ja:
         quest:                  'クエスト'
         content:                'クエストないよう'
         seconds:                'タイム'
-        map:                 'むかいたいマップ'
-        actor:               'たおしたいボス'
-        ability:             'つよくしたいアビリティ'
+        map:                    'むかいたいマップ'
+        actor:                  'たおしたいボス'
+        ability:                'つよくしたいアビリティ'
 
       map:
         map:                    'マップ'
@@ -53,6 +64,10 @@ ja:
         animation:              'アニメーション'
         name:                   'アニメーション名'
         image:                  'アニメーション画像'
+
+      request:
+        email:                  "メールアドレス"
+        content:                "おといあわせないよう"
 
     errors:
       messages:

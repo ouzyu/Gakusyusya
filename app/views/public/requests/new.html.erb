@@ -1,1 +1,37 @@
-<h1>test</h1>
+<div class="base-frame">
+  <%= form_with model: @request, url: requests_path do |f| %>
+    <%= render 'layouts/error_message_shalica.html.erb', model: f.object %>
+    <div class="action-view-frame system-window system-window-border system-font">
+      <%= render 'layouts/flash' %>
+      <div class="fadein-content">
+        <div class="request-container p-3">
+          <div class="field">
+            <%= f.label :genre, "おといあわせ・いけんのしゅるいをせんたくしてください。" %>
+            <%= f.select :genre, Request.genres_i18n.invert, {}, class: "form-control col-md-3" %>
+          </div>
+
+          <div class="field mt-2">
+            <%= f.label :email, "メールアドレスをにゅうりょくしてください。" %>
+            <%= f.email_field :email, autocomplete: "email", class: "form-control col-md-5" %>
+          </div>
+
+          <div class="field mt-2">
+            <%= f.label :content, "おといあわせ・いけんのないようをにゅうりょくしてください（500文字以内）" %>
+            <%= f.text_area :content, :size=>"20x10", class: "form-control col-md-12" %>
+          </div>
+
+          <div class="field d-flex mt-4">
+            <%= link_to "タイトルへもどる", root_path, class: "btn btn-lg btn-secondary" %>
+            <%= f.submit "そうしんする！", class: "btn btn-lg btn-success ml-auto" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('.fadein-content').fadeIn("slow");
+  });
+</script>

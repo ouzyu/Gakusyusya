@@ -139,7 +139,21 @@ footer {
 .title-trial {
   position: absolute;
   bottom: -10px;
-  right: 10px
+  right: 10px;
+}
+
+.title-trial p {
+  font-size: 22px;
+}
+
+.title-request {
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+}
+
+.title-request p {
+  font-size: 22px;
 }
 
 /*about*/
