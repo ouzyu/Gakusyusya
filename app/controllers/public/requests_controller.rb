@@ -6,6 +6,7 @@ class Public::RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
+    @request.score = Language.get_data(request_params[:content])
     if @request.save
       redirect_to root_path, notice: "おといあわせをそうしんしました。"
     else

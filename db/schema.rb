@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2023_08_03_031418) do
     t.string "email", null: false
     t.text "content", null: false
     t.integer "status", default: 0, null: false
+    t.decimal "score", precision: 5, scale: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
