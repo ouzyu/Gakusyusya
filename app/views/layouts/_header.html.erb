@@ -23,8 +23,9 @@
               <div class="navbar-nav">
                 <% if admin_signed_in? %>
                   <li><%= link_to "Users", admin_users_path, class: 'btn navbar-btn btn-outline-light' %></li>
-                  <li><%= link_to "Actors", admin_actors_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
-                  <li><%= link_to "Maps", admin_maps_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
+                  <li><%= link_to "Actors", admin_actors_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                  <li><%= link_to "Maps", admin_maps_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                  <li><%= link_to "Requests", admin_requests_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
                   <li>
                     <%= link_to destroy_admin_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
                       Log out

@@ -1,0 +1,44 @@
+<div class="base-frame">
+  <%= form_with model: @request, url: admin_request_path do |f| %>
+    <div class="row">
+      <h2 class="mt-3"><%= @request.email %>さんのリクエスト</h2>
+    </div>
+
+    <div class="row">
+      <table class="table mt-3">
+        <tr>
+          <td class="col-md-2">Genre</td>
+          <td><%= @request.genre_i18n %></td>
+        </tr>
+
+        <tr>
+          <td>email</td>
+          <td><%= @request.email %></td>
+        </tr>
+
+        <tr>
+          <td>Content</td>
+          <td><%= @request.content %></td>
+        </tr>
+
+        <tr>
+          <td>Score</td>
+          <td><%= @request.score %></td>
+        </tr>
+
+        <tr>
+          <td>Status</td>
+          <td>
+            <%= f.select :status, Request.statuses_i18n.invert, {}, class: "form-control col-md-3" %>
+          </td>
+        </tr>
+
+      </table>
+
+      <div class="row mx-auto">
+        <%= link_to "Return Requests", admin_requests_path, class: "btn btn-secondary btn-md" %>
+        <%= f.submit "Update", class: "btn btn-success ml-3" %>
+      </div>
+    </div>
+  <% end %>
+</div>

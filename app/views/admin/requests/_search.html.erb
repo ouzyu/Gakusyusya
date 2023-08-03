@@ -1,0 +1,6 @@
+<%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+  <div class="d-flex">
+    <%= f.text_field :word, placeholder: "email", class: "form-control" %>
+    <%= f.submit "Search", class: "btn btn-primary ml-1" %>
+  </div>
+<% end %>
