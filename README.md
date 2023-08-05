@@ -50,11 +50,10 @@
 
 [管理者サインインページ](https://gakusyusya.com/admins/sign_in)
 
-パスとemailは、rails db:seed後に
+パスとemailは、rails db:seed後に下記を入力してください。
 - email: mail@1
 - pass: 123456
 
-を入力してください。
 
 同様に、User側にもゲスト以外でアカウントを用意してあります。併せてご確認ください。
 - email: mail@1
