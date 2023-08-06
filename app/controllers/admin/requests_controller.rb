@@ -4,6 +4,7 @@ class Admin::RequestsController < ApplicationController
   def index
     @requests = Request.latest.page(params[:page]).per(10)
     @sort_by = "新しい順"
+    @average_score = Request.average(:score)
   end
 
   def show
