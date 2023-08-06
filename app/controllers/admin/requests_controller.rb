@@ -68,6 +68,7 @@ class Admin::RequestsController < ApplicationController
       @requests = Request.all.page(params[:page]).per(10)
       @sort_by = "新しい順"
     end
+    @average_score = Request.average(:score)
   end
 
   private
