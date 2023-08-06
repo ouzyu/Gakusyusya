@@ -21,7 +21,7 @@
 
 ## 設計書
 - ER図
-![Gakusyusya_er_graph drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/b68d6415-ed0e-4f82-b715-0f6aee5fa949)
+![Gakusyusya_er_graph drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/e896f912-cd33-4f20-a0b4-f014a4de7a62)
 - 管理者側UIフロー
 ![Gakusyusya_Admin_UIフロー drawio](https://github.com/ouzyu/Gakusyusya/assets/129580397/ab6110c6-4982-47cc-828e-ccbbde13d83a)
 - ユーザー側UIフロー
@@ -50,11 +50,10 @@
 
 [管理者サインインページ](https://gakusyusya.com/admins/sign_in)
 
-パスとemailは、rails db:seed後に
+パスとemailは、rails db:seed後に下記を入力してください。
 - email: mail@1
 - pass: 123456
 
-を入力してください。
 
 同様に、User側にもゲスト以外でアカウントを用意してあります。併せてご確認ください。
 - email: mail@1
