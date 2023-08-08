@@ -761,3 +761,9 @@ footer {
 .request-content {
   max-width: 200px;
 }
+
+@media screen and (max-width: 480px) {
+	.system-font {
+  color: red;
+	}
+}
