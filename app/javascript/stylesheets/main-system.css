@@ -762,8 +762,23 @@ footer {
   max-width: 200px;
 }
 
-@media screen and (max-width: 480px) {
-	.system-font {
-  color: red;
-	}
+@media (orientation: landscape) and (max-width: 767px) {
+
+  footer {
+    display: none;
+  }
+
+  .title {
+    width: 75vw;
+    height: 75vh;
+  }
+
+  .nav-box {
+    height: 15vh;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 767px) {
+
+
 }
