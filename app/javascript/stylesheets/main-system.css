@@ -762,7 +762,7 @@ footer {
   max-width: 200px;
 }
 
-@media (orientation: landscape) and (max-width: 767px) {
+@media (orientation: landscape) and (max-width: 999px) {
 
   footer {
     display: none;
@@ -778,7 +778,7 @@ footer {
   }
 }
 
-@media (orientation: portrait) and (max-width: 767px) {
+@media (orientation: portrait) and (max-width: 999px) {
 
 
 }
