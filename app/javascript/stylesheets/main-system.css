@@ -776,6 +776,16 @@ footer {
   .nav-box {
     height: 15vh;
   }
+
+  .title-command-box {
+    position: absolute;
+    bottom: 105px;
+    right: -445px;
+  }
+
+  .font-black {
+    color: black;
+  }
 }
 
 @media (orientation: portrait) and (max-width: 999px) {
