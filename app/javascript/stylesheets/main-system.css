@@ -778,13 +778,22 @@ footer {
   }
 
   .title-command-box {
-    position: absolute;
     bottom: 105px;
     right: -445px;
   }
 
   .font-black {
     color: black;
+  }
+
+  .title-trial {
+    bottom: 60px;
+    right: -190px;
+  }
+
+  .title-request {
+    bottom: -10px;
+    right: -830px;
   }
 }
 
