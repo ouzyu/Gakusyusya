@@ -18,11 +18,11 @@
 
         <div class="ham-menu ml-auto">
           <input id="drawer-input" class="drawer-hidden" type="checkbox">
-          <label for="drawer-input" class="drawer-open mb-0"><span></span></label>
+          <label for="drawer-input" id="ham-icon" class="drawer-open mb-0"><span></span></label>
         </div>
 
         <div class="nav-content ml-auto">
-          <ul class="nav-list mb-0">
+          <ul class="mb-0">
             <div class="navbar-nav">
               <% if admin_signed_in? %>
                 <li><%= link_to "Users", admin_users_path, class: 'btn navbar-btn btn-outline-light' %></li>
