@@ -19,9 +19,7 @@ footer {
 }
 
 .action-view-frame {
-  min-width: 1000px;
   max-width: 1000px;
-  min-height: 600px;
   max-height: 600px;
   box-shadow: 0 0 0 1px black;
   position: relative;
@@ -762,47 +760,34 @@ footer {
   max-width: 200px;
 }
 
-@media (orientation: landscape) and (max-width: 999px) {
+@media (orientation: landscape) and (max-width: 1023px) {
 
   footer {
     display: none;
   }
 
-  .title {
-    width: 75vw;
-    height: 75vh;
+  .base-frame {
+    width: 95vw;
   }
 
   .nav-box {
-    height: 15vh;
+    width: 95vw;
   }
 
-  .title-command-box {
-    bottom: 105px;
-    right: -445px;
+  .title {
+    width: 60vw;
+    height: 75vh;
   }
 
-  .font-black {
-    color: black;
-  }
-
-  .title-trial {
-    bottom: 60px;
-    right: -190px;
-  }
-
-  .title-request {
-    bottom: -10px;
-    right: -830px;
+  .title-container {
+    width: 60vw;
+    height: 75vh;
+    max-height: 598px;
   }
 
   .action-view-frame {
-    width: 98vw;
+    width: 60vw;
     height: 75vh;
+    margin-bottom: 0px;
   }
-}
-
-@media (orientation: portrait) and (max-width: 999px) {
-
-
 }
