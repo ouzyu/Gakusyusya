@@ -1,6 +1,6 @@
 # がくしゅうしゃ
 ![title_image_for_github](https://github.com/ouzyu/Gakusyusya/assets/129580397/6eb1b213-0a74-4a72-bd67-285d7cd1f284)
-サイトURL:https://gakusyusya.com/
+サイトURL:https://gakusyusya.com/ (働き始め更新できない為、停止しています)
 ## サイト概要
 ### サイトテーマ
 キャラクターのアニメーションを用いて、子供たちが楽しく勉強出来る事を目的とした、学習時間の記録と管理を行うサイトです。
